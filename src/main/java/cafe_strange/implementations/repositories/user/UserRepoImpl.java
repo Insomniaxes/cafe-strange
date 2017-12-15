@@ -25,7 +25,7 @@ public class UserRepoImpl implements UserRepo {
     @Override
     public UserList findAll() {
         Query query = em.createQuery("SELECT u from User AS u");
-        return (UserList) query.getResultList();
+        return new UserList(query.getResultList());
     }
 
     @Override
@@ -43,7 +43,7 @@ public class UserRepoImpl implements UserRepo {
     @Override
     public UserList findByLastName(String lastNeme) {
         Query query = em.createQuery("SELECT u from User AS u WHERE u.lastName LIKE '%" + lastNeme + "%'");
-        return (UserList) query.getResultList();
+        return new UserList(query.getResultList());
     }
 
     @Override

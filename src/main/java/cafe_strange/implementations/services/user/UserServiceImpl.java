@@ -18,12 +18,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findById(int id) {
-        return null;
+        return userRepo.findById(id);
     }
 
     @Override
     public UserList findAll() {
-        return null;
+        return userRepo.findAll();
     }
 
     @Override
