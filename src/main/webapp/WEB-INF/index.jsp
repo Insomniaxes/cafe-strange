@@ -4,6 +4,6 @@
     <title>Cafe-Strange</title>
 </head>
 <body>
-
+<h1>Dit is de index.html</h1>
 </body>
 </html>

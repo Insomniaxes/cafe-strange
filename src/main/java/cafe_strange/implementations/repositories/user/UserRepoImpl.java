@@ -1,6 +1,7 @@
 package cafe_strange.implementations.repositories.user;
 
 import cafe_strange.interfaces.repositories.UserRepo;
+import cafe_strange.models.user.Role;
 import cafe_strange.models.user.User;
 import cafe_strange.models.user.UserList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,13 @@ public class UserRepoImpl implements UserRepo {
     public User findByUsername(String username) {
         Query query = em.createQuery("SELECT u from User AS u WHERE u.username = '" + username + "'");
         return (User) query.getSingleResult();
+    }
+
+    // todo nog uitdokteren
+    @Override
+    public UserList findByRole(String role) {
+        Query query = em.createQuery("SELECT u FROM User AS u WHERE role = " + role );
+        return (UserList) query.getResultList();
     }
 
     @Override

@@ -9,11 +9,12 @@
 <c:forEach items="${users}" var="user">
     <table style="width:100%">
         <tr>
-            <th><h1>Gebruikersnaam</h1></th>
+            <th>Gebruikersnaam</th>
             <th>Achternaam</th>
             <th>Voornaam</th>
             <th>Geboortedatum</th>
             <th>Role</th>
+            <th></th>
         </tr>
         <tr>
             <td>${user.username}</td>

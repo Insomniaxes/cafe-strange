@@ -2,6 +2,7 @@ package cafe_strange.implementations.services.user;
 
 import cafe_strange.interfaces.repositories.UserRepo;
 import cafe_strange.interfaces.services.UserService;
+import cafe_strange.models.user.Role;
 import cafe_strange.models.user.User;
 import cafe_strange.models.user.UserList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserList findByLastName(String lastName) {
+        return userRepo.findByLastName(lastName);
+    }
+
+    @Override
+    public UserList findByRole(String role) {
+        return userRepo.findByRole(role);
+    }
+
+    @Override
     public User create(Object object) {
         return null;
     }
@@ -36,8 +47,9 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    // todo nog confirmatie
     @Override
     public void delete(int id) {
-
+        userRepo.delete(id);
     }
 }

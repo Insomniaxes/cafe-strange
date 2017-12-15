@@ -46,7 +46,7 @@ q:before, q:after {
 
 table {
     border-collapse: collapse;
-    border-spacing: 0;
+    border-spacing: 1px;
 }
 
 /* einde reset */
@@ -138,9 +138,6 @@ footer {
     padding: 10px;
 }
 
-table {
-    border: 2px black;
-}
 
 
 
