@@ -1,5 +1,7 @@
 package cafe_strange.models.user;
 
+import cafe_strange.enums.Gender;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
@@ -23,6 +25,8 @@ public class User {
     private Date birthday;
     @Enumerated(EnumType.ORDINAL)
     private Gender gender;
+    @Column(name = "avatarURL")
+    private String avatarURL;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns =
@@ -84,5 +88,13 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public String getAvatarURL() {
+        return avatarURL;
+    }
+
+    public void setAvatarURL(String avatarURL) {
+        this.avatarURL = avatarURL;
     }
 }
