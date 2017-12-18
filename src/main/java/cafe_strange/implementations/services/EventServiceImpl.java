@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -35,7 +36,13 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public List<Event> findUpcomingEvents() {
-        return eventRepo.findUpcomingEvents();
+        List<Event> events = eventRepo.findUpcomingEvents();
+        if (events.size() == 0) {
+            return new ArrayList<>();
+        } else {
+            Collections.sort(events);
+            return events;
+        }
     }
 
     @Override
