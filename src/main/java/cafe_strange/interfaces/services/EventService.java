@@ -10,5 +10,5 @@ public interface EventService {
     Event findNextEvent();
     List<Event> findUpcomingEvents();
     List<Event> findPastEvents();
-
+    void create(Event event);
 }

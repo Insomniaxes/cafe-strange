@@ -51,6 +51,14 @@ public class Event implements Comparable<Event> {
         this.title = title;
     }
 
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
     public String getDescription() {
         return description;
     }

@@ -1,6 +1,7 @@
 package cafe_strange.controllers;
 
 import cafe_strange.interfaces.services.EventService;
+import cafe_strange.models.event.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,8 +30,14 @@ public class EventController {
     }
 
     @RequestMapping(value = "/createNew", method = RequestMethod.GET)
-    public String getEventById() {
+    public String createNewEvent() {
         return "views/event/eventDetailsEdit";
+    }
+
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public String saveNewEvent(Event event) {
+        eventService.create(event);
+        return "views/event/eventView";
     }
 
 }

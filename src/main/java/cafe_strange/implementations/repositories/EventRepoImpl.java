@@ -9,9 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.sql.Date;
 import java.util.List;
-import java.util.SortedSet;
 
 @Repository
 @Transactional
@@ -39,5 +37,8 @@ public class EventRepoImpl implements EventRepo {
         return (List<Event>) query.getResultList();
     }
 
-
+    @Override
+    public void create(Event event) {
+        em.persist(event);
+    }
 }

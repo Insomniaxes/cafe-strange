@@ -6,13 +6,12 @@ import cafe_strange.models.event.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
-import java.util.ArrayList;
+import javax.transaction.Transactional;
 import java.util.Collections;
 import java.util.List;
-import java.util.SortedSet;
 
 @Service
+@Transactional
 public class EventServiceImpl implements EventService {
 
     @Autowired
@@ -42,6 +41,11 @@ public class EventServiceImpl implements EventService {
     @Override
     public List<Event> findPastEvents() {
         return eventRepo.findPastEvents();
+    }
+
+    @Override
+    public void create(Event event) {
+        eventRepo.create(event);
     }
 
 }

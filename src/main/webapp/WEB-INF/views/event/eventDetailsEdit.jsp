@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/menu.jsp" var="menuURL"/>
     <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/footer.jsp" var="footerURL"/>
-    <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/events/partyDetailsForm.jsp" var="partyDetailsEditURL"/>
+    <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/event/eventDetailsForm.jsp" var="eventDetailsFormURL"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" type="text/css" media="all">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css" type="text/css" media="all">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css" media="all">
@@ -36,7 +36,7 @@
         <div class="box">
             <!--content -->
             <article id="content">
-                <jsp:include page="${partyDetailsFormURL}"/>
+                <jsp:include page="${eventDetailsFormURL}"/>
             </article>
             <!--content end-->
             <!--footer -->

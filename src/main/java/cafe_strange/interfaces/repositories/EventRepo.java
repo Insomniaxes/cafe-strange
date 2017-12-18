@@ -9,5 +9,6 @@ public interface EventRepo {
     Event findEventById(int eventId);
     List<Event> findUpcomingEvents();
     List<Event> findPastEvents();
+    void create(Event event);
 
 }

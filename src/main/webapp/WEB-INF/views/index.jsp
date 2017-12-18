@@ -8,8 +8,8 @@
     <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/menu.jsp" var="menuURL"/>
     <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/footer.jsp" var="footerURL"/>
     <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/welcome.jsp" var="welcomeURL"/>
-    <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/events/nextEvent.jsp" var="eventsURL"/>
-    <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/events/upcoming.jsp" var="upcomingURL"/>
+    <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/event/nextEvent.jsp" var="eventsURL"/>
+    <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/event/upcoming.jsp" var="upcomingURL"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" type="text/css" media="all">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css" type="text/css" media="all">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css" media="all">
