@@ -25,7 +25,7 @@
       <nav>
         <ul id="menu">
           <li><a href="index.jsp">Club</a></li>
-          <li><a href="parties.jsp">Parties</a></li>
+          <li><a href="event/events.jsp">Parties</a></li>
           <li class="active"><a href="gallery.jsp">Gallery</a></li>
           <li><a href="residents.jsp">Residents</a></li>
           <li><a href="news.jsp">News</a></li>

@@ -25,19 +25,19 @@ public class UserController {
     @RequestMapping(method = RequestMethod.GET)
     public String getAllUsers(Model model) {
         model.addAttribute("users", userService.findAll().getUsers());
-        return "views/userOverview";
+        return "views/user/userOverview";
     }
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
     public String getUserById(@PathVariable int userId, Model model) {
         model.addAttribute(userService.findById(userId));
-        return "views/userDetails";
+        return "views/user/userDetails";
     }
 
     @RequestMapping(value = "/lastname/{lastName}", method = RequestMethod.GET)
     public String getUsersByLastName(@PathVariable String lastName, Model model) {
         model.addAttribute("users", userService.findByLastName(lastName).getUsers());
-        return "views/userOverview";
+        return "views/user/userOverview";
     }
 
     @RequestMapping(value = "/role/{role}", method = RequestMethod.GET)
@@ -53,7 +53,7 @@ public class UserController {
         List<Role> roles = new ArrayList<>(Arrays.asList(Role.values()));
         model.addAttribute("roleList", roles);
         model.addAttribute("user", userService.findById(userId));
-        return "views/userDetailsEdit";
+        return "views/user/userDetailsEdit";
     }
 
     @RequestMapping(value = "/createNew", method = RequestMethod.GET)
@@ -62,13 +62,13 @@ public class UserController {
         model.addAttribute("genderList", genders);
         List<Role> roles = new ArrayList<>(Arrays.asList(Role.values()));
         model.addAttribute("roleList", roles);
-        return "views/userDetailsEdit";
+        return "views/user/userDetailsEdit";
     }
 
     @RequestMapping(value = "/create/", method = RequestMethod.POST)
     public String createUser(User user, Model model) {
         model.addAttribute("user", userService.create(user));
-        return "views/userDetails";
+        return "views/user/userDetails";
     }
 
     @RequestMapping(value = "/update/{userId}")
@@ -76,7 +76,7 @@ public class UserController {
         user.setId(userId);
         userService.update(user);
         model.addAttribute("user", user);
-        return "views/userDetails";
+        return "views/user/userDetails";
     }
 
     @RequestMapping(value = "/delete/{userId}", method = RequestMethod.DELETE)
