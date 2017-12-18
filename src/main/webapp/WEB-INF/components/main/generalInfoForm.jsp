@@ -6,7 +6,7 @@
             <p class="pad_bot1">Extra informatie:<br> <input name="extendedInfo" value="${generalInfo.extendedInfo}"></p>
             <input type="submit" formaction="/generalinfo/update" value="Opslaan" formmethod="post">
 
-            <a href="#" class="link1">Read More</a>
+            <a href="#" class="link1">Lees meer</a>
 
         </section>
     </div>

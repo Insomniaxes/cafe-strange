@@ -55,4 +55,8 @@ public class EventServiceImpl implements EventService {
         eventRepo.create(event);
     }
 
+    @Override
+    public void update(Event event) {
+        eventRepo.update(event);
+    }
 }

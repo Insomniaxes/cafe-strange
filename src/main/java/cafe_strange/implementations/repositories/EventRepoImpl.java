@@ -41,4 +41,9 @@ public class EventRepoImpl implements EventRepo {
     public void create(Event event) {
         em.persist(event);
     }
+
+    @Override
+    public void update(Event event) {
+        em.merge(event);
+    }
 }

@@ -11,4 +11,5 @@ public interface EventRepo {
     List<Event> findPastEvents();
     void create(Event event);
 
+    void update(Event event);
 }

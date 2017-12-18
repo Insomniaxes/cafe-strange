@@ -4,6 +4,7 @@ import cafe_strange.enums.Gender;
 import cafe_strange.enums.Role;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Set;
 
@@ -28,8 +29,11 @@ public class User {
     private Gender gender;
     @Column(name = "avatarURL")
     private String avatarURL;
-    @Column(name = "role")
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "role", nullable = false, columnDefinition = "Role.MEMBER")
     private Role role;
+
+    SimpleDateFormat dateFormat = new SimpleDateFormat("DD-MM-YYYY");
 
     public int getId() {
         return id;

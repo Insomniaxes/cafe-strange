@@ -16,4 +16,27 @@ public class Comment {
     @Column(name = "commentCreateTimestamp")
     private Timestamp commentCreateTimestamp;
 
+    public int getCommentId() {
+        return commentId;
+    }
+
+    public void setCommentId(int commentId) {
+        this.commentId = commentId;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public Timestamp getCommentCreateTimestamp() {
+        return commentCreateTimestamp;
+    }
+
+    public void setCommentCreateTimestamp(Timestamp commentCreateTimestamp) {
+        this.commentCreateTimestamp = commentCreateTimestamp;
+    }
 }

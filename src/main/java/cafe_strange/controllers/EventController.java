@@ -29,6 +29,19 @@ public class EventController {
         return "views/event/eventView";
     }
 
+    @RequestMapping(value = "/edit/{eventId}", method = RequestMethod.GET)
+    public String editEventById(@PathVariable int eventId, Model model) {
+        model.addAttribute("event", eventService.findEventById(eventId));
+        return "views/event/eventDetailsEdit";
+    }
+
+    @RequestMapping(value = "/update/{eventId}", method = RequestMethod.POST)
+    public String updateEvent(@PathVariable int eventId, Event event) {
+        event.setId(eventId);
+        eventService.update(event);
+        return "redirect:/index";
+    }
+
     @RequestMapping(value = "/createNew", method = RequestMethod.GET)
     public String createNewEvent() {
         return "views/event/eventDetailsEdit";
@@ -37,7 +50,7 @@ public class EventController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String saveNewEvent(Event event) {
         eventService.create(event);
-        return "views/event/eventView";
+        return "redirect:/index";
     }
 
 }

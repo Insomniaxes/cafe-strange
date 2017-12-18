@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="line1">
     <div class="line2 wrapper">
         <div class="icons">
@@ -29,10 +30,19 @@
             </ul>
         </div>
         <div class="phone">
-            <h4>Order Tickets</h4>
-            <p>Free Phone<span>8-800-123-NIGHT</span></p>
+            <h5>Openingsuren:</h5>
+            <table style="width:100%">
+                <c:forEach items="${openingHours}" var="opening">
+                    <tr>
+                        <th>${opening.weekday}</th>
+                        <td><c:if test="${empty opening.open}">Closed</c:if> ${opening.open}</td>
+                        <td>${opening.closed}</td>
+                    </tr>
+                </c:forEach>
+            </table>
         </div>
     </div>
-    Copyright &copy; <a href="www.cafe-strange.be">www.cafe-strange.be</a> All Rights Reserved | Design by <a target="_blank"
-                                                                                    href="http://www.templatemonster.com/">TemplateMonster.com</a>
+    Copyright &copy; <a href="www.cafe-strange.be">www.cafe-strange.be</a> All Rights Reserved | Design by <a
+        target="_blank"
+        href="http://www.templatemonster.com/">TemplateMonster.com</a>
 </div>

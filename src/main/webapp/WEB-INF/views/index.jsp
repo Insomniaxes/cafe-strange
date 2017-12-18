@@ -32,7 +32,6 @@
     <div class="main">
         <!--header -->
         <header>
-
             <jsp:include page="${menuURL}"/>
         </header>
         <!--header end-->

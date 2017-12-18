@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/generalinfo")
-public class GeneralInfoController {
+public class GeneralController {
 
     @Autowired
     private GeneralInfoService generalInfoService;
@@ -18,12 +18,12 @@ public class GeneralInfoController {
     @RequestMapping(method = RequestMethod.GET)
     public String getGeneralInfo(Model model) {
         model.addAttribute("generalInfo", generalInfoService.findGeneralInfo());
-        return "views/generalInfo";
+        return "views/general/generalInfo";
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public String editGeneralInfo() {
-        return "/views/generalInfoEdit";
+        return "views/general/generalInfoEdit";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)

@@ -9,7 +9,7 @@
                         value="${event.date}" pattern="MMMM"/></span></span>
                     <p><span class="color1">${event.title}</span><br>
                             ${event.description}<br>
-                        <a href="#" class="link1">Er moet nog een tabel gemaakt worden voor meer info</a></p>
+                        <a href="/events/${event.id}" class="link1">Lees meer</a></p>
                 </li>
             </c:forEach>
         </ul>

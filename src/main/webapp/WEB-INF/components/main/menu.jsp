@@ -2,10 +2,10 @@
     <ul id="menu">
         <li class="active"><a href="/index">Club</a></li>
         <li><a href="/events">Events</a></li>
-        <li><a href="/gallery">Gallery</a></li>
+        <li><a href="/gallery">Gallerij</a></li>
         <li><a href="/residents">Residents</a></li>
-        <li><a href="/news">News</a></li>
-        <li><a href="/contacts">Contacts</a></li>
+        <li><a href="/news">Nieuws</a></li>
+        <li><a href="/contact">Contact</a></li>
         <li><a href="/users">Users</a></li>
     </ul>
 </nav>
