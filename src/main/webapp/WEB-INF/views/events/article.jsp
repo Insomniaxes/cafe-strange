@@ -1,8 +1,9 @@
 <%@ taglib prefix="Spring" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="ftm" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>nightclub | Parties</title>
+    <title>nightclub | News</title>
     <meta charset="utf-8">
     <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/navigation.jsp" var="navigationURL"/>
     <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/footer.jsp" var="footerURL"/>
@@ -20,7 +21,7 @@
     <link rel="stylesheet" href="css/ie.css" type="text/css" media="all">
     <![endif]-->
 </head>
-<body id="page2">
+<body id="page5">
 <div class="bg1">
     <div class="main">
         <!--header -->
@@ -32,20 +33,12 @@
             <!--content -->
             <article id="content">
                 <div class="wrapper">
-                    <h2>Upcoming Parties</h2>
-                    <div class="wrapper">
-                        <div class="cols marg_right1">
-                            <figure class="pad_bot1"><a href="#"><img src="images/page2_img1.jpg" alt=""></a></figure>
-                            <figure><a href="#"><img src="images/page2_img2.jpg" alt=""></a></figure>
-                        </div>
-                        <div class="cols marg_right1">
-                            <figure class="pad_bot1"><a href="#"><img src="images/page2_img3.jpg" alt=""></a></figure>
-                            <figure><a href="#"><img src="images/page2_img4.jpg" alt=""></a></figure>
-                        </div>
-                        <div class="cols">
-                            <figure class="pad_bot1"><a href="#"><img src="images/page2_img5.jpg" alt=""></a></figure>
-                            <figure><a href="#"><img src="images/page2_img6.jpg" alt=""></a></figure>
-                        </div>
+                    <h2><strong><ftm:formatDate value="${news.date}" pattern="dd.MM"/> </strong> ${news.title}</h2>
+                    <div class="wrapper pad_bot1">
+                        <figure class="left marg_right1"><img src="images/page5_img1.jpg" alt=""></figure>
+                        <p class="color1 pad_bot1">${news.intro}</p>
+                        <p class="pad_bot1">${news.article}</p>
+                        <a href="/news" class="link2">Terug naar overzicht</a>
                     </div>
                 </div>
             </article>

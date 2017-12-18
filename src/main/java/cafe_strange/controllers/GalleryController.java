@@ -10,7 +10,7 @@ public class GalleryController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String getGallery() {
-        return "views/gallery/gallery";
+        return "views/galleries/photoGallery";
     }
 
 }

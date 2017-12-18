@@ -20,19 +20,19 @@ public class EventController {
     public String getEventPage(Model model) {
         model.addAttribute("upcomingEvents", eventService.findUpcomingEvents());
         model.addAttribute("pastEvents", eventService.findPastEvents());
-        return "views/event/events";
+        return "views/events/events";
     }
 
     @RequestMapping(value = "/{eventId}", method = RequestMethod.GET)
     public String getEventById(@PathVariable int eventId, Model model) {
         model.addAttribute("event", eventService.findEventById(eventId));
-        return "views/event/eventView";
+        return "views/events/eventView";
     }
 
     @RequestMapping(value = "/edit/{eventId}", method = RequestMethod.GET)
     public String editEventById(@PathVariable int eventId, Model model) {
         model.addAttribute("event", eventService.findEventById(eventId));
-        return "views/event/eventDetailsEdit";
+        return "views/events/eventDetailsEdit";
     }
 
     @RequestMapping(value = "/update/{eventId}", method = RequestMethod.POST)

@@ -1,7 +1,10 @@
-package cafe_strange.models.main;
+package cafe_strange.models.event;
+
+import cafe_strange.models.media.Picture;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "news")
@@ -11,16 +14,18 @@ public class News {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "news_id")
     private int id;
-    @Column(name = "date")
+    @Column(name = "date", nullable = false)
     private Date date;
-    @Column(name = "title")
+    @Column(name = "title", nullable = false)
     private String title;
-    @Column(name = "article")
+    @Column(name = "intro", nullable = false)
+    private String intro;
+    @Column(name = "article", nullable = false)
     private String article;
-    @Column(name = "photoURL")
-    private String photoURL;
-    @Column(name = "source")
+    @Column(name = "source", nullable = false)
     private String source;
+    @OneToMany
+    private List<Picture> pictures;
 
     public int getId() {
         return id;
@@ -46,6 +51,14 @@ public class News {
         this.title = title;
     }
 
+    public String getIntro() {
+        return intro;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
+    }
+
     public String getArticle() {
         return article;
     }
@@ -54,19 +67,19 @@ public class News {
         this.article = article;
     }
 
-    public String getPhotoURL() {
-        return photoURL;
-    }
-
-    public void setPhotoURL(String photoURL) {
-        this.photoURL = photoURL;
-    }
-
     public String getSource() {
         return source;
     }
 
     public void setSource(String source) {
         this.source = source;
+    }
+
+    public List<Picture> getPictures() {
+        return pictures;
+    }
+
+    public void setPictures(List<Picture> pictures) {
+        this.pictures = pictures;
     }
 }
