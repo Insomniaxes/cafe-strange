@@ -2,7 +2,7 @@ package cafe_strange.controllers;
 
 import cafe_strange.enums.Gender;
 import cafe_strange.interfaces.services.UserService;
-import cafe_strange.models.user.Role;
+import cafe_strange.enums.Role;
 import cafe_strange.models.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 @Controller
 @RequestMapping("/users")
@@ -49,8 +48,10 @@ public class UserController {
 
     @RequestMapping(value = "/edit/{userId}", method = RequestMethod.GET)
     public String editUser(@PathVariable int userId, Model model) {
-        List<Gender> genders = new ArrayList<Gender>(Arrays.asList(Gender.values()));
+        List<Gender> genders = new ArrayList<>(Arrays.asList(Gender.values()));
         model.addAttribute("genderList", genders);
+        List<Role> roles = new ArrayList<>(Arrays.asList(Role.values()));
+        model.addAttribute("roleList", roles);
         model.addAttribute("user", userService.findById(userId));
         return "views/userDetailsEdit";
     }

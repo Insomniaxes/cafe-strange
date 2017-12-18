@@ -14,6 +14,12 @@
                 </option>
             </c:forEach>
         </select></h5>
-    <h5><b>Role:</b> <c:forEach items="${user.roles}" var="role">${role.role}</c:forEach></h5>
+    <h5><b>Role:</b> <option value="${user.role}" selected>${user.getRole()}</option>
+        <c:forEach items="${roleList}" var="option">
+            <c:if test="${option != user.role}">
+                <option value="${option}"><c:out value="${option.getRole()}"/>
+            </c:if>
+            </option>
+        </c:forEach></h5>
     <input type="submit" value="Opslaan" formaction="/users/update/${user.id}" formmethod="POST">
 </form>

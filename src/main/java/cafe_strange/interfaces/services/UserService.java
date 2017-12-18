@@ -1,11 +1,10 @@
 package cafe_strange.interfaces.services;
 
-import cafe_strange.models.user.Role;
+import cafe_strange.enums.Role;
 import cafe_strange.models.user.User;
 import cafe_strange.models.user.UserList;
 
 import java.util.List;
-import java.util.Set;
 
 public interface UserService {
 

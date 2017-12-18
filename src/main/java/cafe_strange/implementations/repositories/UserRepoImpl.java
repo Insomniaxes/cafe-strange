@@ -1,7 +1,6 @@
 package cafe_strange.implementations.repositories;
 
 import cafe_strange.interfaces.repositories.UserRepo;
-import cafe_strange.models.user.Role;
 import cafe_strange.models.user.User;
 import cafe_strange.models.user.UserList;
 import org.springframework.beans.factory.annotation.Autowired;

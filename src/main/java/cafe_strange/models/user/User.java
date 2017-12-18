@@ -1,6 +1,7 @@
 package cafe_strange.models.user;
 
 import cafe_strange.enums.Gender;
+import cafe_strange.enums.Role;
 
 import javax.persistence.*;
 import java.util.Date;

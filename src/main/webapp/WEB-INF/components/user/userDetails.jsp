@@ -4,7 +4,7 @@
 <h3><b>Achternaam:</b> ${user.lastName}</h3>
 <h3><b>Geboortedatum:</b> ${user.birthday}</h3>
 <h5><b>Geslacht:</b> ${user.gender}</h5>
-<h5><b>Role:</b> <c:forEach items="${user.roles}" var="role">${role.role}</c:forEach></h5>
+<h5><b>Role:</b> ${user.role}</h5>
 
 <form>
     <input type="submit" value="Wijzig gegevens" formaction="/users/edit/${user.id}"/>
