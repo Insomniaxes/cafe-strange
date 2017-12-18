@@ -1,6 +1,6 @@
 package cafe_strange.models.media;
 
-import cafe_strange.models.forum.Cattegory;
+import cafe_strange.models.extra.Category;
 
 import javax.persistence.*;
 
@@ -19,7 +19,7 @@ public class Video {
     @Column(name = "videoURL")
     private String videoURL;
     @OneToOne
-    private Cattegory cattegory;
+    private Category category;
 
     public int getId() {
         return id;
@@ -53,11 +53,11 @@ public class Video {
         this.videoURL = videoURL;
     }
 
-    public Cattegory getCattegory() {
-        return cattegory;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCattegory(Cattegory cattegory) {
-        this.cattegory = cattegory;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

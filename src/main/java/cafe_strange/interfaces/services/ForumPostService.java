@@ -1,17 +1,18 @@
 package cafe_strange.interfaces.services;
 
 import cafe_strange.models.forum.ForumPost;
-import cafe_strange.models.forum.ForumPostList;
+
+import java.util.List;
 
 public interface ForumPostService {
 
     ForumPost findById(int id);
 
-    ForumPostList findAll();
+    List<ForumPost> findAll();
 
-    ForumPostList findByUsername(String username);
+    List<ForumPost> findByUsername(String username);
 
-    ForumPost create(ForumPost forumPost);
+    void create(ForumPost forumPost);
 
     void update(ForumPost forumPost);
 

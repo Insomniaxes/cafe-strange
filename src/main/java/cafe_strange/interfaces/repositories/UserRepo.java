@@ -1,21 +1,22 @@
 package cafe_strange.interfaces.repositories;
 
 import cafe_strange.models.user.User;
-import cafe_strange.models.user.UserList;
+
+import java.util.List;
 
 public interface UserRepo {
 
     User findById(int id);
 
-    UserList findAll();
+    List<User> findAll();
 
     User findByUsername(String username);
 
     User findByEmail(String email);
 
-    UserList findByLastName(String lastNeme);
+    List<User>findByLastName(String lastNeme);
 
-    UserList findByRole(String role);
+    List<User> findByRole(String role);
 
     User create(User user);
 

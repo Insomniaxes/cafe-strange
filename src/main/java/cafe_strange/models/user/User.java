@@ -2,6 +2,7 @@ package cafe_strange.models.user;
 
 import cafe_strange.enums.Gender;
 import cafe_strange.enums.Role;
+import cafe_strange.models.media.Picture;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -25,8 +26,8 @@ public class User {
     private Date birthday;
     @Enumerated(EnumType.ORDINAL)
     private Gender gender;
-    @Column(name = "avatarURL")
-    private String avatarURL;
+    @OneToOne
+    private Picture picture;
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "role", nullable = false)
     private Role role;
@@ -79,6 +80,14 @@ public class User {
         this.gender = gender;
     }
 
+    public Picture getPicture() {
+        return picture;
+    }
+
+    public void setPicture(Picture picture) {
+        this.picture = picture;
+    }
+
     public Role getRole() {
         return role;
     }
@@ -87,11 +96,4 @@ public class User {
         this.role = role;
     }
 
-    public String getAvatarURL() {
-        return avatarURL;
-    }
-
-    public void setAvatarURL(String avatarURL) {
-        this.avatarURL = avatarURL;
-    }
 }

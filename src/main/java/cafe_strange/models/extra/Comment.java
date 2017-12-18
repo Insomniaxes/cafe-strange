@@ -1,4 +1,4 @@
-package cafe_strange.models;
+package cafe_strange.models.extra;
 
 import javax.persistence.*;
 import java.sql.Timestamp;

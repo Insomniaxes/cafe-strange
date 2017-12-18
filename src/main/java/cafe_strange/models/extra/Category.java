@@ -1,10 +1,10 @@
-package cafe_strange.models.forum;
+package cafe_strange.models.extra;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "forumSubject")
-public class Cattegory {
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

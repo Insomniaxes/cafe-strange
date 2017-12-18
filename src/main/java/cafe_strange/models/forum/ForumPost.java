@@ -1,6 +1,7 @@
 package cafe_strange.models.forum;
 
-import cafe_strange.models.Comment;
+import cafe_strange.models.extra.Category;
+import cafe_strange.models.extra.Comment;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -21,7 +22,7 @@ public class ForumPost {
     @OneToMany
     private List<Comment> comments;
     @OneToOne
-    private Cattegory subject;
+    private Category subject;
 
     public int getPostId() {
         return postId;
@@ -55,11 +56,11 @@ public class ForumPost {
         this.comments = comments;
     }
 
-    public Cattegory getSubject() {
+    public Category getSubject() {
         return subject;
     }
 
-    public void setSubject(Cattegory subject) {
+    public void setSubject(Category subject) {
         this.subject = subject;
     }
 }

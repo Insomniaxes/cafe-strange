@@ -1,6 +1,7 @@
 package cafe_strange.models.media;
 
-import cafe_strange.models.forum.Cattegory;
+import cafe_strange.models.extra.Category;
+import cafe_strange.models.extra.Comment;
 
 import javax.persistence.*;
 
@@ -19,7 +20,11 @@ public class Picture {
     @Column(name = "pictureURL")
     private String pictureURL;
     @OneToOne
-    private Cattegory cattegory;
+    private Category category;
+    @Column(name = "aproved", columnDefinition = "false")
+    private boolean aproved;
+    @OneToMany
+    private Comment comment;
 
     public int getId() {
         return id;
@@ -53,11 +58,13 @@ public class Picture {
         this.pictureURL = pictureURL;
     }
 
-    public Cattegory getCattegory() {
-        return cattegory;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCattegory(Cattegory cattegory) {
-        this.cattegory = cattegory;
+    public void setCategory(Category category) {
+        this.category = category;
     }
+
+
 }

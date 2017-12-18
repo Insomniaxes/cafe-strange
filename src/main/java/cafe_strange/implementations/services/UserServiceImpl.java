@@ -2,16 +2,12 @@ package cafe_strange.implementations.services;
 
 import cafe_strange.interfaces.repositories.UserRepo;
 import cafe_strange.interfaces.services.UserService;
-import cafe_strange.enums.Role;
 import cafe_strange.models.user.User;
-import cafe_strange.models.user.UserList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Service
 @Transactional
@@ -26,17 +22,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserList findAll() {
+    public List<User> findAll() {
         return userRepo.findAll();
     }
 
     @Override
-    public UserList findByLastName(String lastName) {
+    public List<User> findByLastName(String lastName) {
         return userRepo.findByLastName(lastName);
     }
 
     @Override
-    public UserList findByRole(String role) {
+    public List<User> findByRole(String role) {
         return userRepo.findByRole(role);
     }
 

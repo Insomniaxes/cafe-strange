@@ -2,13 +2,13 @@ package cafe_strange.implementations.repositories;
 
 import cafe_strange.interfaces.repositories.UserRepo;
 import cafe_strange.models.user.User;
-import cafe_strange.models.user.UserList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 @Transactional
@@ -23,9 +23,9 @@ public class UserRepoImpl implements UserRepo {
     }
 
     @Override
-    public UserList findAll() {
+    public List<User> findAll() {
         Query query = em.createQuery("SELECT u from User AS u");
-        return new UserList(query.getResultList());
+        return (List<User>) (query.getResultList());
     }
 
     @Override
@@ -35,9 +35,9 @@ public class UserRepoImpl implements UserRepo {
     }
 
     @Override
-    public UserList findByRole(String role) {
+    public List<User> findByRole(String role) {
         Query query = em.createQuery("SELECT u FROM User AS u WHERE u.role = " + role );
-        return (UserList) query.getResultList();
+        return (List<User>) query.getResultList();
     }
 
     @Override
@@ -47,9 +47,9 @@ public class UserRepoImpl implements UserRepo {
     }
 
     @Override
-    public UserList findByLastName(String lastNeme) {
+    public List<User> findByLastName(String lastNeme) {
         Query query = em.createQuery("SELECT u from User AS u WHERE u.lastName LIKE '%" + lastNeme + "%'");
-        return new UserList(query.getResultList());
+        return (List<User>) (query.getResultList());
     }
 
     @Override
