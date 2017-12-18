@@ -10,7 +10,7 @@
 .col2 {
 	width:580px;
 }
-/*======= index.jsp =======*/
+/*======= index.html =======*/
 /*======= index-1.html =======*/
 /*======= index-2.html =======*/
 /*======= index-3.html =======*/
@@ -20,12 +20,3 @@
 	width:247px;
 }
 /*======= index-6.html =======*/
-
-/*======= eigen aanpassingen =======*/
-
-table#userListTable tr, th, td {
-	text-align: left;
-	width: 25%;
-	border: 1px solid black;
-
-}

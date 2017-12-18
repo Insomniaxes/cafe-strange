@@ -6,6 +6,7 @@ import cafe_strange.interfaces.services.OpeningHoursService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,10 +23,10 @@ public class MainController {
     private OpeningHoursService openingHoursService;
 
     @RequestMapping({"/", "/index", "/home"})
-    public String getIndex(Model model, HttpServletRequest request) {
+    public String getIndex(Model model, ModelMap modelMap, HttpServletRequest request) {
         HttpSession session = request.getSession();
         session.setAttribute("openingHours", openingHoursService.findOpeningHours());
-        model.addAttribute("events", eventService.findUpcomingEvents());
+        model.addAttribute("upcomingEvents", eventService.findUpcomingEvents());
         model.addAttribute("event", eventService.findNextEvent());
         model.addAttribute("info", infoService.findGeneralInfo());
         return "views/index";

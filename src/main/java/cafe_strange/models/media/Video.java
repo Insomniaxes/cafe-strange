@@ -1,8 +1,10 @@
 package cafe_strange.models.media;
 
 import cafe_strange.models.extra.Category;
+import cafe_strange.models.extra.Comment;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "video")
@@ -20,6 +22,8 @@ public class Video {
     private String videoURL;
     @OneToOne
     private Category category;
+    @OneToMany
+    private List<Comment> comments;
 
     public int getId() {
         return id;
@@ -59,5 +63,13 @@ public class Video {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

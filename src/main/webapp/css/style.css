@@ -132,8 +132,8 @@ header {
 }
 #menu > li > a {
 	display:block;
-	width:108px;
-	font-size: 18px;
+	width:158px;
+	font-size:22px;
 	color:#7f7f7f;
 	text-decoration:none;
 	text-align:center;
@@ -328,7 +328,7 @@ footer a:hover {
 	padding-left:70px;
 }
 .phone span {
-	font-size:25px;
+	font-size:30px;
 	margin-top:-5px;
 	text-transform:uppercase;
 	display:block;
@@ -366,7 +366,7 @@ footer a:hover {
 	overflow:hidden;
 }
 #ContactForm .wrapper {
-	min-height:80px;
+	min-height:35px;
 }
 #ContactForm .textarea_box {
 	min-height:264px;

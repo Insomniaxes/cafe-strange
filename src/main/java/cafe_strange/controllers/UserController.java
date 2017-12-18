@@ -24,7 +24,7 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String getAllUsers(Model model) {
-        model.addAttribute("users", userService.findAll().getUsers());
+        model.addAttribute("users", userService.findAll());
         return "views/user/userOverview";
     }
 
@@ -36,13 +36,13 @@ public class UserController {
 
     @RequestMapping(value = "/lastname/{lastName}", method = RequestMethod.GET)
     public String getUsersByLastName(@PathVariable String lastName, Model model) {
-        model.addAttribute("users", userService.findByLastName(lastName).getUsers());
+        model.addAttribute("users", userService.findByLastName(lastName));
         return "views/user/userOverview";
     }
 
     @RequestMapping(value = "/role/{role}", method = RequestMethod.GET)
     public String getUsersByRole(@PathVariable String role, Model model) {
-        model.addAttribute("users", userService.findByRole(role).getUsers());
+        model.addAttribute("users", userService.findByRole(role));
         return "components/user/userList";
     }
 

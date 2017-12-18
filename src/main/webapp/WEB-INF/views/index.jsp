@@ -1,74 +1,59 @@
 <%@ taglib prefix="Spring" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Cafe Strange</title>
-    <meta charset="utf-8">
-    <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/menu.jsp" var="menuURL"/>
-    <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/footer.jsp" var="footerURL"/>
-    <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/welcome.jsp" var="welcomeURL"/>
-    <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/event/nextEvent.jsp" var="eventsURL"/>
-    <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/event/upcoming.jsp" var="upcomingURL"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" type="text/css" media="all">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css" type="text/css" media="all">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css" media="all">
-    <script src="${pageContext.request.contextPath}/js/jquery-1.6.js"></script>
-    <script src="${pageContext.request.contextPath}/js/cufon-yui.js"></script>
-    <script src="${pageContext.request.contextPath}/js/cufon-replace.js"></script>
-    <script src="${pageContext.request.contextPath}/js/NewsGoth_BT_400.font.js"></script>
-    <script src="${pageContext.request.contextPath}/js/NewsGoth_BT_700.font.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jcarousellite.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jquery.easing.1.3.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jquery.mousewheel.js"></script>
-    <script src="${pageContext.request.contextPath}/js/atooltip.jquery.js"></script>
-    <!--[if lt IE 9]>
-    <script src="${pageContext.request.contextPath}/js/html5.js"></script>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ie.css" type="text/css" media="all">
-    <![endif]-->
+<title>nightclub</title>
+<meta charset="utf-8">
+  <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/navigation.jsp" var="navigationURL"/>
+  <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/welcome.jsp" var="welcomeURL"/>
+  <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/event/upcomingEvents.jsp" var="upcomingURL"/>
+  <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/event/nextEvent.jsp" var="nextEventURL"/>
+  <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/footer.jsp" var="footerURL"/>
+<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<script src="js/jquery-1.6.js" ></script>
+<script src="js/cufon-yui.js"></script>
+<script src="js/cufon-replace.js"></script>
+<script src="js/NewsGoth_BT_400.font.js"></script>
+<script src="js/NewsGoth_BT_700.font.js"></script>
+<script src="js/jcarousellite.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.mousewheel.js"></script>
+<script src="js/atooltip.jquery.js"></script>
+<!--[if lt IE 9]>
+<script src="js/html5.js"></script>
+<link rel="stylesheet" href="css/ie.css" type="text/css" media="all">
+<![endif]-->
 </head>
 <body id="page1">
 <div class="bg1">
-    <div class="main">
-        <!--header -->
-        <header>
-            <jsp:include page="${menuURL}"/>
-        </header>
-        <!--header end-->
-        <div class="box">
-            <!--content -->
-            <article id="content">
-                <div class="wrapper pad_bot1">
-                    <jsp:include page="${welcomeURL}"/>
-                    <jsp:include page="${upcomingURL}"/>
-                </div>
-                <jsp:include page="${eventsURL}"/>
-                <c:forEach items="${events}" var="event">${event.title}</c:forEach>
-            </article>
-            <!--content end-->
-            <!--footer -->
-            <footer>
-                <jsp:include page="${footerURL}"/>
-            </footer>
-            <!--footer end-->
+  <div class="main">
+    <!--header -->
+    <header>
+      <jsp:include page="${navigationURL}"/>
+    </header>
+    <!--header end-->
+    <div class="box">
+      <!--content -->
+      <article id="content">
+        <div class="wrapper pad_bot1">
+          <jsp:include page="${welcomeURL}"/>
+          <jsp:include page="${upcomingURL}"/>
         </div>
+        <div class="wrapper">
+          <jsp:include page="${nextEventURL}"/>
+        </div>
+      </article>
+      <!--content end-->
+      <!--footer -->
+      <footer>
+        <jsp:include page="${footerURL}"/>
+      </footer>
+      <!--footer end-->
     </div>
+  </div>
 </div>
-<script>
-    $(document).ready(function () {
-        //gallery
-        $("#gallery1").jCarouselLite({
-            btnNext: ".next",
-            btnPrev: ".prev",
-            mouseWheel: true,
-            vertical: true,
-            circular: true,
-            visible: 2,
-            speed: 600,
-            easing: 'easeOutCirc'
-        });
-        Cufon.now();
-    })
-</script>
+
 </body>
 </html>

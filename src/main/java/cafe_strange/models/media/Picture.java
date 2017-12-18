@@ -4,6 +4,7 @@ import cafe_strange.models.extra.Category;
 import cafe_strange.models.extra.Comment;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "picture")
@@ -21,10 +22,10 @@ public class Picture {
     private String pictureURL;
     @OneToOne
     private Category category;
-    @Column(name = "aproved", columnDefinition = "false")
+    @Column(name = "aproved")
     private boolean aproved;
     @OneToMany
-    private Comment comment;
+    private List<Comment> comments;
 
     public int getId() {
         return id;
@@ -66,5 +67,19 @@ public class Picture {
         this.category = category;
     }
 
+    public boolean isAproved() {
+        return aproved;
+    }
 
+    public void setAproved(boolean aproved) {
+        this.aproved = aproved;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 }
