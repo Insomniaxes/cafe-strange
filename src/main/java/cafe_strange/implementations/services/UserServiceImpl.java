@@ -42,16 +42,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User create(User user) {
-        return null;
+        userRepo.create(user);
+        return userRepo.findByUsername(user.getUsername());
     }
 
     @Override
-    public void update(User user, List<Role> roles) {
-        Set<Role> roleSet = new HashSet<Role>();
-        for (Role role: roles) {
-            roleSet.add(role);
-        }
-        user.setRoles(roleSet);
+    public void update(User user) {
         userRepo.update(user);
     }
 

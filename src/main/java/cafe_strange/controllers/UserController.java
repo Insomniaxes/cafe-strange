@@ -56,16 +56,25 @@ public class UserController {
         return "views/userDetailsEdit";
     }
 
-    @RequestMapping(value = "/create/{user}", method = RequestMethod.POST)
-    public String createUser(@PathVariable User user, Model model) {
+    @RequestMapping(value = "/createNew", method = RequestMethod.GET)
+    public String getCreateUserForm(Model model) {
+        List<Gender> genders = new ArrayList<>(Arrays.asList(Gender.values()));
+        model.addAttribute("genderList", genders);
+        List<Role> roles = new ArrayList<>(Arrays.asList(Role.values()));
+        model.addAttribute("roleList", roles);
+        return "views/userDetailsEdit";
+    }
+
+    @RequestMapping(value = "/create/", method = RequestMethod.POST)
+    public String createUser(User user, Model model) {
         model.addAttribute("user", userService.create(user));
-        return "components/user/userDetails";
+        return "views/userDetails";
     }
 
     @RequestMapping(value = "/update/{userId}")
-    public String updateUser(@PathVariable int userId, Model model, User user, ArrayList<Role> roles) {
+    public String updateUser(@PathVariable int userId, Model model, User user) {
         user.setId(userId);
-        userService.update(user, roles);
+        userService.update(user);
         model.addAttribute("user", user);
         return "views/userDetails";
     }

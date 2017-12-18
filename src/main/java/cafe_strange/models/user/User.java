@@ -28,12 +28,8 @@ public class User {
     private Gender gender;
     @Column(name = "avatarURL")
     private String avatarURL;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role", joinColumns =
-    @JoinColumn(name = "user_id"), inverseJoinColumns =
-    @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    @Column(name = "role")
+    private Role role;
 
     public int getId() {
         return id;
@@ -83,12 +79,12 @@ public class User {
         this.gender = gender;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public String getAvatarURL() {

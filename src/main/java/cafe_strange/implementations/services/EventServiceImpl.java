@@ -26,8 +26,12 @@ public class EventServiceImpl implements EventService {
     @Override
     public Event findNextEvent() {
         List<Event> events = eventRepo.findUpcomingEvents();
-        Collections.sort(events);
-        return events.get(0);
+        if (events.size() == 0) {
+            return new Event();
+        } else {
+            Collections.sort(events);
+            return events.get(0);
+        }
     }
 
     @Override

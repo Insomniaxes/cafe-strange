@@ -34,10 +34,9 @@ public class UserRepoImpl implements UserRepo {
         return (User) query.getSingleResult();
     }
 
-    // todo nog uitdokteren
     @Override
     public UserList findByRole(String role) {
-        Query query = em.createQuery("SELECT u FROM User AS u WHERE role = " + role );
+        Query query = em.createQuery("SELECT u FROM User AS u WHERE u.role = " + role );
         return (UserList) query.getResultList();
     }
 
@@ -56,7 +55,7 @@ public class UserRepoImpl implements UserRepo {
     @Override
     public User create(User user) {
         em.persist(user);
-        return null;
+        return user;
     }
 
     @Override

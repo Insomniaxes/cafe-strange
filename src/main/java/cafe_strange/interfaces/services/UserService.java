@@ -13,7 +13,7 @@ public interface UserService {
     UserList findByLastName(String lastName);
     UserList findByRole(String role);
     User create(User user);
-    void update(User user, List<Role> roles);
+    void update(User user);
     void delete(int userId);
 
 }
