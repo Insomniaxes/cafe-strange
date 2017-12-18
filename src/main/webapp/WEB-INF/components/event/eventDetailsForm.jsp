@@ -5,7 +5,7 @@
     <h4><b>Samenvatting:</b> <input type="text" name="summary" value="${event.summary}"></h4>
     <h4><b>Beschrijving:</b> <input type="text" name="description" value="${event.summary}"></h4>
     <h4><b>Afbeelding url:</b> moet nog anders gedaan worden <input name="flyerURL"
-                                                                    value="${pageContext.request.contextPath}/images/banner1.jpg}">
+                                                                    value="${pageContext.request.contextPath}images/banner1.jpg}">
     </h4>
 
     <c:choose>

@@ -4,13 +4,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "forumSubject")
-public class ForumSubject {
+public class Cattegory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "forumSubject_id")
     private int id;
-    @Column(name = "subject")
+    @Column(name = "cattegory")
     private String subject;
 
     public int getId() {

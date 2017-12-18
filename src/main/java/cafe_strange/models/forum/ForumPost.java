@@ -21,7 +21,7 @@ public class ForumPost {
     @OneToMany
     private List<Comment> comments;
     @OneToOne
-    private ForumSubject subject;
+    private Cattegory subject;
 
     public int getPostId() {
         return postId;
@@ -55,11 +55,11 @@ public class ForumPost {
         this.comments = comments;
     }
 
-    public ForumSubject getSubject() {
+    public Cattegory getSubject() {
         return subject;
     }
 
-    public void setSubject(ForumSubject subject) {
+    public void setSubject(Cattegory subject) {
         this.subject = subject;
     }
 }

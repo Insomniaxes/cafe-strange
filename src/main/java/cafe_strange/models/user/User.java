@@ -4,9 +4,7 @@ import cafe_strange.enums.Gender;
 import cafe_strange.enums.Role;
 
 import javax.persistence.*;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -30,10 +28,8 @@ public class User {
     @Column(name = "avatarURL")
     private String avatarURL;
     @Enumerated(EnumType.ORDINAL)
-    @Column(name = "role", nullable = false, columnDefinition = "Role.MEMBER")
+    @Column(name = "role", nullable = false)
     private Role role;
-
-    SimpleDateFormat dateFormat = new SimpleDateFormat("DD-MM-YYYY");
 
     public int getId() {
         return id;
