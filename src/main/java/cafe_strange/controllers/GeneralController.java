@@ -22,7 +22,8 @@ public class GeneralController {
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String editGeneralInfo() {
+    public String editGeneralInfo(Model model) {
+        model.addAttribute("generalInfo", generalInfoService.findGeneralInfo());
         return "views/general/generalInfoEdit";
     }
 

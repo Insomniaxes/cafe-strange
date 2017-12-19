@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/navigation.jsp" var="navigationURL"/>
     <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/welcome.jsp" var="welcomeURL"/>
-    <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/event/upcomingEvents.jsp"
+    <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/events/upcomingEvents.jsp"
                 var="upcomingURL"/>
-    <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/event/nextEvent.jsp" var="nextEventURL"/>
+    <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/events/nextEvent.jsp" var="nextEventURL"/>
     <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/footer.jsp" var="footerURL"/>
     <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
     <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">

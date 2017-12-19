@@ -1,5 +1,6 @@
 <%@ taglib prefix="Spring" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="ftm" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +8,10 @@
     <meta charset="utf-8">
     <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/navigation.jsp" var="navigationURL"/>
     <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/footer.jsp" var="footerURL"/>
-    <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/events/events.jsp" var="eventsURL"/>
-    <link rel="stylesheet"${pageContext.request.contextPath}/href="css/reset.css" type="text/css" media="all">
-    <link rel="stylesheet"${pageContext.request.contextPath}/href="css/layout.css" type="text/css" media="all">
-    <link rel="stylesheet"${pageContext.request.contextPath}/href="css/style.css" type="text/css" media="all">
+    <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/news/news.jsp" var="newsURL"/>
+    <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
     <script src="js/jquery-1.6.js"></script>
     <script src="js/cufon-yui.js"></script>
     <script src="js/cufon-replace.js"></script>
@@ -32,7 +33,7 @@
         <!--header end-->
         <div class="box">
             <!--content -->
-            <jsp:include page="${eventsURL}"/>
+            <jsp:include page="${newsURL}"/>
             <!--content end-->
             <!--footer -->
             <footer>

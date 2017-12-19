@@ -1,6 +1,5 @@
 <%@ taglib prefix="Spring" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="ftm" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +7,7 @@
     <meta charset="utf-8">
     <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/navigation.jsp" var="navigationURL"/>
     <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/footer.jsp" var="footerURL"/>
+    <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/news/article.jsp" var="articleURL"/>
     <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
     <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
@@ -32,18 +32,7 @@
         <!--header end-->
         <div class="box">
             <!--content -->
-            <article id="content">
-                <div class="wrapper">
-                    <c:forEach items="${newsList}" var="news">
-                        <h2><strong><ftm:formatDate value="${news.date}" pattern="dd.MM"/></strong> ${news.title}</h2>
-                        <div class="wrapper pad_bot1">
-                            <figure class="left marg_right1"><img src="images/page5_img1.jpg" alt=""></figure>
-                            <p class="color1 pad_bot1">${news.intro}</p>
-                            <p class="pad_bot1">${news.article}</p>
-                            <a href="/news/${news.id    }" class="link2">Read More</a></div>
-                    </c:forEach>
-                </div>
-            </article>
+            <jsp:include page="${articleURL}"/>
             <!--content end-->
             <!--footer -->
             <footer>

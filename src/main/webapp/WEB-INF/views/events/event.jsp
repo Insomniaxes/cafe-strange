@@ -3,13 +3,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>nightclub | News</title>
+    <title>${event.title}</title>
     <meta charset="utf-8">
     <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/navigation.jsp" var="navigationURL"/>
     <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/footer.jsp" var="footerURL"/>
-    <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
-    <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+    <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/events/event.jsp" var="eventURL"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" type="text/css" media="all">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css" type="text/css" media="all">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css" media="all">
     <script src="js/jquery-1.6.js"></script>
     <script src="js/cufon-yui.js"></script>
     <script src="js/cufon-replace.js"></script>
@@ -31,17 +32,7 @@
         <!--header end-->
         <div class="box">
             <!--content -->
-            <article id="content">
-                <div class="wrapper">
-                    <h2><strong><ftm:formatDate value="${news.date}" pattern="dd.MM"/> </strong> ${news.title}</h2>
-                    <div class="wrapper pad_bot1">
-                        <figure class="left marg_right1"><img src="images/page5_img1.jpg" alt=""></figure>
-                        <p class="color1 pad_bot1">${news.intro}</p>
-                        <p class="pad_bot1">${news.article}</p>
-                        <a href="/news" class="link2">Terug naar overzicht</a>
-                    </div>
-                </div>
-            </article>
+            <jsp:include page="${eventURL}"/>
             <!--content end-->
             <!--footer -->
             <footer>

@@ -26,7 +26,7 @@ public class EventController {
     @RequestMapping(value = "/{eventId}", method = RequestMethod.GET)
     public String getEventById(@PathVariable int eventId, Model model) {
         model.addAttribute("event", eventService.findEventById(eventId));
-        return "views/events/eventView";
+        return "views/events/event";
     }
 
     @RequestMapping(value = "/edit/{eventId}", method = RequestMethod.GET)

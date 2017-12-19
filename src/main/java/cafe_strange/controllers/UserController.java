@@ -71,7 +71,7 @@ public class UserController {
         return "views/user/userDetails";
     }
 
-    @RequestMapping(value = "/update/{userId}")
+    @RequestMapping(value = "/update/{userId}", method = RequestMethod.POST)
     public String updateUser(@PathVariable int userId, Model model, User user) {
         user.setId(userId);
         userService.update(user);
