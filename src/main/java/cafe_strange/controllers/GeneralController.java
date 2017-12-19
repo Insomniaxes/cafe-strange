@@ -30,7 +30,7 @@ public class GeneralController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String updateGeneralInfo(GeneralInfo generalInfo) {
         generalInfoService.updatGeneralInfo(generalInfo);
-        return "//index";
+        return "/index";
     }
 
 }

@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/navigation.jsp" var="navigationURL"/>
     <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/footer.jsp" var="footerURL"/>
-    <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/news/news.jsp" var="newsEditURL"/>
+    <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/news/newsCreate.jsp" var="newsCreateURL"/>
     <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
     <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
@@ -33,7 +33,7 @@
         <!--header end-->
         <div class="box">
             <!--content -->
-            <jsp:include page="${newsEditURL}"/>
+            <jsp:include page="${newsCreateURL}"/>
             <!--content end-->
             <!--footer -->
             <footer>

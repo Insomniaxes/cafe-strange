@@ -31,7 +31,7 @@ public class NewsController {
     @RequestMapping(value = "/edit/{newsId}", method = RequestMethod.GET)
     public String editNews(News news, Model model) {
         model.addAttribute("news", news);
-        return "/newsEdit";
+        return "news/newsEdit";
     }
 
 }

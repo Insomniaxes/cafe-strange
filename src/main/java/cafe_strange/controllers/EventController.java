@@ -5,9 +5,14 @@ import cafe_strange.models.event.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 @Controller
 @RequestMapping("/events")
@@ -42,14 +47,25 @@ public class EventController {
         return "redirect:/index";
     }
 
-    @RequestMapping(value = "/createNew", method = RequestMethod.GET)
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
     public String createNewEvent() {
         return "/events/eventCreate";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String saveNewEvent(Event event) {
-        eventService.create(event);
+    public String saveNewEvent(Event event, ModelMap modelMap) {
+        if (eventService.create(event)) {
+            modelMap.addAttribute("message", "<h1>Het evenement werd toegevoegd</h1>");
+            return "/index";
+        } else {
+            modelMap.addAttribute("message", "<h1>Het evenement werd niet toegevoegd omdat er al een event gepland staat op die dag !!</h1>");
+        }
+        return "/index";
+    }
+
+    @RequestMapping(value = "/delete/{eventId}", method = RequestMethod.POST)
+    public String deleteEvent(@PathVariable int eventId) {
+        eventService.delete(eventId);
         return "redirect:/index";
     }
 

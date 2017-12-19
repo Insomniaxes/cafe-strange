@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -21,6 +22,19 @@ public class EventServiceImpl implements EventService {
     @Override
     public Event findEventById(int eventId) {
         return eventRepo.findEventById(eventId);
+    }
+
+    @Override
+    public Event findEventByDate(Date date) {
+        return eventRepo.findEventByDate(date);
+    }
+
+    public boolean eventDateFree(Date date) {
+        if (eventRepo.findEventByDate(date) == null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -51,12 +65,22 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public void create(Event event) {
-        eventRepo.create(event);
+    public boolean create(Event event) {
+        if (eventDateFree(event.getDate())) {
+            eventRepo.create(event);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public void update(Event event) {
         eventRepo.update(event);
+    }
+
+    @Override
+    public void delete(int eventId) {
+        eventRepo.delete(eventId);
     }
 }

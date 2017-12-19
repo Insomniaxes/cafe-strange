@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -21,6 +22,17 @@ public class EventRepoImpl implements EventRepo {
     @Override
     public Event findEventById(int eventId) {
         return em.find(Event.class, eventId);
+    }
+
+    @Override
+    public Event findEventByDate(Date date) {
+        Query query = em.createQuery("SELECT e FROM Event AS e WHERE e.date = :date");
+        query.setParameter("date", date);
+        try {
+            return (Event) query.getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     @Override
@@ -39,11 +51,17 @@ public class EventRepoImpl implements EventRepo {
 
     @Override
     public void create(Event event) {
+
         em.persist(event);
     }
 
     @Override
     public void update(Event event) {
         em.merge(event);
+    }
+
+    @Override
+    public void delete(int eventId) {
+        em.remove(findEventById(eventId));
     }
 }
