@@ -30,7 +30,7 @@ public class MainController {
         model.addAttribute("upcomingEvents", eventService.findUpcomingEvents());
         model.addAttribute("event", eventService.findNextEvent());
         model.addAttribute("info", infoService.findGeneralInfo());
-        return "views/index";
+        return "/index";
     }
 
 }

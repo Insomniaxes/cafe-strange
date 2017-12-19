@@ -19,19 +19,19 @@ public class NewsController {
     @RequestMapping(method = RequestMethod.GET)
     public String getNews(Model model) {
         model.addAttribute("newsList", newsService.findAllNews());
-        return "views/news/news";
+        return "/news/news";
     }
 
     @RequestMapping(value = "/{newsId}", method = RequestMethod.GET)
     public String getNewsById(@PathVariable int newsId, Model model) {
         model.addAttribute("news", newsService.findById(newsId));
-        return "views/news/article";
+        return "/news/article";
     }
 
     @RequestMapping(value = "/edit/{newsId}", method = RequestMethod.GET)
     public String editNews(News news, Model model) {
         model.addAttribute("news", news);
-        return "";
+        return "/newsEdit";
     }
 
 }

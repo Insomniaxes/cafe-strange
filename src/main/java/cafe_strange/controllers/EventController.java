@@ -20,19 +20,19 @@ public class EventController {
     public String getEventPage(Model model) {
         model.addAttribute("upcomingEvents", eventService.findUpcomingEvents());
         model.addAttribute("pastEvents", eventService.findPastEvents());
-        return "views/events/events";
+        return "/events/events";
     }
 
     @RequestMapping(value = "/{eventId}", method = RequestMethod.GET)
     public String getEventById(@PathVariable int eventId, Model model) {
         model.addAttribute("event", eventService.findEventById(eventId));
-        return "views/events/event";
+        return "/events/event";
     }
 
     @RequestMapping(value = "/edit/{eventId}", method = RequestMethod.GET)
     public String editEventById(@PathVariable int eventId, Model model) {
         model.addAttribute("event", eventService.findEventById(eventId));
-        return "views/events/eventDetailsEdit";
+        return "/events/eventDetailsEdit";
     }
 
     @RequestMapping(value = "/update/{eventId}", method = RequestMethod.POST)
@@ -44,7 +44,7 @@ public class EventController {
 
     @RequestMapping(value = "/createNew", method = RequestMethod.GET)
     public String createNewEvent() {
-        return "views/event/eventDetailsEdit";
+        return "/events/eventCreate";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)

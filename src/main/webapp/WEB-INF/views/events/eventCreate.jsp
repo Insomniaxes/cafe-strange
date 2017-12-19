@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>nightclub | News</title>
+    <title>${event.title}</title>
     <meta charset="utf-8">
     <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/navigation.jsp" var="navigationURL"/>
     <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/footer.jsp" var="footerURL"/>
-    <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/events/events.jsp" var="eventsURL"/>
+    <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/events/eventCreate.jsp" var="eventCreateURL"/>
     <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/scriptsEnCSS.jsp" var="scriptsEnCSSURL"/>
     <jsp:include page="${scriptsEnCSSURL}"/>
 </head>
@@ -21,7 +21,7 @@
         <!--header end-->
         <div class="box">
             <!--content -->
-            <jsp:include page="${eventsURL}"/>
+            <jsp:include page="${eventCreateURL}"/>
             <!--content end-->
             <!--footer -->
             <footer>

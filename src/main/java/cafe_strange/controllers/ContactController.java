@@ -10,7 +10,7 @@ public class ContactController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String getContactPage() {
-        return "views/main/contact";
+        return "/main/contact";
     }
 
 }

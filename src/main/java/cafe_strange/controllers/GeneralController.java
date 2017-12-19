@@ -18,19 +18,19 @@ public class GeneralController {
     @RequestMapping(method = RequestMethod.GET)
     public String getGeneralInfo(Model model) {
         model.addAttribute("generalInfo", generalInfoService.findGeneralInfo());
-        return "views/general/generalInfo";
+        return "/general/generalInfo";
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public String editGeneralInfo(Model model) {
         model.addAttribute("generalInfo", generalInfoService.findGeneralInfo());
-        return "views/general/generalInfoEdit";
+        return "/general/generalInfoEdit";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String updateGeneralInfo(GeneralInfo generalInfo) {
         generalInfoService.updatGeneralInfo(generalInfo);
-        return "/views/index";
+        return "//index";
     }
 
 }
