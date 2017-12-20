@@ -1,18 +1,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <section class="col1 pad_left1">
-    <h2>Aankomende evenementen</h2>
+    <h2>Aankomende feestjes</h2>
     <div id="gallery1">
         <ul>
             <c:forEach items="${upcomingEvents}" var="event">
-                <li>
-                    <span class="dropcap_1"><fmt:formatDate value="${event.date}" pattern="dd"/><span><fmt:formatDate value="${event.date}" pattern="MMMM"/></span></span>
-                    <p>
-                        <span class="color1">${event.summary}</span><br>
-                        ${event.description} <br> <br>
-                        <a href="/events/${event.id}" class="link1">View Details</a>
-                    </p>
-                </li>
+            <li> <span class="dropcap_1"><fmt:formatDate value="${event.date}" pattern="dd"/> <span><fmt:formatDate value="${event.date}" pattern="MMM"/></span></span>
+                <p><span class="color1">${event.title}</span><br>
+                    ${event.summary}<br><br>
+                    <a href="/events/${event.id}" class="link1">Lees meer</a></p>
+            </li>
             </c:forEach>
         </ul>
     </div>
@@ -35,4 +32,6 @@
         Cufon.now();
     })
 </script>
+
+
 

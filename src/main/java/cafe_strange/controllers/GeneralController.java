@@ -17,7 +17,8 @@ public class GeneralController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String getGeneralInfo(Model model) {
-        model.addAttribute("generalInfo", generalInfoService.findGeneralInfo());
+        GeneralInfo generalInfo = generalInfoService.findGeneralInfo();
+        model.addAttribute("generalInfo", generalInfo);
         return "/general/generalInfo";
     }
 

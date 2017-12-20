@@ -12,7 +12,7 @@ public class GeneralInfo {
     private String title;
     @Column(name = "intro")
     private String intro;
-    @Column(name = "extendedInfo")
+    @Column(name = "extendedInfo", columnDefinition = "LONGTEXT")
     private String extendedInfo;
 
     public int getId() {

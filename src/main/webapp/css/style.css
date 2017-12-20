@@ -20,7 +20,7 @@ mark, rp, rt, ruby, summary, time {
 /* Global properties ======================================================== */
 
 body {
-	background: url(../images/bg.jpg) center 0 no-repeat #000;
+	background: url(../img/style/background.jpg) center 0 no-repeat #000;
 	border:0;
 	font:14px Arial, Helvetica, sans-serif;
 	color:#7f7f7f;
@@ -55,7 +55,7 @@ body {
 	width: 960px;
 }
 .bg1 {
-	background:url(../images/bg_menu.png) 0 0 repeat-x
+	background:url(../img/style/bg_menu.png) 0 0 repeat-x
 }
 /* ============================= main layout ====================== */
 
@@ -116,19 +116,19 @@ header {
 #logo {
 	display:block;
 	text-indent:-9999px;
-	background:url(../images/logo.png) 0 0 no-repeat;
+	background:url(../img/style/logo.png) 0 0 no-repeat;
 	width:273px;
 	height:86px;
 }
 #menu {
 	width:100%;
 	overflow:hidden;
-	background:url(../images/menu_line.png) 0 0 no-repeat
+	background:url(../img/style/menu_line.png) 0 0 no-repeat
 }
 #menu > li {
 	float:left;
 	padding-right:2px;
-	background:url(../images/menu_line.png) right 0 no-repeat
+	background:url(../img/style/menu_line.png) right 0 no-repeat
 }
 #menu > li > a {
 	display:block;
@@ -142,13 +142,13 @@ header {
 	letter-spacing:-1px;
 }
 #menu > li > a:hover, #menu > .active > a {
-	background:url(../images/menu_active.gif) top repeat-x;
+	background:url(../img/style/menu_active.gif) top repeat-x;
 	color:#fff
 }
 /* ============================= content ====================== */
 
 .box {
-	background:url(../images/bg_content.png) repeat;
+	background:url(../img/style/bg_content.png) repeat;
 	padding:20px 46px 50px 49px;
 	overflow:hidden
 }
@@ -213,7 +213,7 @@ header {
 	margin-top:-4px;
 	width:110px;
 	height:95px;
-	background:url(../images/bg_dropcap.png) 0 0 no-repeat;
+	background:url(../img/style/bg_dropcap.png) 0 0 no-repeat;
 	margin-right:7px;
 	font-size:48px;
 	color:#fff;
@@ -240,7 +240,7 @@ header {
 }
 .prev, .next {
 	float:right;
-	background:url(../images/markers.jpg) 0 0 no-repeat;
+	background:url(../img/style/markers.jpg) 0 0 no-repeat;
 	width:39px;
 	height:39px;
 	margin-right:-3px;
@@ -263,7 +263,7 @@ header {
 	color:#fff;
 	text-decoration:none;
 	padding-left:14px;
-	background:url(../images/marker_1.gif) 0 5px no-repeat
+	background:url(../img/style/marker_1.gif) 0 5px no-repeat
 }
 .list1 li a:hover {
 	color:#7532a9
@@ -306,11 +306,11 @@ footer a:hover {
 	text-decoration:underline
 }
 .line1 {
-	background:url(../images/line_vert1.gif) 260px 0 repeat-y;
+	background:url(../img/style/line_vert1.gif) 260px 0 repeat-y;
 	height:100%;
 }
 .line2 {
-	background:url(../images/line_vert1.gif) 600px 0 repeat-y;
+	background:url(../img/style/line_vert1.gif) 600px 0 repeat-y;
 	height:100%
 }
 .icons {
@@ -345,7 +345,7 @@ footer a:hover {
 }
 /* Tooltips */
 .aToolTip {
-	background: url(../images/menu_active.gif) top repeat-x;
+	background: url(../img/style/menu_active.gif) top repeat-x;
 	color:#fff;
 	margin:0;
 	padding:2px 10px 3px;
@@ -394,7 +394,7 @@ footer a:hover {
 	margin-bottom:5px;
 }
 #ContactForm .button:hover {
-	background: url(../images/menu_active.gif) top repeat-x;
+	background: url(../img/style/menu_active.gif) top repeat-x;
 	color:#fff;
 	box-shadow: 0 0 6px rgba(152, 103, 190, .5);
 	-moz-box-shadow: 0 0 6px rgba(152, 103, 190, .5);
