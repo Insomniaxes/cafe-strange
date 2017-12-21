@@ -3,8 +3,6 @@ package cafe_strange.implementations.repositories;
 import cafe_strange.interfaces.repositories.PictureRepo;
 import cafe_strange.models.media.Picture;
 import org.springframework.stereotype.Repository;
-import picturing.beans.Picture;
-import picturing.repositories.interfaces.PictureRepo;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -44,11 +42,12 @@ public class PictureRepoImp implements PictureRepo {
 
     @Override
     public Picture findPictureByUrl(String url) {
-        Query query = em.createQuery("SELECT p FROM Picture p WHERE p.pictureUrl LIKE '" + url + "'");
-        if (query.getResultList().size()==0) {
-            return new Picture();
-            } else {
+        Query query = em.createQuery("SELECT p FROM Picture p WHERE p.pictureURL LIKE '" + url + "'");
+        try {
             return (Picture) query.getSingleResult();
+        } catch (Exception e) {
+            return new Picture();
         }
+
     }
 }

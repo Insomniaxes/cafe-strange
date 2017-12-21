@@ -18,8 +18,8 @@
             <textarea name="summary" cols="30" rows="4">${event.summary}</textarea><br><br>
             Uitgebreide info: <br>
             <textarea name="description" cols="50" rows="6">${event.description}</textarea> <br>
-            <%--Media: <br>--%>
-            <%--<input type="file" name="images[]" multiple> (pictures will be added to story)<br>--%>
+            Media: <br>
+            <input type="file" name="file"> (pictures will be added to story)<br>
             <input type="submit" name="submit" value="save"> <br>
         </form>
     </div>

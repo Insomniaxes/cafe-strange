@@ -1,6 +1,6 @@
 <h2>${event.title}</h2>
 <div class="wrapper">
-    <figure class="left marg_right1"><a href="/events/${event.id}/flyer"><img src="${pageContext.request.contextPath}/img/style/banner1.jpg" alt=""></a></figure>
+    <figure class="left marg_right1"><a href="/events/${event.id}/flyer"><img src="${pageContext.request.contextPath}/img/${event.picture.pictureURL}" alt="oops"></a></figure>
     <h3>${event.summary}</h3>
     <p class="pad_bot1">${event.description}</p>
     <ul class="list1 pad_bot1">

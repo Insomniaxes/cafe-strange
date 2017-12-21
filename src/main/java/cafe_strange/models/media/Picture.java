@@ -20,12 +20,23 @@ public class Picture {
     private String caption;
     @Column(name = "pictureURL")
     private String pictureURL;
-    @OneToOne
-    private Category category;
+//    @OneToOne
+//    private Category category;
     @Column(name = "aproved")
     private boolean aproved;
     @OneToMany
     private List<Comment> comments;
+
+    public Picture() {
+    }
+
+    public Picture(String title, String caption, String pictureURL, boolean aproved) {
+        this.title = title;
+        this.caption = caption;
+        this.pictureURL = pictureURL;
+//        this.category = category;
+        this.aproved = aproved;
+    }
 
     public int getId() {
         return id;
@@ -59,13 +70,13 @@ public class Picture {
         this.pictureURL = pictureURL;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
+//    public Category getCategory() {
+//        return category;
+//    }
+//
+//    public void setCategory(Category category) {
+//        this.category = category;
+//    }
 
     public boolean isAproved() {
         return aproved;

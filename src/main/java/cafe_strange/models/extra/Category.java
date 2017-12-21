@@ -10,8 +10,15 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "forumSubject_id")
     private int id;
-    @Column(name = "cattegory")
-    private String subject;
+    @Column(name = "category")
+    private String category;
+
+    public Category() {
+    }
+
+    public Category(String category) {
+        this.category = category;
+    }
 
     public int getId() {
         return id;
@@ -21,11 +28,11 @@ public class Category {
         this.id = id;
     }
 
-    public String getSubject() {
-        return subject;
+    public String getCategory() {
+        return category;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

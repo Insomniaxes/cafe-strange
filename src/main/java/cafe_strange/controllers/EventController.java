@@ -3,6 +3,7 @@ package cafe_strange.controllers;
 import cafe_strange.interfaces.services.EventService;
 import cafe_strange.interfaces.services.PictureService;
 import cafe_strange.models.event.Event;
+import cafe_strange.models.extra.Category;
 import cafe_strange.models.media.Picture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -55,10 +56,13 @@ public class EventController {
     }
 
     @RequestMapping(value = "/update/{eventId}", method = RequestMethod.POST)
-    public String updateEvent(@PathVariable int eventId, @RequestParam(value = "file", required = false) MultipartFile file, Event event, @RequestParam(value = "picture", required = false) Picture picture) {
+    public String updateEvent(@PathVariable int eventId, @RequestParam(value = "file", required = false) MultipartFile file, Event event) {
         event.setId(eventId);
+
         if (file != null) {
-            pictureService.uploadPicture(file, picture, picture.getTitle());
+            Picture picture = new Picture(file.getOriginalFilename(), "Some text", "event/" + file.getOriginalFilename(), true);
+            event.setPicture(picture);
+            pictureService.uploadPicture(file, picture, "event");
         }
         eventService.update(event);
         return "redirect:/index";

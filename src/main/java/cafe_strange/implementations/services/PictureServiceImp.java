@@ -71,7 +71,7 @@ public class PictureServiceImp implements PictureService {
             return pictures;
         } else {
             allPictures = findSafePictures();
-            if (allPictures.size()!=0) {
+            if (allPictures.size() != 0) {
                 while (counter < PICTURELIMIT) {
                     pictures.add(allPictures.get(random.nextInt(allPictures.size())));
                     counter++;
@@ -93,19 +93,15 @@ public class PictureServiceImp implements PictureService {
 
     @Override
     public Picture uploadPicture(MultipartFile file, Picture picture, String folder) {
-        String uploadFolder = "C:/gitfolder/Eindwerk/Cafe-Strange/src/main/webapp/img/" + folder;
-        picture.setPictureURL(uploadFolder + file.getOriginalFilename());
-        if (pictureExists(picture)) {
-            return new Picture();
-        } else {
-            try {
-                byte[] bytes = file.getBytes();
-                Path path = Paths.get(uploadFolder + file.getOriginalFilename());
-                Files.write(path, bytes);
-                em.persist(picture);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        String uploadFolder = "C:/gitmap/Eindwerk/Cafe-Strange/src/main/webapp/img/" + folder + "/";
+        picture.setPictureURL(folder + "/" + file.getOriginalFilename());
+        try {
+            byte[] bytes = file.getBytes();
+            Path path = Paths.get(uploadFolder + file.getOriginalFilename());
+            Files.write(path, bytes);
+            em.persist(picture);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return findPictureByUrl(picture.getPictureURL());
     }
