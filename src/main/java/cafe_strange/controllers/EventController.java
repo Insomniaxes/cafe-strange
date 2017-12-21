@@ -1,7 +1,9 @@
 package cafe_strange.controllers;
 
 import cafe_strange.interfaces.services.EventService;
+import cafe_strange.interfaces.services.PictureService;
 import cafe_strange.models.event.Event;
+import cafe_strange.models.media.Picture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/events")
@@ -16,6 +20,8 @@ public class EventController {
 
     @Autowired
     private EventService eventService;
+    @Autowired
+    private PictureService pictureService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String getEventsPage(Model model) {
@@ -43,13 +49,17 @@ public class EventController {
 
     @RequestMapping(value = "/edit/{eventId}", method = RequestMethod.GET)
     public String editEventById(@PathVariable int eventId, Model model) {
+
         model.addAttribute("event", eventService.findEventById(eventId));
         return "/events/eventEditView";
     }
 
     @RequestMapping(value = "/update/{eventId}", method = RequestMethod.POST)
-    public String updateEvent(@PathVariable int eventId, Event event) {
+    public String updateEvent(@PathVariable int eventId, @RequestParam(value = "file", required = false) MultipartFile file, Event event, @RequestParam(value = "picture", required = false) Picture picture) {
         event.setId(eventId);
+        if (file != null) {
+            pictureService.uploadPicture(file, picture, picture.getTitle());
+        }
         eventService.update(event);
         return "redirect:/index";
     }

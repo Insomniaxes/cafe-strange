@@ -13,7 +13,7 @@ public interface PictureService {
     List<Picture> findAllPictures();
     List<Picture> findCategoryPictures(String category);
     List<Picture> findSafePictures();
-    Picture uploadPicture(MultipartFile file, Picture picture);
+    Picture uploadPicture(MultipartFile file, Picture picture, String folder);
     void deletePicture(Picture picture);
 
 }

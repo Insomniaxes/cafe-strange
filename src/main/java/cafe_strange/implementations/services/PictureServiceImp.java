@@ -92,8 +92,8 @@ public class PictureServiceImp implements PictureService {
     }
 
     @Override
-    public Picture uploadPicture(MultipartFile file, Picture picture) {
-        String uploadFolder = "Z://temp//";
+    public Picture uploadPicture(MultipartFile file, Picture picture, String folder) {
+        String uploadFolder = "C:/gitfolder/Eindwerk/Cafe-Strange/src/main/webapp/img/" + folder;
         picture.setPictureURL(uploadFolder + file.getOriginalFilename());
         if (pictureExists(picture)) {
             return new Picture();
