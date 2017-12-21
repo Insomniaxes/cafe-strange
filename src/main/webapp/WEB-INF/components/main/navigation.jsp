@@ -7,8 +7,8 @@
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
+                    <a href="/events">Aankomend</a>
+                    <a href="/events/pastEvents">Afgelopen</a>
                     <a href="#">Link 3</a>
                 </div>
             </div>
@@ -17,4 +17,5 @@
         <li><a href="news.html">News</a></li>
         <li><a href="contacts.html">Contacts</a></li>
     </ul>
+
 </nav>

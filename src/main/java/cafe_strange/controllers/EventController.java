@@ -6,13 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 
 @Controller
 @RequestMapping("/events")
@@ -22,22 +18,33 @@ public class EventController {
     private EventService eventService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getEventPage(Model model) {
+    public String getEventsPage(Model model) {
         model.addAttribute("upcomingEvents", eventService.findUpcomingEvents());
+        return "/events/UpcomingEventOverview";
+    }
+
+    @RequestMapping(value = "/pastEvents", method = RequestMethod.GET)
+    public String getPastEvents(Model model) {
         model.addAttribute("pastEvents", eventService.findPastEvents());
-        return "/events/events";
+        return "/events/pastEvents";
     }
 
     @RequestMapping(value = "/{eventId}", method = RequestMethod.GET)
     public String getEventById(@PathVariable int eventId, Model model) {
         model.addAttribute("event", eventService.findEventById(eventId));
-        return "/events/event";
+        return "/events/eventView";
+    }
+
+    @RequestMapping(value = "/{eventId}/flyer", method = RequestMethod.GET)
+    public String getEventFlyer(@PathVariable int eventId, Model model) {
+        model.addAttribute("event", eventService.findEventById(eventId));
+        return "/events/eventFlyerView";
     }
 
     @RequestMapping(value = "/edit/{eventId}", method = RequestMethod.GET)
     public String editEventById(@PathVariable int eventId, Model model) {
         model.addAttribute("event", eventService.findEventById(eventId));
-        return "/events/eventDetailsEdit";
+        return "/events/eventEditView";
     }
 
     @RequestMapping(value = "/update/{eventId}", method = RequestMethod.POST)

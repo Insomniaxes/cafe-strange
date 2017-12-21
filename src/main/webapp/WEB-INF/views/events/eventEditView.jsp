@@ -1,18 +1,16 @@
 <%@ taglib prefix="Spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/head.jsp" var="headUrl"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/navigation.jsp" var="navUrl"/>
-<Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/index/welcome.jsp" var="welcomeUrl"/>
-<Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/events/upcomingIndex.jsp" var="upcomingUrl"/>
-<Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/events/next.jsp" var="nextEventUrl"/>
 <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/footer.jsp" var="footerUrl"/>
+<Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/events/eventEdit.jsp" var="eventUrl"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
-    <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" type="text/css" media="all">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css" type="text/css" media="all">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css" media="all">
     <script src="js/jquery-1.6.js"></script>
     <script src="js/cufon-yui.js"></script>
     <script src="js/cufon-replace.js"></script>
@@ -27,26 +25,26 @@
     <link rel="stylesheet" href="css/ie.css" type="text/css" media="all">
     <![endif]-->
 </head>
-<body id="page1">
+<body id="page2">
 <div class="bg1">
     <div class="main">
         <jsp:include page="${navUrl}"/>
         <div class="box">
+            <!--content -->
             <article id="content">
-                <div class="wrapper pad_bot1">
-                    <jsp:include page="${welcomeUrl}"/>
-                    <jsp:include page="${upcomingUrl}"/>
-                </div>
-                <div class="wrapper">
-                    <jsp:include page="${nextEventUrl}"/>
-                </div>
+                <jsp:include page="${eventUrl}"/>
             </article>
+            <!--content end-->
+            <!--footer -->
             <footer>
                 <jsp:include page="${footerUrl}"/>
             </footer>
+            <!--footer end-->
         </div>
     </div>
 </div>
-
+<script>
+    Cufon.now();
+</script>
 </body>
 </html>
