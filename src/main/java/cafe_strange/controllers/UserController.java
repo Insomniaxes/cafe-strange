@@ -1,7 +1,5 @@
 package cafe_strange.controllers;
 
-import cafe_strange.enums.Gender;
-import cafe_strange.enums.Role;
 import cafe_strange.interfaces.services.UserService;
 import cafe_strange.models.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 @Controller
 @RequestMapping("/users")
@@ -46,24 +40,7 @@ public class UserController {
         return "/user/userList";
     }
 
-    @RequestMapping(value = "/edit/{userId}", method = RequestMethod.GET)
-    public String editUser(@PathVariable int userId, Model model) {
-        List<Gender> genders = new ArrayList<>(Arrays.asList(Gender.values()));
-        model.addAttribute("genderList", genders);
-        List<Role> roles = new ArrayList<>(Arrays.asList(Role.values()));
-        model.addAttribute("roleList", roles);
-        model.addAttribute("user", userService.findById(userId));
-        return "/user/userDetailsEdit";
-    }
 
-    @RequestMapping(value = "/createNew", method = RequestMethod.GET)
-    public String getCreateUserForm(Model model) {
-        List<Gender> genders = new ArrayList<>(Arrays.asList(Gender.values()));
-        model.addAttribute("genderList", genders);
-        List<Role> roles = new ArrayList<>(Arrays.asList(Role.values()));
-        model.addAttribute("roleList", roles);
-        return "/user/userDetailsEdit";
-    }
 
     @RequestMapping(value = "/create/", method = RequestMethod.POST)
     public String createUser(User user, Model model) {

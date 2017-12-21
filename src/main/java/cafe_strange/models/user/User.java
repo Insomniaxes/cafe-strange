@@ -1,11 +1,11 @@
 package cafe_strange.models.user;
 
 import cafe_strange.enums.Gender;
-import cafe_strange.enums.Role;
 import cafe_strange.models.media.Picture;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -28,9 +28,11 @@ public class User {
     private Gender gender;
     @OneToOne
     private Picture picture;
-    @Enumerated(EnumType.ORDINAL)
-    @Column(name = "role", nullable = false)
-    private Role role;
+    @Column(name = "password")
+    private String password;
+    @OneToMany
+    @Column(name = "roles", nullable = false)
+    private List<Role> roles;
 
     public int getId() {
         return id;
@@ -88,12 +90,20 @@ public class User {
         this.picture = picture;
     }
 
-    public Role getRole() {
-        return role;
+    public String getPassword() {
+        return password;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRole(List<Role> role) {
+        this.roles = role;
     }
 
 }

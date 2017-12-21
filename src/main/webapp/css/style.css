@@ -20,7 +20,8 @@ mark, rp, rt, ruby, summary, time {
 /* Global properties ======================================================== */
 
 body {
-	background: url(../img/style/background.jpg) center 0 no-repeat #000;
+	background: url(../img/style/bg.png) center 0 no-repeat #000;
+	background-size: cover;
 	border:0;
 	font:14px Arial, Helvetica, sans-serif;
 	color:#7f7f7f;
@@ -153,6 +154,7 @@ header {
 	overflow:hidden
 }
 #page1 .box {
+	border-color: darkblue;
 	padding-top:34px;
 }
 #content {
@@ -419,4 +421,54 @@ footer a:hover {
 	padding:7px 10px;
 	color:#474747;
 	font:14px Arial, Helvetica, sans-serif;
+}
+
+/* dropdown button START */
+
+/* The dropdown container */
+.dropdown {
+	float: left;
+	overflow: hidden;
+	font-size: 22px;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+	font-size: 22px;
+	border: none;
+	outline: none;
+	color: gray;
+	padding: 14px 16px;
+	background-color: inherit;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+	font-size: 18px;
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+	float: none;
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+	background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+	display: block;
 }
