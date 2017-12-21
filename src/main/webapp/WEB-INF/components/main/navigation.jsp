@@ -16,6 +16,8 @@
         <li><a href="residents.html">Residents</a></li>
         <li><a href="news.html">News</a></li>
         <li><a href="contacts.html">Contacts</a></li>
+
     </ul>
 
 </nav>
+

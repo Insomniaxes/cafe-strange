@@ -28,10 +28,10 @@ public class GeneralController {
         return "/general/generalInfoEdit";
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String updateGeneralInfo(GeneralInfo generalInfo) {
-        generalInfoService.updatGeneralInfo(generalInfo);
-        return "/index";
-    }
+//    @RequestMapping(value = "/update", method = RequestMethod.POST)
+//    public String updateGeneralInfo(GeneralInfo generalInfo) {
+//        generalInfoService.updatGeneralInfo(generalInfo);
+//        return "/index";
+//    }
 
 }

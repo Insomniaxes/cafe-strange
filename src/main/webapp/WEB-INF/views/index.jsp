@@ -34,6 +34,7 @@
         <div class="box">
             <article id="content">
                 <div class="wrapper pad_bot1">
+                    <a href="/index" id="logo">Cafe Strange</a>
                     <jsp:include page="${welcomeUrl}"/>
                     <jsp:include page="${upcomingUrl}"/>
                 </div>

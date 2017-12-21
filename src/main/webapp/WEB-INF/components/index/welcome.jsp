@@ -1,4 +1,3 @@
-<h1><a href="/index" id="logo">Cafe Strange</a></h1>
 <section class="col1">
     <h2 id="welcom">${info.title}</h2>
     <p class="color1">${info.intro}</p>
