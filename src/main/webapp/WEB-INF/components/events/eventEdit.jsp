@@ -1,12 +1,5 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<script type="text/javascript">
-</script>
-<spring:url
-        value="${pageContext.request.contextPath}/css/widgEditor/widgEditor.css"
-        var="widgEditorCssURL"/>
-<link href="${widgEditorCssURL}" rel="stylesheet" type="text/css"/>
-
 <div class="wrapper">
     <div>
         <form method="POST" enctype="multipart/form-data" action="/events/update/${event.id}">
