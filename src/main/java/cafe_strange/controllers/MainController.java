@@ -30,7 +30,7 @@ public class MainController {
         session.setAttribute("openingHours", openingHoursService.findOpeningHours());
         model.addAttribute("upcomingEvents", eventService.findUpcomingEvents());
         model.addAttribute("event", eventService.findNextEvent());
-        model.addAttribute("info", infoService.findGeneralInfo());
+        model.addAttribute("info", infoService.findIntroInfo());
         return "/index";
     }
 

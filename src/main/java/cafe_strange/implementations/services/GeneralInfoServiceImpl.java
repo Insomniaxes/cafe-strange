@@ -25,4 +25,11 @@ public class GeneralInfoServiceImpl implements GeneralInfoService {
         generalInfo.setId(1);
         generalInfoRepo.update(generalInfo);
     }
+
+    @Override
+    public GeneralInfo findIntroInfo() {
+        GeneralInfo info = findGeneralInfo();
+        info.setExtendedInfo(info.getExtendedInfo().substring(0,150) + "...<br><a href='/generalInfo'>Lees Meer</a>");
+        return info;
+    }
 }

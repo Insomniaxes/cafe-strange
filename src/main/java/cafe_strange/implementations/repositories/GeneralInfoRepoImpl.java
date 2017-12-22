@@ -17,7 +17,9 @@ public class GeneralInfoRepoImpl implements GeneralInfoRepo {
 
     @Override
     public GeneralInfo findGeneralInfo() {
-        return em.find(GeneralInfo.class, 1);
+        GeneralInfo info = em.find(GeneralInfo.class, 1);
+        em.detach(info);
+        return info;
     }
 
     @Override

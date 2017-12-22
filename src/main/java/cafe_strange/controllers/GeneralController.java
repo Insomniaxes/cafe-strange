@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/generalinfo")
+@RequestMapping("/generalInfo")
 public class GeneralController {
 
     @Autowired
@@ -18,7 +18,7 @@ public class GeneralController {
     @RequestMapping(method = RequestMethod.GET)
     public String getGeneralInfo(Model model) {
         GeneralInfo generalInfo = generalInfoService.findGeneralInfo();
-        model.addAttribute("generalInfo", generalInfo);
+        model.addAttribute("info", generalInfo);
         return "/general/generalInfo";
     }
 
