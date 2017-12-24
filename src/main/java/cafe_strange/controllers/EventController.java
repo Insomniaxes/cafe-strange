@@ -59,8 +59,10 @@ public class EventController {
     public String updateEvent(@PathVariable int eventId, @RequestParam(value = "file", required = false) MultipartFile file, Event event) {
         event.setId(eventId);
 
+//        eventService.update(event, file);
+
         if (file != null) {
-            Picture picture = new Picture(file.getOriginalFilename(), "Some text", "event/" + file.getOriginalFilename(), true);
+            Picture picture = new Picture(file.getOriginalFilename(), event.getTitle(), "event/" + file.getOriginalFilename(), true);
             event.setPicture(picture);
             pictureService.uploadPicture(file, picture, "event");
         }

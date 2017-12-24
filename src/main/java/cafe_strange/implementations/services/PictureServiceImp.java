@@ -93,7 +93,7 @@ public class PictureServiceImp implements PictureService {
 
     @Override
     public Picture uploadPicture(MultipartFile file, Picture picture, String folder) {
-        String uploadFolder = "C:/gitfolder/Eindwerk/Cafe-Strange/src/main/webapp/img/" + folder + "/";
+        String uploadFolder = "C:/gitmap/Eindwerk/Cafe-Strange/src/main/webapp/img/" + folder + "/";
         picture.setPictureURL(folder + "/" + file.getOriginalFilename());
         try {
             byte[] bytes = file.getBytes();
