@@ -1,6 +1,6 @@
-package cafe_strange.implementations.repositories;
+package cafe_strange.implementations.repositories.general;
 
-import cafe_strange.interfaces.repositories.GeneralInfoRepo;
+import cafe_strange.interfaces.repositories.general.GeneralInfoRepo;
 import cafe_strange.models.main.GeneralInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

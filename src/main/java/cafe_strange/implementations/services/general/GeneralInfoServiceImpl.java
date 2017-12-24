@@ -1,7 +1,7 @@
-package cafe_strange.implementations.services;
+package cafe_strange.implementations.services.general;
 
-import cafe_strange.interfaces.repositories.GeneralInfoRepo;
-import cafe_strange.interfaces.services.GeneralInfoService;
+import cafe_strange.interfaces.repositories.general.GeneralInfoRepo;
+import cafe_strange.interfaces.services.general.GeneralInfoService;
 import cafe_strange.models.main.GeneralInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

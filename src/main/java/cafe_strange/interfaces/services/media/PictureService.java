@@ -1,4 +1,4 @@
-package cafe_strange.interfaces.services;
+package cafe_strange.interfaces.services.media;
 
 import cafe_strange.interfaces.main.MainInterface;
 import cafe_strange.interfaces.main.MediaInterface;
@@ -10,9 +10,6 @@ import java.util.List;
 
 public interface PictureService extends MediaInterface<Picture, List<Picture>> {
 
-    Picture findByUrl(String url);
-    List<Picture> findSafePictures();
     Picture uploadPicture(MultipartFile file, Picture picture, String folder);
-    void deletePicture(Picture picture);
 
 }

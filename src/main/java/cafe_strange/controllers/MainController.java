@@ -1,8 +1,8 @@
 package cafe_strange.controllers;
 
 import cafe_strange.interfaces.services.EventService;
-import cafe_strange.interfaces.services.GeneralInfoService;
-import cafe_strange.interfaces.services.OpeningHoursService;
+import cafe_strange.interfaces.services.general.GeneralInfoService;
+import cafe_strange.interfaces.services.general.OpeningHoursService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

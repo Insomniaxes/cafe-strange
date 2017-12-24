@@ -1,6 +1,6 @@
-package cafe_strange.implementations.repositories;
+package cafe_strange.implementations.repositories.general;
 
-import cafe_strange.interfaces.repositories.OpeningHoursRepo;
+import cafe_strange.interfaces.repositories.general.OpeningHoursRepo;
 import cafe_strange.models.main.OpeningHours;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,4 +23,14 @@ public class OpeningHoursRepoImpl implements OpeningHoursRepo {
         return (List<OpeningHours>) query.getResultList();
     }
 
+    @Override
+    public boolean update(OpeningHours openingHours) {
+        try {
+            em.merge(openingHours);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

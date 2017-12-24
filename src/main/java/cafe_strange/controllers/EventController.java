@@ -1,7 +1,7 @@
 package cafe_strange.controllers;
 
 import cafe_strange.interfaces.services.EventService;
-import cafe_strange.interfaces.services.PictureService;
+import cafe_strange.interfaces.services.media.PictureService;
 import cafe_strange.models.event.Event;
 import cafe_strange.models.media.Picture;
 import org.springframework.beans.factory.annotation.Autowired;

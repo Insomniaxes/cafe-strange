@@ -1,7 +1,7 @@
-package cafe_strange.implementations.services;
+package cafe_strange.implementations.services.general;
 
-import cafe_strange.interfaces.repositories.OpeningHoursRepo;
-import cafe_strange.interfaces.services.OpeningHoursService;
+import cafe_strange.interfaces.repositories.general.OpeningHoursRepo;
+import cafe_strange.interfaces.services.general.OpeningHoursService;
 import cafe_strange.models.main.OpeningHours;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,4 +20,10 @@ public class OpeningHoursServiceImpl implements OpeningHoursService {
     public List<OpeningHours> findOpeningHours() {
         return openingHoursRepo.findOpeningHours();
     }
+
+    @Override
+    public boolean update(OpeningHours openingHours) {
+        return openingHoursRepo.update(openingHours);
+    }
+
 }

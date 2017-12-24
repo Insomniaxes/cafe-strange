@@ -1,6 +1,7 @@
-package cafe_strange.implementations.repositories;
+package cafe_strange.implementations.repositories.media;
 
-import cafe_strange.interfaces.repositories.PictureRepo;
+import cafe_strange.interfaces.repositories.media.PictureRepo;
+import cafe_strange.models.extra.Category;
 import cafe_strange.models.media.Picture;
 import org.springframework.stereotype.Repository;
 
@@ -28,16 +29,16 @@ public class PictureRepoImp implements PictureRepo {
         return query.getResultList();
     }
 
+
     @Override
-    public List<Picture> findByCategory(String category) {
+    public List<Picture> findByCategory(Category category) {
         Query query = em.createQuery("SELECT p FROM Picture p WHERE p.pictureCategory LIKE '" + category + "'");
         return query.getResultList();
     }
 
     @Override
-    public List<Picture> findSafePictures() {
-        Query query = em.createQuery("SELECT p FROM Picture p WHERE p.safe = true");
-        return query.getResultList();
+    public boolean delete(int id) {
+        return false;
     }
 
     @Override
@@ -48,6 +49,23 @@ public class PictureRepoImp implements PictureRepo {
         } catch (Exception e) {
             return new Picture();
         }
-
     }
+
+    @Override
+    public Picture create(Picture picture) {
+        em.persist(picture);
+        return picture;
+    }
+
+    @Override
+    public boolean update(Picture picture) {
+        try {
+            em.merge(picture);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }
