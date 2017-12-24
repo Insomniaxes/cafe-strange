@@ -3,7 +3,6 @@ package cafe_strange.controllers;
 import cafe_strange.interfaces.services.EventService;
 import cafe_strange.interfaces.services.PictureService;
 import cafe_strange.models.event.Event;
-import cafe_strange.models.extra.Category;
 import cafe_strange.models.media.Picture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,32 +25,32 @@ public class EventController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String getEventsPage(Model model) {
-        model.addAttribute("upcomingEvents", eventService.findUpcomingEvents());
+        model.addAttribute("upcomingEvents", eventService.findUpcoming());
         return "/events/UpcomingEventOverview";
     }
 
     @RequestMapping(value = "/pastEvents", method = RequestMethod.GET)
     public String getPastEvents(Model model) {
-        model.addAttribute("pastEvents", eventService.findPastEvents());
+        model.addAttribute("pastEvents", eventService.findPast());
         return "/events/pastEvents";
     }
 
     @RequestMapping(value = "/{eventId}", method = RequestMethod.GET)
     public String getEventById(@PathVariable int eventId, Model model) {
-        model.addAttribute("event", eventService.findEventById(eventId));
+        model.addAttribute("event", eventService.findById(eventId));
         return "/events/eventView";
     }
 
     @RequestMapping(value = "/{eventId}/flyer", method = RequestMethod.GET)
     public String getEventFlyer(@PathVariable int eventId, Model model) {
-        model.addAttribute("event", eventService.findEventById(eventId));
+        model.addAttribute("event", eventService.findById(eventId));
         return "/events/eventFlyerView";
     }
 
     @RequestMapping(value = "/edit/{eventId}", method = RequestMethod.GET)
     public String editEventById(@PathVariable int eventId, Model model) {
 
-        model.addAttribute("event", eventService.findEventById(eventId));
+        model.addAttribute("event", eventService.findById(eventId));
         return "/events/eventEditView";
     }
 

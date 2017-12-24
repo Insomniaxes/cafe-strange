@@ -28,18 +28,18 @@ public class ForumPostServiceImpl implements ForumPostService {
     }
 
     @Override
-    public void create(ForumPost forumPost) {
-        repo.create(forumPost);
+    public ForumPost create(ForumPost forumPost) {
+        return repo.create(forumPost);
     }
 
     @Override
-    public void update(ForumPost forumPost) {
-        repo.update(forumPost);
+    public boolean update(ForumPost forumPost) {
+        return repo.update(forumPost);
     }
 
     @Override
-    public void delete(int forumPostId) {
-        repo.delete(forumPostId);
+    public boolean delete(int forumPostId) {
+        return repo.delete(forumPostId);
     }
 
 }

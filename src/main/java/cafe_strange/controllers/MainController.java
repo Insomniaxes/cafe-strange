@@ -3,7 +3,6 @@ package cafe_strange.controllers;
 import cafe_strange.interfaces.services.EventService;
 import cafe_strange.interfaces.services.GeneralInfoService;
 import cafe_strange.interfaces.services.OpeningHoursService;
-import cafe_strange.models.main.GeneralInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,8 +27,8 @@ public class MainController {
     public String getIndex(Model model, ModelMap modelMap, HttpServletRequest request) {
         HttpSession session = request.getSession();
         session.setAttribute("openingHours", openingHoursService.findOpeningHours());
-        model.addAttribute("upcomingEvents", eventService.findUpcomingEvents());
-        model.addAttribute("event", eventService.findNextEvent());
+        model.addAttribute("upcomingEvents", eventService.findUpcoming());
+        model.addAttribute("event", eventService.findNext());
         model.addAttribute("info", infoService.findIntroInfo());
         return "/index";
     }

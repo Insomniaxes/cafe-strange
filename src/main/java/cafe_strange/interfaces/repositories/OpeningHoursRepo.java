@@ -7,5 +7,6 @@ import java.util.List;
 public interface OpeningHoursRepo {
 
     List<OpeningHours> findOpeningHours();
+    boolean update(OpeningHours openingHours);
 
 }

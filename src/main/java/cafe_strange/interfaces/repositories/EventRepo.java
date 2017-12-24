@@ -1,23 +1,17 @@
 package cafe_strange.interfaces.repositories;
 
+import cafe_strange.interfaces.main.MainInterface;
 import cafe_strange.models.event.Event;
 
 import java.sql.Date;
 import java.util.List;
 
-public interface EventRepo {
+public interface EventRepo extends MainInterface<Event, List<Event>> {
 
-    Event findEventById(int eventId);
+    Event findByDate(Date date);
 
-    Event findEventByDate(Date date);
+    List<Event> findUpcoming();
 
-    List<Event> findUpcomingEvents();
+    List<Event> findPast();
 
-    List<Event> findPastEvents();
-
-    void create(Event event);
-
-    void update(Event event);
-
-    void delete(int eventId);
 }

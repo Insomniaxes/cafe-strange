@@ -23,7 +23,7 @@ public class NewsRepoImpl implements NewsRepo {
     }
 
     @Override
-    public List<News> findAllNews() {
+    public List<News> findAll() {
         Query query = em.createQuery("SELECT n FROM News AS n");
         return (List<News>) query.getResultList();
     }

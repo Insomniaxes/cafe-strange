@@ -1,25 +1,19 @@
 package cafe_strange.interfaces.services;
 
+import cafe_strange.interfaces.main.MainInterface;
 import cafe_strange.models.event.Event;
 
 import java.sql.Date;
 import java.util.List;
 
-public interface EventService {
+public interface EventService extends MainInterface<Event, List<Event>>{
 
-    Event findEventById(int eventId);
+    Event findByDate(Date date);
 
-    Event findEventByDate(Date date);
+    Event findNext();
 
-    Event findNextEvent();
+    List<Event> findUpcoming();
 
-    List<Event> findUpcomingEvents();
+    List<Event> findPast();
 
-    List<Event> findPastEvents();
-
-    boolean create(Event event);
-
-    void update(Event event);
-
-    void delete(int eventId);
 }

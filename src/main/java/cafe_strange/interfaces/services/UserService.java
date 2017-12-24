@@ -1,17 +1,14 @@
 package cafe_strange.interfaces.services;
 
+import cafe_strange.interfaces.main.MainInterface;
 import cafe_strange.models.user.User;
 
 import java.util.List;
 
-public interface UserService {
+public interface UserService extends MainInterface<User, List<User>> {
 
-    User findById(int id);
-    List<User> findAll();
     List<User> findByLastName(String lastName);
+    User findByUsername(String username);
     List<User> findByRole(String role);
-    User create(User user);
-    void update(User user);
-    void delete(int userId);
 
 }

@@ -20,11 +20,6 @@ public class GeneralInfoServiceImpl implements GeneralInfoService {
         return generalInfoRepo.findGeneralInfo();
     }
 
-    @Override
-    public void updatGeneralInfo(GeneralInfo generalInfo) {
-        generalInfo.setId(1);
-        generalInfoRepo.update(generalInfo);
-    }
 
     @Override
     public GeneralInfo findIntroInfo() {
@@ -32,4 +27,11 @@ public class GeneralInfoServiceImpl implements GeneralInfoService {
         info.setExtendedInfo(info.getExtendedInfo().substring(0,150) + "...<br><b><a href='/generalInfo'>Lees Meer</a></b>");
         return info;
     }
+
+    @Override
+    public boolean update(GeneralInfo generalInfo) {
+        generalInfo.setId(1);
+        return generalInfoRepo.update(generalInfo);
+    }
+
 }

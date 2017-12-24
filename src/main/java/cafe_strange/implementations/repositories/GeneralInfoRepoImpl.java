@@ -23,7 +23,13 @@ public class GeneralInfoRepoImpl implements GeneralInfoRepo {
     }
 
     @Override
-    public void update(GeneralInfo generalInfo) {
-        em.merge(generalInfo);
+    public boolean update(GeneralInfo generalInfo) {
+        try {
+            em.merge(generalInfo);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

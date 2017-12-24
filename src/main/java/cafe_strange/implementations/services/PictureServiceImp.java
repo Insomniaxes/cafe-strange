@@ -31,23 +31,23 @@ public class PictureServiceImp implements PictureService {
     private PictureRepo pictureRepo;
 
     @Override
-    public Picture findPictureById(int id) {
-        return pictureRepo.findPictureById(id);
+    public Picture findById(int id) {
+        return pictureRepo.findById(id);
     }
 
     @Override
-    public Picture findPictureByUrl(String url) {
-        return pictureRepo.findPictureByUrl(url);
+    public Picture findByUrl(String url) {
+        return pictureRepo.findByUrl(url);
     }
 
     @Override
-    public List<Picture> findAllPictures() {
-        return pictureRepo.findAllPictures();
+    public List<Picture> findAll() {
+        return pictureRepo.findAll();
     }
 
     @Override
     public List<Picture> findMainPagePictures(boolean loggedin, String category) {
-        List<Picture> allPictures = findAllPictures();
+        List<Picture> allPictures = findAll();
         List<Picture> pictures = new ArrayList<>();
         counter = 0;
         if (loggedin) {
@@ -60,7 +60,7 @@ public class PictureServiceImp implements PictureService {
                 }
                 return pictures;
             } else {
-                allPictures = new ArrayList<>(findCategoryPictures(category));
+                allPictures = new ArrayList<>(findByCategory(category));
                 if (allPictures.size() != 0) {
                     while (counter < PICTURELIMIT) {
                         pictures.add(allPictures.get(random.nextInt(allPictures.size())));
@@ -82,8 +82,8 @@ public class PictureServiceImp implements PictureService {
     }
 
     @Override
-    public List<Picture> findCategoryPictures(String category) {
-        return pictureRepo.findCategoryPictures(category);
+    public List<Picture> findByCategory(String category) {
+        return pictureRepo.findByCategory(category);
     }
 
     @Override
@@ -103,7 +103,7 @@ public class PictureServiceImp implements PictureService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return findPictureByUrl(picture.getPictureURL());
+        return findByUrl(picture.getPictureURL());
     }
 
     @Override
@@ -112,7 +112,7 @@ public class PictureServiceImp implements PictureService {
     }
 
     private boolean pictureExists(Picture picture) {
-        if (findPictureByUrl(picture.getPictureURL()).getId() != 0) {
+        if (findByUrl(picture.getPictureURL()).getId() != 0) {
             return true;
         } else {
             return false;

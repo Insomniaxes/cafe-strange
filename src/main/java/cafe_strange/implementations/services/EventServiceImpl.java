@@ -20,26 +20,23 @@ public class EventServiceImpl implements EventService {
     private EventRepo eventRepo;
 
     @Override
-    public Event findEventById(int eventId) {
-        return eventRepo.findEventById(eventId);
+    public Event findById(int eventId) {
+        return eventRepo.findById(eventId);
     }
 
     @Override
-    public Event findEventByDate(Date date) {
-        return eventRepo.findEventByDate(date);
-    }
-
-    public boolean eventDateFree(Date date) {
-        if (eventRepo.findEventByDate(date) == null) {
-            return true;
-        } else {
-            return false;
-        }
+    public List<Event> findAll() {
+        return eventRepo.findAll();
     }
 
     @Override
-    public Event findNextEvent() {
-        List<Event> events = eventRepo.findUpcomingEvents();
+    public Event findByDate(Date date) {
+        return eventRepo.findByDate(date);
+    }
+
+    @Override
+    public Event findNext() {
+        List<Event> events = eventRepo.findUpcoming();
         if (events.size() == 0) {
             return new Event();
         } else {
@@ -49,8 +46,8 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public List<Event> findUpcomingEvents() {
-        List<Event> events = eventRepo.findUpcomingEvents();
+    public List<Event> findUpcoming() {
+        List<Event> events = eventRepo.findUpcoming();
         if (events.size() == 0) {
             return new ArrayList<>();
         } else {
@@ -60,27 +57,48 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public List<Event> findPastEvents() {
-        return eventRepo.findPastEvents();
+    public List<Event> findPast() {
+        return eventRepo.findPast();
     }
 
     @Override
-    public boolean create(Event event) {
+    public Event create(Event event) {
         if (eventDateFree(event.getDate())) {
-            eventRepo.create(event);
+            return eventRepo.create(event);
+        } else {
+            return new Event();
+        }
+    }
+
+    @Override
+    public boolean update(Event event) {
+        try {
+            eventRepo.update(event);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public boolean delete(int eventId) {
+        try {
+            eventRepo.delete(eventId);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean eventDateFree(Date date) {
+        if (eventRepo.findByDate(date) == null) {
             return true;
         } else {
             return false;
         }
     }
 
-    @Override
-    public void update(Event event) {
-        eventRepo.update(event);
-    }
 
-    @Override
-    public void delete(int eventId) {
-        eventRepo.delete(eventId);
-    }
 }

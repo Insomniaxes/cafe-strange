@@ -18,7 +18,7 @@ public class NewsController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String getNews(Model model) {
-        model.addAttribute("newsList", newsService.findAllNews());
+        model.addAttribute("newsList", newsService.findAll());
         return "/news/news";
     }
 

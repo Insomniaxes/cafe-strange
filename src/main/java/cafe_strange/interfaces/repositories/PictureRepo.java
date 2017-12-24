@@ -1,15 +1,13 @@
 package cafe_strange.interfaces.repositories;
 
+import cafe_strange.interfaces.main.MediaInterface;
+import cafe_strange.models.extra.Category;
 import cafe_strange.models.media.Picture;
 
 import java.util.List;
 
-public interface PictureRepo {
+public interface PictureRepo extends MediaInterface<Picture, List<Picture>> {
 
-    Picture findPictureById(int id);
-    List<Picture> findAllPictures();
-    List<Picture> findCategoryPictures(String category);
     List<Picture> findSafePictures();
-    Picture findPictureByUrl(String url);
 
 }

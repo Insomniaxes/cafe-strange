@@ -20,12 +20,12 @@ public class EventRepoImpl implements EventRepo {
     private EntityManager em;
 
     @Override
-    public Event findEventById(int eventId) {
+    public Event findById(int eventId) {
         return em.find(Event.class, eventId);
     }
 
     @Override
-    public Event findEventByDate(Date date) {
+    public Event findByDate(Date date) {
         Query query = em.createQuery("SELECT e FROM Event AS e WHERE e.date = :date");
         query.setParameter("date", date);
         try {
@@ -36,14 +36,14 @@ public class EventRepoImpl implements EventRepo {
     }
 
     @Override
-    public List<Event> findUpcomingEvents() {
+    public List<Event> findUpcoming() {
         Query query = em.createQuery("SELECT e FROM Event AS e WHERE e.date >= :now");
         query.setParameter("now", java.sql.Date.valueOf(LocalDate.now()));
         return (List<Event>) query.getResultList();
     }
 
     @Override
-    public List<Event> findPastEvents() {
+    public List<Event> findPast() {
         Query query = em.createQuery("SELECT e FROM Event AS e WHERE e.date < :now");
         query.setParameter("now", java.sql.Date.valueOf(LocalDate.now()));
         return (List<Event>) query.getResultList();
@@ -62,6 +62,6 @@ public class EventRepoImpl implements EventRepo {
 
     @Override
     public void delete(int eventId) {
-        em.remove(findEventById(eventId));
+        em.remove(findById(eventId));
     }
 }

@@ -18,18 +18,18 @@ public class PictureRepoImp implements PictureRepo {
     private EntityManager em;
 
     @Override
-    public Picture findPictureById(int id) {
+    public Picture findById(int id) {
         return em.find(Picture.class, id);
     }
 
     @Override
-    public List<Picture> findAllPictures() {
+    public List<Picture> findAll() {
         Query query = em.createQuery("SELECT p FROM Picture p");
         return query.getResultList();
     }
 
     @Override
-    public List<Picture> findCategoryPictures(String category) {
+    public List<Picture> findByCategory(String category) {
         Query query = em.createQuery("SELECT p FROM Picture p WHERE p.pictureCategory LIKE '" + category + "'");
         return query.getResultList();
     }
@@ -41,7 +41,7 @@ public class PictureRepoImp implements PictureRepo {
     }
 
     @Override
-    public Picture findPictureByUrl(String url) {
+    public Picture findByUrl(String url) {
         Query query = em.createQuery("SELECT p FROM Picture p WHERE p.pictureURL LIKE '" + url + "'");
         try {
             return (Picture) query.getSingleResult();

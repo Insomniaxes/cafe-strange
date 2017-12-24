@@ -35,19 +35,30 @@ public class ForumPostRepoImpl implements ForumPostRepo {
     }
 
     @Override
-    public void create(ForumPost forumPost) {
+    public ForumPost create(ForumPost forumPost) {
         em.persist(forumPost);
+        return forumPost;
     }
 
     @Override
-    public void update(ForumPost forumPost) {
-        em.merge(forumPost);
+    public boolean update(ForumPost forumPost) {
+        try {
+            em.merge(forumPost);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
-    public void delete(int forumPostId) {
-        em.remove(findById(forumPostId));
+    public boolean delete(int forumPostId) {
+        try {
+            em.remove(findById(forumPostId));
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
-
 
 }
