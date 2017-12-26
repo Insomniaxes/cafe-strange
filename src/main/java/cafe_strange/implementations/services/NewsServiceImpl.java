@@ -27,18 +27,19 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public void create(News news) {
+    public News create(News news) {
         repo.create(news);
+        return news;
     }
 
     @Override
-    public void update(News news) {
-        repo.update(news);
+    public boolean update(News news) {
+        return repo.update(news);
     }
 
     @Override
-    public void delete(int id) {
-        repo.delete(id);
+    public boolean delete(int id) {
+        return repo.delete(id);
     }
 
 }

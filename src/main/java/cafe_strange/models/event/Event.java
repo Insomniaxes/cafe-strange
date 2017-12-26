@@ -1,5 +1,6 @@
 package cafe_strange.models.event;
 
+import cafe_strange.models.media.Media;
 import cafe_strange.models.media.Picture;
 import cafe_strange.models.user.User;
 
@@ -23,7 +24,7 @@ public class Event implements Comparable<Event> {
     @Column(name = "description")
     private String description;
     @OneToOne
-    private Picture picture;
+    private Media picture;
     @OneToMany
     @Column(name = "participants")
     private List<User> participants;
@@ -68,11 +69,11 @@ public class Event implements Comparable<Event> {
         this.description = description;
     }
 
-    public Picture getPicture() {
+    public Media getPicture() {
         return picture;
     }
 
-    public void setPicture(Picture picture) {
+    public void setPicture(Media picture) {
         this.picture = picture;
     }
 

@@ -22,6 +22,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findByUsername(String username) {
+        return userRepo.findByUsername(username);
+    }
+
+    @Override
     public List<User> findAll() {
         return userRepo.findAll();
     }
@@ -43,13 +48,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void update(User user) {
-        userRepo.update(user);
+    public boolean update(User user) {
+        return userRepo.update(user);
     }
 
     // todo nog confirmatie
     @Override
-    public void delete(int userId) {
-        userRepo.delete(userId);
+    public boolean delete(int userId) {
+        return userRepo.delete(userId);
     }
 }

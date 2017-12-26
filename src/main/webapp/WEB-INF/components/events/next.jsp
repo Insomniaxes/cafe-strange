@@ -1,6 +1,6 @@
 <h2>Next Party</h2>
 <div class="wrapper">
-    <figure class="left marg_right1"><a href="/events/${event.id}"><img src="${pageContext.request.contextPath}/img/${event.picture.pictureURL}" alt="oops"></a></figure>
+    <figure class="left marg_right1"><a href="/events/${event.id}"><img src="${pageContext.request.contextPath}/img/${event.picture.url}" alt="oops"></a></figure>
     <h3>${event.title}</h3>
     <p class="pad_bot1">${event.summary}</p>
     <ul class="list1 pad_bot1">

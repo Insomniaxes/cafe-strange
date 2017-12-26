@@ -1,4 +1,4 @@
-package cafe_strange.interfaces.repositories;
+package cafe_strange.interfaces.repositories.interactive;
 
 import cafe_strange.interfaces.main.MainInterface;
 import cafe_strange.models.forum.ForumPost;

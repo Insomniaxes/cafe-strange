@@ -3,12 +3,12 @@ package cafe_strange.models.extra;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "forumSubject")
+@Table(name = "category")
 public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "forumSubject_id")
+    @Column(name = "category_id")
     private int id;
     @Column(name = "category")
     private String category;

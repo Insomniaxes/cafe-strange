@@ -15,3 +15,5 @@
 <script src="${pageContext.request.contextPath}/js/html5.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ie.css" type="text/css" media="all">
 <![endif]-->
+
+<link rel="icon" href="${pageContext.request.contextPath}/img/style/logo.png">

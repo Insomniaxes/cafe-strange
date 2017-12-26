@@ -43,7 +43,7 @@ public class PictureRepoImp implements PictureRepo {
 
     @Override
     public Picture findByUrl(String url) {
-        Query query = em.createQuery("SELECT p FROM Picture p WHERE p.pictureURL LIKE '" + url + "'");
+        Query query = em.createQuery("SELECT p FROM Media AS p WHERE p.url LIKE '" + url + "'");
         try {
             return (Picture) query.getSingleResult();
         } catch (Exception e) {

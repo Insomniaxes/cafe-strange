@@ -1,12 +1,16 @@
 package cafe_strange.implementations.services.interactive;
 
-import cafe_strange.interfaces.repositories.ForumPostRepo;
+import cafe_strange.interfaces.repositories.interactive.ForumPostRepo;
 import cafe_strange.interfaces.services.interactive.ForumPostService;
 import cafe_strange.models.forum.ForumPost;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Service
+@Transactional
 public class ForumPostServiceImpl implements ForumPostService {
 
     @Autowired

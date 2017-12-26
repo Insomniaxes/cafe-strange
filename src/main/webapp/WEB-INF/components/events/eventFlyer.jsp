@@ -1,1 +1,1 @@
-<img src="${pageContext.request.contextPath}/img/${event.picture.pictureURL}" alt="${event.title}" style="width: 100%">
+<img src="${pageContext.request.contextPath}/img/${event.picture.url}" alt="${event.title}" style="width: 100%">

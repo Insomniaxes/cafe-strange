@@ -1,96 +1,20 @@
 package cafe_strange.models.media;
 
+import cafe_strange.enums.MediaType;
 import cafe_strange.models.extra.Category;
-import cafe_strange.models.extra.Comment;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
 @Entity
-@Table(name = "picture")
-public class Picture {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "picture_id")
-    private int id;
-    @Column(name = "title")
-    private String title;
-    @Column(name = "caption")
-    private String caption;
-    @Column(name = "pictureURL")
-    private String pictureURL;
-//    @OneToOne
-//    private Category category;
-    @Column(name = "aproved")
-    private boolean aproved;
-    @OneToMany
-    private List<Comment> comments;
+@DiscriminatorValue("0")
+public class Picture extends Media {
 
     public Picture() {
     }
 
-    public Picture(String title, String caption, String pictureURL, boolean aproved) {
-        this.title = title;
-        this.caption = caption;
-        this.pictureURL = pictureURL;
-//        this.category = category;
-        this.aproved = aproved;
+    public Picture(String title, String caption, String url, Category category, boolean aproved) {
+        super(title, caption, url, MediaType.PICTURE, category, aproved);
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getCaption() {
-        return caption;
-    }
-
-    public void setCaption(String caption) {
-        this.caption = caption;
-    }
-
-    public String getPictureURL() {
-        return pictureURL;
-    }
-
-    public void setPictureURL(String pictureURL) {
-        this.pictureURL = pictureURL;
-    }
-
-//    public Category getCategory() {
-//        return category;
-//    }
-//
-//    public void setCategory(Category category) {
-//        this.category = category;
-//    }
-
-    public boolean isAproved() {
-        return aproved;
-    }
-
-    public void setAproved(boolean aproved) {
-        this.aproved = aproved;
-    }
-
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
 }

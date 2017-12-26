@@ -24,7 +24,7 @@ public class MainController {
     private OpeningHoursService openingHoursService;
 
     @RequestMapping(value = {"/", "/index", "/home"}, method = RequestMethod.GET)
-    public String getIndex(Model model, ModelMap modelMap, HttpServletRequest request) {
+    public String getIndex(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
         session.setAttribute("openingHours", openingHoursService.findOpeningHours());
         model.addAttribute("upcomingEvents", eventService.findUpcoming());

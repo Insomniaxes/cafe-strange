@@ -59,13 +59,25 @@ public class UserRepoImpl implements UserRepo {
     }
 
     @Override
-    public void update(User user) {
-        em.merge(user);
+    public boolean update(User user) {
+        try {
+            em.merge(user);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
-    public void delete(int id) {
-        em.remove(findById(id));
+    public boolean delete(int id) {
+        try {
+            em.remove(findById(id));
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
 }

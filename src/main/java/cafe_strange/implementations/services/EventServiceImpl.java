@@ -66,7 +66,7 @@ public class EventServiceImpl implements EventService {
         if (eventDateFree(event.getDate())) {
             return eventRepo.create(event);
         } else {
-            return new Event();
+            return null;
         }
     }
 

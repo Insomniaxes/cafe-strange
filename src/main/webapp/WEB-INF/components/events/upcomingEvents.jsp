@@ -7,7 +7,7 @@
             <div class="cols marg_right1">
                 <h2><strong><fmt:formatDate value="${event.date}" pattern="dd.MM"/></strong></h2>
                 <h4>${event.title}</h4>
-                <figure class="pad_bot1"><a href="/events/${event.id}"><img src="${pageContext.request.contextPath}/img/${event.picture.pictureURL}" alt="${event.title}" style="width: 200px"></a></figure>
+                <figure class="pad_bot1"><a href="/events/${event.id}"><img src="${pageContext.request.contextPath}/img/${event.picture.url}" alt="${event.title}" style="width: 200px"></a></figure>
             </div>
         </c:forEach>
     </div>

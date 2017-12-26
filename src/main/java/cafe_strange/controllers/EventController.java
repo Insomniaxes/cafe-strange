@@ -1,8 +1,10 @@
 package cafe_strange.controllers;
 
 import cafe_strange.interfaces.services.EventService;
+import cafe_strange.interfaces.services.extra.CategoryService;
 import cafe_strange.interfaces.services.media.PictureService;
 import cafe_strange.models.event.Event;
+import cafe_strange.models.extra.Category;
 import cafe_strange.models.media.Picture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,8 @@ public class EventController {
     private EventService eventService;
     @Autowired
     private PictureService pictureService;
+    @Autowired
+    private CategoryService categoryService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String getEventsPage(Model model) {
@@ -55,15 +59,12 @@ public class EventController {
     }
 
     @RequestMapping(value = "/update/{eventId}", method = RequestMethod.POST)
-    public String updateEvent(@PathVariable int eventId, @RequestParam(value = "file", required = false) MultipartFile file, Event event) {
+    public String updateEvent(@PathVariable int eventId,
+                              @RequestParam(value = "file", required = false) MultipartFile file, Event event) {
         event.setId(eventId);
 
-//        eventService.update(event, file);
-
         if (file != null) {
-            Picture picture = new Picture(file.getOriginalFilename(), event.getTitle(), "event/" + file.getOriginalFilename(), true);
-            event.setPicture(picture);
-            pictureService.uploadPicture(file, picture, "event");
+            event.setPicture(pictureService.uploadPicture(file, "event", categoryService.findById(1)));
         }
         eventService.update(event);
         return "redirect:/index";
@@ -75,12 +76,17 @@ public class EventController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String saveNewEvent(Event event, ModelMap modelMap) {
-        if (eventService.create(event)) {
-            modelMap.addAttribute("message", "<h1>Het evenement werd toegevoegd</h1>");
+    public String saveNewEvent(@RequestParam(value = "file", required = false) MultipartFile file,
+                               Event event,  ModelMap modelMap) {
+        if (file != null) {
+            // todo nog file aanmaken
+        }
+        if (eventService.create(event) == null) {
+            modelMap.addAttribute("message",
+                    "<h1>Het evenement werd niet toegevoegd omdat er al een event gepland staat op die dag !!</h1>");
             return "/index";
         } else {
-            modelMap.addAttribute("message", "<h1>Het evenement werd niet toegevoegd omdat er al een event gepland staat op die dag !!</h1>");
+            modelMap.addAttribute("message", "<h1>Het evenement werd toegevoegd</h1>");
         }
         return "/index";
     }

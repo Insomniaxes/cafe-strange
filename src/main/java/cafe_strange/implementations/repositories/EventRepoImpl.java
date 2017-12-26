@@ -25,6 +25,12 @@ public class EventRepoImpl implements EventRepo {
     }
 
     @Override
+    public List<Event> findAll() {
+        Query query = em.createQuery("SELECT e FROM Event AS e");
+        return query.getResultList();
+    }
+
+    @Override
     public Event findByDate(Date date) {
         Query query = em.createQuery("SELECT e FROM Event AS e WHERE e.date = :date");
         query.setParameter("date", date);
@@ -50,18 +56,30 @@ public class EventRepoImpl implements EventRepo {
     }
 
     @Override
-    public void create(Event event) {
-
+    public Event create(Event event) {
         em.persist(event);
+        return event;
     }
 
     @Override
-    public void update(Event event) {
-        em.merge(event);
+    public boolean update(Event event) {
+        try {
+            em.merge(event);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
-    public void delete(int eventId) {
-        em.remove(findById(eventId));
+    public boolean delete(int eventId) {
+        try {
+            em.remove(findById(eventId));
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

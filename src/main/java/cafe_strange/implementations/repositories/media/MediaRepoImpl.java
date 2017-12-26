@@ -1,7 +1,7 @@
-package cafe_strange.implementations.repositories;
+package cafe_strange.implementations.repositories.media;
 
-import cafe_strange.interfaces.repositories.NewsRepo;
-import cafe_strange.models.event.News;
+import cafe_strange.interfaces.repositories.media.MediaRepo;
+import cafe_strange.models.media.Media;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -12,32 +12,32 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class NewsRepoImpl implements NewsRepo {
+public class MediaRepoImpl implements MediaRepo {
 
     @Autowired
     private EntityManager em;
 
     @Override
-    public News findById(int id) {
-        return em.find(News.class, id);
+    public Media findById(int id) {
+        return em.find(Media.class, id);
     }
 
     @Override
-    public List<News> findAll() {
-        Query query = em.createQuery("SELECT n FROM News AS n");
-        return (List<News>) query.getResultList();
+    public List<Media> findAll() {
+        Query query = em.createQuery("SELECT m FROM Media AS m");
+        return query.getResultList();
     }
 
     @Override
-    public News create(News news) {
-        em.persist(news);
-        return news;
+    public Media create(Media media) {
+        em.persist(media);
+        return media;
     }
 
     @Override
-    public boolean update(News news) {
+    public boolean update(Media media) {
         try {
-            em.merge(news);
+            em.merge(media);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,5 +55,4 @@ public class NewsRepoImpl implements NewsRepo {
             return false;
         }
     }
-
 }
