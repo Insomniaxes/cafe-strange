@@ -1,5 +1,3 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-
 <div class="wrapper">
     <div>
         <form method="POST" enctype="multipart/form-data" action="/events/create">

@@ -11,12 +11,6 @@
 <html lang="en">
 <head>
     <jsp:include page="${headUrl}"/>
-    <div class="container unauthenticated">
-        With Facebook: <a href="/login">click here</a>
-    </div>
-    <div class="container authenticated" style="display:none">
-        Logged in as: <span id="user"></span>
-    </div>
 </head>
 <body id="page1">
 <div class="bg1">
