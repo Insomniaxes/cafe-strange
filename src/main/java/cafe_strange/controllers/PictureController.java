@@ -11,13 +11,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/pictures")
 public class PictureController {
 
+    private final String VIEW = "/media/media";
+    private final String FOLDER = "components/media/picture/";
+
     @Autowired
     private MediaService mediaService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String getGallery(Model model) {
+        model.addAttribute("page", FOLDER + "pictureOverview");
         model.addAttribute("pictures", mediaService.findAllPictures());
-        return "/media/picture/pictureOverview";
+        return VIEW;
     }
 
 }

@@ -1,7 +1,7 @@
 <%@ taglib prefix="Spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/news/news.jsp" var="newsUrl"/>
+<Spring:url value="${pageContext.request.contextPath}/WEB-INF/${page}.jsp" var="componentUrl"/>
 <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/head.jsp" var="headUrl"/>
 <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/navigation.jsp" var="navigationUrl"/>
 <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/footer.jsp" var="footerUrl"/>
@@ -17,7 +17,7 @@
         <jsp:include page="${navigationUrl}"/>
         <div class="box">
             <!--content -->
-            <jsp:include page="${newsUrl}"/>
+            <jsp:include page="${componentUrl}"/>
             <!--content end-->
             <!--footer -->
             <footer>

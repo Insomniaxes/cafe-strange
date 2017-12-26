@@ -13,25 +13,31 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/news")
 public class NewsController {
 
+    private final String FOLDER = "components/news/";
+    private final String VIEW = "/news/news";
+
     @Autowired
     private NewsService newsService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String getNews(Model model) {
+        model.addAttribute("page", FOLDER + "news");
         model.addAttribute("newsList", newsService.findAll());
-        return "/news/news";
+        return VIEW;
     }
 
     @RequestMapping(value = "/{newsId}", method = RequestMethod.GET)
     public String getNewsById(@PathVariable int newsId, Model model) {
+        model.addAttribute("page", FOLDER + "article");
         model.addAttribute("news", newsService.findById(newsId));
-        return "/news/article";
+        return VIEW;
     }
 
     @RequestMapping(value = "/edit/{newsId}", method = RequestMethod.GET)
     public String editNews(News news, Model model) {
+        model.addAttribute("page", FOLDER + "newsEdit");
         model.addAttribute("news", news);
-        return "news/newsEdit";
+        return VIEW;
     }
 
 }
