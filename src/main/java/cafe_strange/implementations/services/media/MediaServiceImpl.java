@@ -1,8 +1,11 @@
 package cafe_strange.implementations.services.media;
 
+import cafe_strange.enums.MediaType;
 import cafe_strange.interfaces.repositories.media.MediaRepo;
 import cafe_strange.interfaces.services.media.MediaService;
 import cafe_strange.models.media.Media;
+import cafe_strange.models.media.Picture;
+import cafe_strange.models.media.Video;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +27,16 @@ public class MediaServiceImpl implements MediaService {
     @Override
     public List<Media> findAll() {
         return mediaRepo.findAll();
+    }
+
+    @Override
+    public List<Picture> findAllPictures() {
+        return (List<Picture>) mediaRepo.findAllByMediaType(MediaType.PICTURE);
+    }
+
+    @Override
+    public List<Video> findAllVideos() {
+        return (List<Video>) mediaRepo.findAllByMediaType(MediaType.VIDEO);
     }
 
     @Override

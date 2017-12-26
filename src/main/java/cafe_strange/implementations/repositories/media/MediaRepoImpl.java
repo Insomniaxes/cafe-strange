@@ -1,7 +1,9 @@
 package cafe_strange.implementations.repositories.media;
 
+import cafe_strange.enums.MediaType;
 import cafe_strange.interfaces.repositories.media.MediaRepo;
 import cafe_strange.models.media.Media;
+import cafe_strange.models.media.Picture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -25,6 +27,13 @@ public class MediaRepoImpl implements MediaRepo {
     @Override
     public List<Media> findAll() {
         Query query = em.createQuery("SELECT m FROM Media AS m");
+        return query.getResultList();
+    }
+
+    @Override
+    public List<?> findAllByMediaType(MediaType mediaType) {
+        Query query = em.createQuery("SELECT m FROM Media AS m WHERE m.mediaType = :mediaType");
+        query.setParameter("mediaType", mediaType);
         return query.getResultList();
     }
 

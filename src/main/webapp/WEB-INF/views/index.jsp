@@ -6,7 +6,6 @@
 <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/events/upcomingIndex.jsp" var="upcomingUrl"/>
 <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/events/next.jsp" var="nextEventUrl"/>
 <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/footer.jsp" var="footerUrl"/>
-<Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/head.jsp" var="headUrl"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
