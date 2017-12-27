@@ -1,15 +1,11 @@
 package cafe_strange.interfaces.services.media;
 
 import cafe_strange.interfaces.main.MainInterface;
-import cafe_strange.models.media.Media;
-import cafe_strange.models.media.Picture;
-import cafe_strange.models.media.Video;
+import cafe_strange.models.extra.Category;
 
-import java.util.List;
+public interface MediaService<T,L> extends MainInterface<T,L> {
 
-public interface MediaService extends MainInterface<Media, List<Media>> {
-
-    List<Picture> findAllPictures();
-    List<Video> findAllVideos();
+    L findByCategory(Category category);
+    T findByUrl(String url);
 
 }

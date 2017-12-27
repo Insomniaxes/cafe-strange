@@ -2,6 +2,7 @@ package cafe_strange.implementations.repositories.media;
 
 import cafe_strange.enums.MediaType;
 import cafe_strange.interfaces.repositories.media.MediaRepo;
+import cafe_strange.models.extra.Category;
 import cafe_strange.models.media.Media;
 import cafe_strange.models.media.Picture;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,37 +15,50 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class MediaRepoImpl implements MediaRepo {
+public class MediaRepoImpl<T,L> implements MediaRepo<T,L> {
 
     @Autowired
     private EntityManager em;
 
     @Override
-    public Media findById(int id) {
-        return em.find(Media.class, id);
+    public T findById(int id) {
+        return (T) em.find(Media.class, id);
     }
 
     @Override
-    public List<Media> findAll() {
+    public L findAll() {
         Query query = em.createQuery("SELECT m FROM Media AS m");
-        return query.getResultList();
+        return (L) query.getResultList();
     }
 
     @Override
-    public List<?> findAllByMediaType(MediaType mediaType) {
+    public T findByUrl(String url) {
+        return null;
+    }
+
+    @Override
+    public L findByCategory(MediaType mediaType, Category category) {
+        Query query = em.createQuery("SELECT m FROM Media AS m WHERE m.mediaType = :mediaType AND m.category = :category");
+        query.setParameter("mediaType", mediaType);
+        query.setParameter("category", category);
+        return (L) query.getResultList();
+    }
+
+    @Override
+    public L findByMediaType(MediaType mediaType) {
         Query query = em.createQuery("SELECT m FROM Media AS m WHERE m.mediaType = :mediaType");
         query.setParameter("mediaType", mediaType);
-        return query.getResultList();
+        return (L) query.getResultList();
     }
 
     @Override
-    public Media create(Media media) {
+    public T create(T media) {
         em.persist(media);
         return media;
     }
 
     @Override
-    public boolean update(Media media) {
+    public boolean update(Object media) {
         try {
             em.merge(media);
             return true;

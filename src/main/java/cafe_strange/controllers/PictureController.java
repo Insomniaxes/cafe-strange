@@ -1,6 +1,6 @@
 package cafe_strange.controllers;
 
-import cafe_strange.interfaces.services.media.MediaService;
+import cafe_strange.interfaces.services.media.PictureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,12 +15,12 @@ public class PictureController {
     private final String FOLDER = "components/media/picture/";
 
     @Autowired
-    private MediaService mediaService;
+    private PictureService pictureService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String getGallery(Model model) {
         model.addAttribute("page", FOLDER + "pictureOverview");
-        model.addAttribute("pictures", mediaService.findAllPictures());
+        model.addAttribute("pictures", pictureService.findAll());
         return VIEW;
     }
 

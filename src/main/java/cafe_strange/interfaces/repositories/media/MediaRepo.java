@@ -2,13 +2,12 @@ package cafe_strange.interfaces.repositories.media;
 
 import cafe_strange.enums.MediaType;
 import cafe_strange.interfaces.main.MainInterface;
-import cafe_strange.models.media.Media;
-import cafe_strange.models.media.Picture;
+import cafe_strange.models.extra.Category;
 
-import java.util.List;
+public interface MediaRepo<T,L> extends MainInterface<T,L> {
 
-public interface MediaRepo extends MainInterface<Media, List<Media>> {
-
-    List<?> findAllByMediaType(MediaType mediaType);
+    L findByMediaType(MediaType mediaType);
+    T findByUrl(String url);
+    L findByCategory(MediaType mediaType, Category category);
 
 }

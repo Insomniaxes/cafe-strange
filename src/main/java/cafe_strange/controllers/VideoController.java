@@ -1,6 +1,7 @@
 package cafe_strange.controllers;
 
 import cafe_strange.interfaces.services.media.MediaService;
+import cafe_strange.interfaces.services.media.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,12 +15,12 @@ public class VideoController {
     private final String FOLDER = "components/media/video/";
 
     @Autowired
-    private MediaService mediaService;
+    private VideoService videoService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String getGallery(Model model) {
         model.addAttribute("page", FOLDER + "videoOverview");
-        model.addAttribute("videos", mediaService.findAllVideos());
+        model.addAttribute("videos", videoService.findAll());
         return "/media/media";
     }
 
