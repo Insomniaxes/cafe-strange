@@ -18,6 +18,9 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/events")
 public class EventController {
 
+    private final String FOLDER = "components/events/";
+    private final String VIEW = "events/eventView";
+
     @Autowired
     private EventService eventService;
     @Autowired
@@ -27,41 +30,45 @@ public class EventController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String getEventsPage(Model model) {
+        model.addAttribute("page", FOLDER + "upcomingIndex");
         model.addAttribute("upcomingEvents", eventService.findUpcoming());
-        return "/events/UpcomingEventOverview";
+        return VIEW;
     }
 
     @RequestMapping(value = "/pastEvents", method = RequestMethod.GET)
     public String getPastEvents(Model model) {
+        model.addAttribute("page", FOLDER + "pastEvents");
         model.addAttribute("pastEvents", eventService.findPast());
-        return "/events/pastEvents";
+        return VIEW;
     }
 
     @RequestMapping(value = "/{eventId}", method = RequestMethod.GET)
     public String getEventById(@PathVariable int eventId, Model model) {
+        model.addAttribute("page", FOLDER + "eventView");
         model.addAttribute("event", eventService.findById(eventId));
-        return "/events/eventView";
+        return VIEW;
     }
 
-    @RequestMapping(value = "/{eventId}/flyer", method = RequestMethod.GET)
+    @RequestMapping(value = "/flyer/{eventId}", method = RequestMethod.GET)
     public String getEventFlyer(@PathVariable int eventId, Model model) {
+        model.addAttribute("page", FOLDER + "eventFlyerView");
         model.addAttribute("event", eventService.findById(eventId));
-        return "/events/eventFlyerView";
+        return VIEW;
     }
 
     @RequestMapping(value = "/edit/{eventId}", method = RequestMethod.GET)
     public String editEventById(@PathVariable int eventId, Model model) {
-
+        model.addAttribute("page", FOLDER + "eventEditView");
         model.addAttribute("event", eventService.findById(eventId));
-        return "/events/eventEditView";
+        return VIEW;
     }
 
     @RequestMapping(value = "/update/{eventId}", method = RequestMethod.POST)
     public String updateEvent(@PathVariable int eventId,
                               @RequestParam(value = "file", required = false) MultipartFile file, Event event) {
         event.setId(eventId);
-
         if (file != null) {
+            // todo nog mogelijkheid maken voor category
             event.setPicture(pictureService.uploadPicture(file, "event", categoryService.findById(1)));
         }
         eventService.update(event);
@@ -75,22 +82,25 @@ public class EventController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String saveNewEvent(@RequestParam(value = "file", required = false) MultipartFile file,
-                               Event event,  ModelMap modelMap) {
-        if (file != null) {
-            // todo nog file aanmaken
-        }
+                               Event event,  Model model) {
+
         if (eventService.create(event) == null) {
-            modelMap.addAttribute("message",
+            model.addAttribute("message",
                     "<h1>Het evenement werd niet toegevoegd omdat er al een event gepland staat op die dag !!</h1>");
             return "/index";
         } else {
-            modelMap.addAttribute("message", "<h1>Het evenement werd toegevoegd</h1>");
+            if (file != null) {
+                // todo nog mogelijkheid maken voor category
+                event.setPicture(pictureService.uploadPicture(file, "event", categoryService.findById(1)));
+            }
+            model.addAttribute("message", "<h1>Het evenement werd toegevoegd</h1>");
         }
         return "/index";
     }
 
     @RequestMapping(value = "/delete/{eventId}", method = RequestMethod.POST)
     public String deleteEvent(@PathVariable int eventId) {
+        // todo nog check maken of het echt verwijderd mag worden
         eventService.delete(eventId);
         return "redirect:/index";
     }
