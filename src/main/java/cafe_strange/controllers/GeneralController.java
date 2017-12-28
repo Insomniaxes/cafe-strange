@@ -20,7 +20,7 @@ public class GeneralController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String getGeneralInfo(Model model) {
-        model.addAttribute("page", "generalInfo");
+        model.addAttribute("page", FOLDER + "generalInfo");
         GeneralInfo generalInfo = generalInfoService.findGeneralInfo();
         model.addAttribute("info", generalInfo);
         return VIEW;
@@ -28,8 +28,8 @@ public class GeneralController {
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public String editGeneralInfo(Model model) {
-        model.addAttribute("page", "infoForm");
-        model.addAttribute("generalInfo", generalInfoService.findGeneralInfo());
+        model.addAttribute("page", FOLDER + "infoForm");
+        model.addAttribute("info", generalInfoService.findGeneralInfo());
         return VIEW;
     }
 

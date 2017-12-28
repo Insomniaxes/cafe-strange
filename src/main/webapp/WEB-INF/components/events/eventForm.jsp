@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="wrapper">
     <div>
-        <form method="POST" enctype="multipart/form-data" >
+        <form method="POST" enctype="multipart/form-data">
             Titel:<br>
             <input name="title" value="${event.title}"> <br><br>
             Datum:<br>
@@ -11,8 +11,8 @@
             Uitgebreide info: <br>
             <textarea name="description" cols="50" rows="6">${event.description}</textarea> <br>
             Media: <br>
-            <input type="file" name="file"><br>
-            <img src="${pageContext.request.contextPath}/img/${event.picture.url}" alt="">
+            <input type="file" name="file" onchange="readURL(this);"><br>
+            <img id="newImage" src="#" alt="" />
             <c:choose>
                 <c:when test="${empty event.id}">
                     <input type="submit" name="submit" value="save" formaction="/events/create">
@@ -26,3 +26,19 @@
         </form>
     </div>
 </div>
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#newImage')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
