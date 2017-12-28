@@ -7,8 +7,8 @@
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="/events">Aankomend</a>
-                    <a href="/events/pastEvents">Afgelopen</a>
+                    <a href="/events?argName=upcoming">Aankomend</a>
+                    <a href="/events?argName=past">Afgelopen</a>
                     <a href="#">Link 3</a>
                 </div>
             </div>

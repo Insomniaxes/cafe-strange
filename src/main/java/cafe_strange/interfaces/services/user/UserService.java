@@ -1,4 +1,4 @@
-package cafe_strange.interfaces.services;
+package cafe_strange.interfaces.services.user;
 
 import cafe_strange.interfaces.main.MainInterface;
 import cafe_strange.models.user.User;

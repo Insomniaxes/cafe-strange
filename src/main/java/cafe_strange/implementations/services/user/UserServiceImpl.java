@@ -1,7 +1,7 @@
-package cafe_strange.implementations.services;
+package cafe_strange.implementations.services.user;
 
 import cafe_strange.interfaces.repositories.UserRepo;
-import cafe_strange.interfaces.services.UserService;
+import cafe_strange.interfaces.services.user.UserService;
 import cafe_strange.models.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

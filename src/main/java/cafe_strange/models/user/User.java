@@ -30,9 +30,23 @@ public class User {
     private Picture picture;
     @Column(name = "password")
     private String password;
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @Column(name = "roles", nullable = false)
     private List<Role> roles;
+
+    public User() {
+    }
+
+    public User(User user) {
+        this.username = user.getUsername();
+        this.firstName = user.getFirstName();
+        this.lastName = user.getLastName();
+        this.birthday = user.getBirthday();
+        this.gender = user.getGender();
+        this.picture = user.getPicture();
+        this.password = user.getPassword();
+        this.roles = user.getRoles();
+    }
 
     public int getId() {
         return id;

@@ -1,6 +1,6 @@
 package cafe_strange.controllers;
 
-import cafe_strange.interfaces.services.UserService;
+import cafe_strange.interfaces.services.user.UserService;
 import cafe_strange.models.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

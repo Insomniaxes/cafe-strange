@@ -27,7 +27,32 @@
 
         </dd>
     </dl>
-
+    <script>
+        $(document).ready(function () {
+            var Img = '#' + $(".folio .active").attr('id')
+            $(".folio dt img").css({
+                opacity: '0'
+            });
+            $(".folio dt img.active").css({
+                opacity: '1'
+            });
+            $(".folio ul li a").click(function () {
+                var ImgId = $(this).attr("href");
+                if (ImgId != Img) {
+                    $(".folio dt .active").animate({
+                        opacity: "0"
+                    }, 600, function () {
+                        $(this).removeClass('active');
+                    })
+                    $(ImgId).animate({
+                        opacity: "1"
+                    }, 600).addClass('active');
+                }
+                Img = ImgId;
+                return false;
+            })
+        });
+    </script>
 </div>
 
 
