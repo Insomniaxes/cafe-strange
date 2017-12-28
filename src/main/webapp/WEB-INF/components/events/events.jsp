@@ -3,7 +3,7 @@
 <div class="wrapper">
     <h2>Afgelopen feestjes</h2>
     <div class="wrapper">
-        <c:forEach items="${pastEvents}" var="event">
+        <c:forEach items="${events}" var="event">
             <div class="cols marg_right1">
                 <h2><strong><fmt:formatDate value="${event.date}" pattern="dd.MM.yyy"/></strong></h2>
                 <h4>${event.title}</h4>

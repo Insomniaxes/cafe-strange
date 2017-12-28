@@ -29,17 +29,29 @@ public class EventController {
     @Autowired
     private CategoryService categoryService;
 
-    @RequestMapping(method = RequestMethod.GET, params = "argName")
-    public String getEventsPage(Model model, @RequestParam("argName") String page) {
-        model.addAttribute("page", FOLDER + "/" + page);
-        model.addAttribute("upcomingEvents", eventService.findUpcoming());
+    @RequestMapping(method = RequestMethod.GET)
+    public String getEvents(Model model) {
+        model.addAttribute("page", FOLDER + "events");
+        model.addAttribute("events", eventService.findAll());
         return VIEW;
     }
 
-    @RequestMapping(value = "/pastEvents", method = RequestMethod.GET)
-    public String getPastEvents(Model model) {
-        model.addAttribute("page", FOLDER + "pastEvents");
-        model.addAttribute("pastEvents", eventService.findPast());
+    @RequestMapping(method = RequestMethod.GET, params = "argName")
+    public String getEventsPage(Model model, @RequestParam(value = "argName") String page) {
+        model.addAttribute("page", FOLDER + "events");
+        switch (page) {
+            case "upcoming":
+                model.addAttribute("events", eventService.findUpcoming());
+                break;
+            case "past":
+                model.addAttribute("events", eventService.findPast());
+                break;
+            case "all":
+                model.addAttribute("events", eventService.findAll());
+                break;
+            default:
+                System.out.println("something went wrong");
+        }
         return VIEW;
     }
 
@@ -52,14 +64,14 @@ public class EventController {
 
     @RequestMapping(value = "/flyer/{eventId}", method = RequestMethod.GET)
     public String getEventFlyer(@PathVariable int eventId, Model model) {
-        model.addAttribute("page", FOLDER + "eventFlyerView");
+        model.addAttribute("page", FOLDER + "eventFlyer");
         model.addAttribute("event", eventService.findById(eventId));
         return VIEW;
     }
 
     @PreAuthorize("hasAnyRole('ADMIN','OWNER')")
     @RequestMapping(value = "/edit/{eventId}/secure", method = RequestMethod.GET)
-    public String editEventById(@PathVariable int eventId, Model model) {
+    public String editEvent(@PathVariable int eventId, Model model) {
         model.addAttribute("page", FOLDER + "eventForm");
         model.addAttribute("event", eventService.findById(eventId));
         return VIEW;
@@ -88,7 +100,7 @@ public class EventController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String saveNewEvent(@RequestParam(value = "file", required = false) MultipartFile file,
-                               Event event,  Model model) {
+                               Event event, Model model) {
 
         if (eventService.create(event) == null) {
             model.addAttribute("message",
