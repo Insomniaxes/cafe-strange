@@ -1,7 +1,6 @@
 package cafe_strange.models.event;
 
 import cafe_strange.models.media.Media;
-import cafe_strange.models.media.Picture;
 import cafe_strange.models.user.User;
 
 import javax.persistence.*;

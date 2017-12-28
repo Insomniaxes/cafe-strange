@@ -1,6 +1,5 @@
 package cafe_strange.controllers;
 
-import cafe_strange.interfaces.services.media.MediaService;
 import cafe_strange.interfaces.services.media.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -4,14 +4,12 @@ import cafe_strange.enums.MediaType;
 import cafe_strange.interfaces.repositories.media.MediaRepo;
 import cafe_strange.models.extra.Category;
 import cafe_strange.models.media.Media;
-import cafe_strange.models.media.Picture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
-import java.util.List;
 
 @Repository
 @Transactional

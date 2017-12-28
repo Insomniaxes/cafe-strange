@@ -4,8 +4,6 @@ import cafe_strange.interfaces.services.EventService;
 import cafe_strange.interfaces.services.extra.CategoryService;
 import cafe_strange.interfaces.services.media.PictureService;
 import cafe_strange.models.event.Event;
-import cafe_strange.models.extra.Category;
-import cafe_strange.models.media.Picture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
