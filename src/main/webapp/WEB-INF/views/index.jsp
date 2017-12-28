@@ -4,7 +4,7 @@
 <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/navigation.jsp" var="navUrl"/>
 <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/index/welcome.jsp" var="welcomeUrl"/>
 <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/events/upcomingIndex.jsp" var="upcomingUrl"/>
-<Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/events/next.jsp" var="nextEventUrl"/>
+<Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/events/event.jsp" var="nextEventUrl"/>
 <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/footer.jsp" var="footerUrl"/>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +23,7 @@
                     <jsp:include page="${upcomingUrl}"/>
                 </div>
                 <div class="wrapper">
+                    <h2>Next Party</h2>
                     <jsp:include page="${nextEventUrl}"/>
                 </div>
             </article>

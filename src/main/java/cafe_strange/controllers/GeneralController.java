@@ -12,26 +12,31 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/generalInfo")
 public class GeneralController {
 
+    private final String VIEW = "/general/info";
+    private final String FOLDER = "WEB-INF/components/general/";
+
     @Autowired
     private GeneralInfoService generalInfoService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String getGeneralInfo(Model model) {
+        model.addAttribute("page", "generalInfo");
         GeneralInfo generalInfo = generalInfoService.findGeneralInfo();
         model.addAttribute("info", generalInfo);
-        return "/general/generalInfo";
+        return VIEW;
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public String editGeneralInfo(Model model) {
+        model.addAttribute("page", "infoForm");
         model.addAttribute("generalInfo", generalInfoService.findGeneralInfo());
-        return "/general/generalInfoEdit";
+        return VIEW;
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String updateGeneralInfo(GeneralInfo generalInfo) {
         generalInfoService.update(generalInfo);
-        return "/index";
+        return "redirect:/index";
     }
 
 }

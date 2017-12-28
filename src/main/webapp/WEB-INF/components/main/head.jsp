@@ -17,3 +17,4 @@
 <![endif]-->
 
 <link rel="icon" href="${pageContext.request.contextPath}/img/style/logo.png">
+<title>${pageTitle}</title>

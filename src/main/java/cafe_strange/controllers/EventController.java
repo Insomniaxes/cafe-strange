@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,8 +18,9 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/events")
 public class EventController {
 
-    private final String FOLDER = "components/events/";
+    private final String FOLDER = "WEB-INF/components/events/";
     private final String VIEW = "/events/eventView";
+    private String pageTitle;
 
     @Autowired
     private EventService eventService;
@@ -31,6 +31,7 @@ public class EventController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String getEvents(Model model) {
+        model.addAttribute("pageTitle", "Alle feestjes");
         model.addAttribute("page", FOLDER + "events");
         model.addAttribute("events", eventService.findAll());
         return VIEW;
@@ -41,17 +42,21 @@ public class EventController {
         model.addAttribute("page", FOLDER + "events");
         switch (page) {
             case "upcoming":
+                pageTitle = "Aankomende feestjes";
                 model.addAttribute("events", eventService.findUpcoming());
                 break;
             case "past":
+                pageTitle = "Afgelopen feestjes";
                 model.addAttribute("events", eventService.findPast());
                 break;
             case "all":
+                pageTitle = "Alle feestjes";
                 model.addAttribute("events", eventService.findAll());
                 break;
             default:
                 System.out.println("something went wrong");
         }
+        model.addAttribute("pageTitle", pageTitle);
         return VIEW;
     }
 
@@ -70,7 +75,7 @@ public class EventController {
     }
 
     @PreAuthorize("hasAnyRole('ADMIN','OWNER')")
-    @RequestMapping(value = "/edit/{eventId}/secure", method = RequestMethod.GET)
+    @RequestMapping(value = "/edit/{eventId}", method = RequestMethod.GET)
     public String editEvent(@PathVariable int eventId, Model model) {
         model.addAttribute("page", FOLDER + "eventForm");
         model.addAttribute("event", eventService.findById(eventId));

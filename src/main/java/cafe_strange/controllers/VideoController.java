@@ -11,16 +11,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/videos")
 public class VideoController {
 
-    private final String FOLDER = "components/media/video/";
+    private final String FOLDER = "WEB-INF/components/media/";
+    private final String VIEW = "/media/media";
+    private String pageTitle;
 
     @Autowired
     private VideoService videoService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String getGallery(Model model) {
-        model.addAttribute("page", FOLDER + "videoOverview");
-        model.addAttribute("videos", videoService.findAll());
-        return "/media/media";
+        pageTitle = "Video's";
+        model.addAttribute("pageTitle", pageTitle);
+        model.addAttribute("page", FOLDER + "mediaOverview");
+        model.addAttribute("media", videoService.findAll());
+        return VIEW;
     }
 
 }

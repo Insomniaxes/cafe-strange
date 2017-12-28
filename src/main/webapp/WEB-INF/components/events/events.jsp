@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div class="wrapper">
-    <h2>Afgelopen feestjes</h2>
+    <h2>${pageTitle}</h2>
     <div class="wrapper">
         <c:forEach items="${events}" var="event">
             <div class="cols marg_right1">

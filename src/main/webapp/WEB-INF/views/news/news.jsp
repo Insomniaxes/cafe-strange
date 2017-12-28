@@ -1,14 +1,13 @@
 <%@ taglib prefix="Spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<Spring:url value="${pageContext.request.contextPath}/WEB-INF/${page}.jsp" var="componentUrl"/>
+<Spring:url value="${pageContext.request.contextPath}/${page}.jsp" var="componentUrl"/>
 <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/head.jsp" var="headUrl"/>
 <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/navigation.jsp" var="navigationUrl"/>
 <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/footer.jsp" var="footerUrl"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Strange | News</title>
     <jsp:include page="${headUrl}"/>
 </head>
 <body id="page5">

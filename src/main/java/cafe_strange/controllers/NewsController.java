@@ -13,14 +13,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/news")
 public class NewsController {
 
-    private final String FOLDER = "components/news/";
+    private final String FOLDER = "WEB-INF/components/news/";
     private final String VIEW = "/news/news";
+    private String pageTitle;
 
     @Autowired
     private NewsService newsService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String getNews(Model model) {
+        pageTitle = "Nieuws";
+        model.addAttribute("pageTitle", pageTitle);
         model.addAttribute("page", FOLDER + "news");
         model.addAttribute("newsList", newsService.findAll());
         return VIEW;

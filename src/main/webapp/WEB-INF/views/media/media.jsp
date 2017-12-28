@@ -2,11 +2,10 @@
 <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/head.jsp" var="headUrl"/>
 <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/navigation.jsp" var="navUrl"/>
 <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/footer.jsp" var="footerUrl"/>
-<Spring:url value="${pageContext.request.contextPath}/WEB-INF/${page}.jsp" var="componentUrl"/>
+<Spring:url value="${pageContext.request.contextPath}/${page}.jsp" var="componentUrl"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Strange | Pictures</title>
     <jsp:include page="${headUrl}"/>
 </head>
 <body id="page3">

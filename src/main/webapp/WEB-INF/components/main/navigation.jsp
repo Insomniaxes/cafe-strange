@@ -3,13 +3,13 @@
         <li><a href="/home">Home</a> </li>
         <li>
             <div class="dropdown">
-                <button class="dropbtn">Evenementen
+                <button class="dropbtn">feestjes
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="/events?argName=upcoming">Aankomend evenementen</a>
-                    <a href="/events?argName=past">Afgelopen evenementen</a>
-                    <a href="/events?argName=all">Alle evenementen</a>
+                    <a href="/events?argName=upcoming">Aankomend feestjes</a>
+                    <a href="/events?argName=past">Afgelopen feestjes</a>
+                    <a href="/events?argName=all">Alle feestjes</a>
                 </div>
             </div>
         </li>

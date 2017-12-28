@@ -26,6 +26,7 @@ public class MainController {
     public String getIndex(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
         session.setAttribute("openingHours", openingHoursService.findOpeningHours());
+        model.addAttribute("pageTitle", "Cafe Strange");
         model.addAttribute("upcomingEvents", eventService.findUpcoming());
         model.addAttribute("event", eventService.findNext());
         model.addAttribute("info", infoService.findIntroInfo());
