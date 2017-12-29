@@ -1,7 +1,7 @@
 package cafe_strange.implementations.services.media;
 
 import cafe_strange.enums.MediaType;
-import cafe_strange.interfaces.repositories.media.MediaRepo;
+import cafe_strange.interfaces.repositories.media.PictureRepo;
 import cafe_strange.interfaces.services.media.PictureService;
 import cafe_strange.models.extra.Category;
 import cafe_strange.models.media.Picture;
@@ -21,27 +21,27 @@ import java.util.List;
 public class PictureServiceImp implements PictureService {
 
     @Autowired
-    private MediaRepo<Picture, List<Picture>> mediaRepo;
+    private PictureRepo pictureRepo;
 
     @Override
     public Picture findById(int id) {
-        return mediaRepo.findById(id);
+        return pictureRepo.findById(id);
     }
 
     @Override
     public Picture findByUrl(String url) {
-        return mediaRepo.findByUrl(url);
+        return pictureRepo.findByUrl(url);
     }
 
     @Override
     public List<Picture> findAll() {
-        return mediaRepo.findByMediaType(MediaType.PICTURE);
+        return pictureRepo.findByMediaType(MediaType.PICTURE);
     }
 
 
     @Override
     public List<Picture> findByCategory(Category category) {
-        return mediaRepo.findByCategory(MediaType.PICTURE, category);
+        return pictureRepo.findByCategory(MediaType.PICTURE, category);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class PictureServiceImp implements PictureService {
             byte[] bytes = file.getBytes();
             Path path = Paths.get(uploadFolder + file.getOriginalFilename());
             Files.write(path, bytes);
-            mediaRepo.create(picture);
+            pictureRepo.create(picture);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -68,7 +68,7 @@ public class PictureServiceImp implements PictureService {
     @Override
     public boolean delete(int id) {
         try {
-            mediaRepo.delete(id);
+            pictureRepo.delete(id);
             return true;
         } catch (Exception e) {
             return false;

@@ -1,7 +1,7 @@
 package cafe_strange.implementations.services.media;
 
 import cafe_strange.enums.MediaType;
-import cafe_strange.interfaces.repositories.media.MediaRepo;
+import cafe_strange.interfaces.repositories.media.VideoRepo;
 import cafe_strange.interfaces.services.media.VideoService;
 import cafe_strange.models.extra.Category;
 import cafe_strange.models.media.Video;
@@ -16,16 +16,16 @@ import java.util.List;
 public class VideoServiceImpl implements VideoService {
 
     @Autowired
-    private MediaRepo<Video, List<Video>> mediaRepo;
+    private VideoRepo videoRepo;
 
     @Override
     public List<Video> findByCategory(Category category) {
-        return mediaRepo.findByCategory(MediaType.VIDEO, category);
+        return videoRepo.findByCategory(MediaType.VIDEO, category);
     }
 
     @Override
     public Video findByUrl(String url) {
-        return mediaRepo.findByUrl(url);
+        return videoRepo.findByUrl(url);
     }
 
     @Override
@@ -35,21 +35,21 @@ public class VideoServiceImpl implements VideoService {
 
     @Override
     public List<Video> findAll() {
-        return mediaRepo.findByMediaType(MediaType.VIDEO);
+        return videoRepo.findByMediaType(MediaType.VIDEO);
     }
 
     @Override
     public Video create(Video video) {
-        return mediaRepo.create(video);
+        return videoRepo.create(video);
     }
 
     @Override
     public boolean update(Video video) {
-        return mediaRepo.update(video);
+        return videoRepo.update(video);
     }
 
     @Override
     public boolean delete(int id) {
-        return mediaRepo.delete(id);
+        return videoRepo.delete(id);
     }
 }
