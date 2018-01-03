@@ -30,7 +30,7 @@ public class MainController {
         model.addAttribute("upcomingEvents", eventService.findUpcoming());
         model.addAttribute("event", eventService.findNext());
         model.addAttribute("info", infoService.findIntroInfo());
-        return "/test";
+        return "/test.jsp";
     }
 
 }
