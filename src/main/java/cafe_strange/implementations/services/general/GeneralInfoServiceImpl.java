@@ -24,8 +24,8 @@ public class GeneralInfoServiceImpl implements GeneralInfoService {
     @Override
     public GeneralInfo findIntroInfo() {
         GeneralInfo info = findGeneralInfo();
-        if (info.getExtendedInfo().length() > 150) {
-            info.setExtendedInfo(info.getExtendedInfo().substring(0, 150) + "...<br><b><a href='/generalInfo'>Lees Meer</a></b>");
+        if (info.getExtendedInfo().length() > 250) {
+            info.setExtendedInfo(info.getExtendedInfo().substring(0, 250) + "...<br><br><b><a href='/generalInfo'>Lees Meer</a></b>");
         }
         return info;
     }
