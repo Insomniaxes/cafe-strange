@@ -23,7 +23,7 @@
                     <jsp:include page="${upcomingUrl}"/>
                 </div>
                 <div class="wrapper">
-                    <h2>Eerstkomende feestje:</h2>
+                    <h2>Eerstkomend feestje:</h2>
                     <jsp:include page="${nextEventUrl}"/>
                 </div>
             </article>
