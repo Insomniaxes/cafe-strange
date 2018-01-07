@@ -43,15 +43,15 @@ public class EventController {
         model.addAttribute("page", FOLDER + "events");
         switch (page) {
             case "upcoming":
-                pageTitle = "Aankomende feestjes";
+                pageTitle = "Aankomend";
                 model.addAttribute("events", eventService.findUpcoming());
                 break;
             case "past":
-                pageTitle = "Afgelopen feestjes";
+                pageTitle = "Afgelopen";
                 model.addAttribute("events", eventService.findPast());
                 break;
             case "all":
-                pageTitle = "Alle feestjes";
+                pageTitle = "Alle";
                 model.addAttribute("events", eventService.findAll());
                 break;
             default:

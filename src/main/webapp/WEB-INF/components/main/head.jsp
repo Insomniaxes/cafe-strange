@@ -1,21 +1,5 @@
-
 <meta charset="utf-8">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" type="text/css" media="all">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css" type="text/css" media="all">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css" media="all">
-<script src="${pageContext.request.contextPath}/js/jquery-1.6.js"></script>
-<script src="${pageContext.request.contextPath}/js/cufon-yui.js"></script>
-<script src="${pageContext.request.contextPath}/js/cufon-replace.js"></script>
-<script src="${pageContext.request.contextPath}/js/NewsGoth_BT_400.font.js"></script>
-<script src="${pageContext.request.contextPath}/js/NewsGoth_BT_700.font.js"></script>
-<script src="${pageContext.request.contextPath}/js/jcarousellite.js"></script>
-<script src="${pageContext.request.contextPath}/js/jquery.easing.1.3.js"></script>
-<script src="${pageContext.request.contextPath}/js/jquery.mousewheel.js"></script>
-<script src="${pageContext.request.contextPath}/js/atooltip.jquery.js"></script>
-<!--[if lt IE 9]>
-<script src="${pageContext.request.contextPath}/js/html5.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ie.css" type="text/css" media="all">
-<![endif]-->
-
-<link rel="icon" href="${pageContext.request.contextPath}/img/style/logo.png">
-<title>${pageTitle}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+      integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">

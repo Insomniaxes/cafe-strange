@@ -1,1 +1,0 @@
-<h1>Hier moet nog het formulier komen om nieuws te editen</h1>
