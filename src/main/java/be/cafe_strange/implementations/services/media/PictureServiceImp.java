@@ -64,7 +64,7 @@ public class PictureServiceImp implements PictureService {
             byte[] bytes = file.getBytes();
             Path path = Paths.get(uploadFolder + file.getOriginalFilename());
             Files.write(path, bytes);
-            pictureRepo.create(picture);
+            create(picture);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -87,7 +87,8 @@ public class PictureServiceImp implements PictureService {
     }
 
     @Override
-    public Picture create(Picture object) {
+    public Picture create(Picture picture) {
+        pictureRepo.create(picture);
         return null;
     }
 

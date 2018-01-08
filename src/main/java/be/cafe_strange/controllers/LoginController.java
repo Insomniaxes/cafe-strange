@@ -4,6 +4,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -14,9 +15,14 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class LoginController {
 
+    private final String VIEW = "/login";
+    private final String FOLDER = "WEB-INF/components/main/";
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String getLoginInForm() {
-        return "/loginView";
+    public String getLoginInForm(Model model) {
+        model.addAttribute("pageTitle", "login");
+        model.addAttribute("page", FOLDER + "login");
+        return VIEW;
     }
 
     @RequestMapping(value="/logout", method = RequestMethod.GET)

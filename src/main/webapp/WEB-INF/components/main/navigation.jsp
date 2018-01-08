@@ -50,7 +50,8 @@
                 <c:choose>
                     <c:when test="${pageContext.request.userPrincipal.authenticated}">
                         <sec:authentication var="user" property="principal"/>
-                        <li><a href="/users/${user.id}">Welkom ${user.firstName}</a></li>
+                        <li><a href="/users/${user.id}">Welkom ${user.firstName}</a>
+                        <form action="/logout"><button>Logout</button></form></li>
                     </c:when>
                     <c:otherwise>
                         <li><p class="navbar-text">Already have an account?</p></li>

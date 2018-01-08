@@ -59,7 +59,7 @@ public class MediaRepoImpl<T,L> implements MediaRepo<T,L> {
     }
 
     @Override
-    public boolean update(Object media) {
+    public boolean update(T media) {
         try {
             em.merge(media);
             return true;
