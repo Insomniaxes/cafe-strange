@@ -16,14 +16,14 @@
                 <a class="nav-link" href="#">Link</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown"
+                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">Evenementen</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
                     <a class="dropdown-item" href="/events?argName=upcoming">Aankomend</a>
                     <a class="dropdown-item" href="/events?argName=past">Afgelopen</a>
                     <a class="dropdown-item" href="/events?argName=all">Alle</a>
                     <sec:authorize access="hasAnyRole('ADMIN','OWNER')">
-                        <a class="dropdown-item" href="#">Nieuw aanmaken</a>
+                        <a class="dropdown-item" href="/events/new">Nieuw aanmaken</a>
                     </sec:authorize>
                 </div>
             </li>
@@ -45,7 +45,7 @@
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="Username" name="username">
                     <input class="form-control mr-sm-2" type="password" placeholder="Password" name="password">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" formaction="login"
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" formaction="/login"
                             formmethod="post">Login
                     </button>
                 </form>

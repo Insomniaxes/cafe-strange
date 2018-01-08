@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class EventController {
 
     private final String FOLDER = "WEB-INF/components/events/";
-    private final String VIEW = "/events/eventView";
+    private final String VIEW = "/eventView";
     private String pageTitle;
 
     @Autowired
@@ -80,6 +80,7 @@ public class EventController {
     public String editEvent(@PathVariable int eventId, Model model) {
         model.addAttribute("page", FOLDER + "eventForm");
         model.addAttribute("event", eventService.findById(eventId));
+        model.addAttribute("pageTitle", "Edit event");
         return VIEW;
     }
 

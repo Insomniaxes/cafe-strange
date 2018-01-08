@@ -20,14 +20,11 @@ mark, rp, rt, ruby, summary, time {
 /* Global properties ======================================================== */
 
 body {
-    width: 1920px;
-    height: 961px;
     background: #000 url(../../img/site/bg/bg.png) no-repeat fixed center 0;
     border:0;
     font:14px Arial, Helvetica, sans-serif;
     color:#7f7f7f;
     line-height:25px;
-    min-width:960px;
 }
 .ic, .ic a {
     border:0;
@@ -113,14 +110,7 @@ p {
 }
 /* ============================= header ====================== */
 header {
-    height:205px;
-}
-#logo {
-    display:block;
-    text-indent:-9999px;
-    background:url(../images/logo.png) 0 0 no-repeat;
-    width:273px;
-    height:86px;
+    height:100px;
 }
 #menu {
     width:100%;
