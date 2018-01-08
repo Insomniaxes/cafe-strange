@@ -1,4 +1,5 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="/home">Cafe-Strange</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
@@ -35,10 +36,20 @@
                 </div>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Username" name="username">
-            <input class="form-control mr-sm-2" type="password" placeholder="Password" name="password">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" formaction="login" formmethod="post">Login</button>
-        </form>
+        <c:choose>
+            <c:when test="${pageContext.request.userPrincipal.authenticated}">
+                <sec:authentication var="user" property="principal" />
+                <a href="/users/${user.id}">${user.firstName} ${user.lastName}</a>
+            </c:when>
+            <c:otherwise>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Username" name="username">
+                    <input class="form-control mr-sm-2" type="password" placeholder="Password" name="password">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" formaction="login"
+                            formmethod="post">Login
+                    </button>
+                </form>
+            </c:otherwise>
+        </c:choose>
     </div>
 </nav>
