@@ -1,7 +1,7 @@
 <link type="text/css" href="${pageContext.request.contextPath}/css/signin.css">
 <body>
 <div class="container">
-    <form class="form-signin">
+    <form class="form-signin" action="/login" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input name="username" type="text" id="inputEmail" class="form-control" placeholder="Username" required

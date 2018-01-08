@@ -87,9 +87,7 @@ header {
     margin: 0 auto;
     width: 70%;
 }
-.bg1 {
-    background:url(../img/site/bg/bg_menu.png) 0 0 repeat-x
-}
+
 /* ============================= main layout ====================== */
 
 a {
@@ -115,9 +113,8 @@ h2 {
 h2#welcom {
     font-size:61px;
     line-height:1.2em;
-    padding:0 0 9px 0;
+    padding:0 0 0 0;
     letter-spacing:-5px;
-    margin-left:-5px;
 }
 h2 strong {
     font-weight:700;
@@ -151,7 +148,7 @@ p {
     overflow:hidden
 }
 #page1 .box {
-    padding-top:34px;
+
 }
 #content {
     padding-bottom:18px;
