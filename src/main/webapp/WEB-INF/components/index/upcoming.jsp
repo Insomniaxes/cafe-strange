@@ -6,7 +6,7 @@
         <ul>
             <c:forEach items="${upcomingEvents}" var="event">
                 <li><span class="dropcap_1"><fmt:formatDate value="${event.date}" pattern="dd"/><span><fmt:formatDate value="${event.date}" pattern="MMM"/></span></span>
-                    <p><span class="color1">Lorem ipsum dolor sit amet</span><br>
+                    <p><span class="color1">${event.title}</span><br>
                         adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
                         <a href="/events/${event.id}" class="link1">Details</a></p>
                 </li>
@@ -16,3 +16,19 @@
     <a href="#" class="next"></a> <a href="#" class="prev"></a>
 </section>
 
+<script>
+    $(document).ready(function () {
+        //gallery
+        $("#gallery1").jCarouselLite({
+            btnNext: ".next",
+            btnPrev: ".prev",
+            mouseWheel: true,
+            vertical: true,
+            circular: true,
+            visible: 2,
+            speed: 600,
+            easing: 'easeOutCirc'
+        });
+        Cufon.now();
+    })
+</script>

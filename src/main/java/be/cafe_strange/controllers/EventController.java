@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class EventController {
 
     private final String FOLDER = "WEB-INF/components/events/";
-    private final String VIEW = "/eventView";
+    private final String VIEW = "/event";
     private String pageTitle;
 
     @Autowired

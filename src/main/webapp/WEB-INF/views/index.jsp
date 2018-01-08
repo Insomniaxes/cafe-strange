@@ -8,10 +8,10 @@
 <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/index/nextEvent.jsp" var="nextUrl"/>
 <!DOCTYPE html>
 <html lang="en">
+<body id="page1">
 <head>
     <jsp:include page="${headUrl}"/>
 </head>
-<body id="page1">
 <div class="bg1">
     <div class="main">
         <!--header -->

@@ -26,6 +26,11 @@ body {
     color:#7f7f7f;
     line-height:25px;
 }
+
+nav {
+    background-color: black;
+}
+
 .ic, .ic a {
     border:0;
     float:right;
@@ -54,7 +59,7 @@ body {
     width: 960px;
 }
 .bg1 {
-    background:url(../images/bg_menu.png) 0 0 repeat-x
+    background:url(../../img/site/bg/bg_menu.png) 0 0 repeat-x
 }
 /* ============================= main layout ====================== */
 
@@ -115,12 +120,12 @@ header {
 #menu {
     width:100%;
     overflow:hidden;
-    background:url(../images/menu_line.png) 0 0 no-repeat
+    background:url(../../img/site/bg/menu_line.png) 0 0 no-repeat
 }
 #menu > li {
     float:left;
     padding-right:2px;
-    background:url(../images/menu_line.png) right 0 no-repeat
+    background:url(../../img/site/bg/menu_line.png) right 0 no-repeat
 }
 #menu > li > a {
     display:block;
@@ -134,18 +139,19 @@ header {
     letter-spacing:-1px;
 }
 #menu > li > a:hover, #menu > .active > a {
-    background:url(../images/menu_active.gif) top repeat-x;
+    background:url(../../img/site/bg/menu_active.gif) top repeat-x;
     color:#fff
 }
 /* ============================= content ====================== */
 
 .box {
-    background:url(../images/bg_content.png) repeat;
+    background:url(../../img/site/bg/bg_content.png) repeat;
     padding:20px 46px 50px 49px;
     overflow:hidden
 }
 #page1 .box {
     padding-top:34px;
+    background-color: transparent;
 }
 #content {
     padding-bottom:18px;
@@ -386,7 +392,7 @@ footer a:hover {
     margin-bottom:5px;
 }
 #ContactForm .button:hover {
-    background: url(../images/menu_active.gif) top repeat-x;
+    background: url(../../img/site/bg/menu_active.gif) top repeat-x;
     color:#fff;
     box-shadow: 0 0 6px rgba(152, 103, 190, .5);
     -moz-box-shadow: 0 0 6px rgba(152, 103, 190, .5);
@@ -413,19 +419,16 @@ footer a:hover {
     font:14px Arial, Helvetica, sans-serif;
 }
 
-.carousel {
-    background-image: none;
-    width: 100%;
-    max-height: 400px;
-    overflow: hidden;
-    margin: 0;
-    text-align: left;
+.hide-bullets {
+    list-style:none;
+    margin-left: -40px;
+    margin-top:20px;
 }
 
-#mycarousel .carousel-caption {
-    top: 0;
-    padding-left: 10px;
-    bottom: auto;
-    text-align: left;
-    margin-left: 10px;
+.thumbnail {
+    padding: 0;
+}
+
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+    width: 100%;
 }

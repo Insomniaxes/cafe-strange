@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/pictures")
 public class PictureController {
 
-    private final String FOLDER = "WEB-INF/components/media/";
-    private final String VIEW = "/media/media";
+    private final String FOLDER = "WEB-INF/components/media/picture/";
+    private final String VIEW = "/media";
     private String pageTitle;
 
     @Autowired
@@ -22,7 +22,7 @@ public class PictureController {
     public String getGallery(Model model) {
         pageTitle = "Foto's";
         model.addAttribute("pageTitle", pageTitle);
-        model.addAttribute("page", FOLDER + "mediaOverview");
+        model.addAttribute("page", FOLDER + "pictures");
         model.addAttribute("media", pictureService.findAll());
         return VIEW;
     }
