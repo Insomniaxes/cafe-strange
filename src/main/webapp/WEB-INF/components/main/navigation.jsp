@@ -17,7 +17,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Link</a></li>
+                <sec:authorize access="hasAnyRole('ADMIN','MASTER')">
+                    <li class="active"><a href="/users">Leden</a></li>
+                </sec:authorize>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Evenementen <span
                             class="caret"></span></a>
@@ -25,7 +27,7 @@
                         <li><a class="dropdown-item" href="/events?argName=upcoming">Aankomend</a></li>
                         <li><a class="dropdown-item" href="/events?argName=past">Afgelopen</a></li>
                         <li><a class="dropdown-item" href="/events?argName=all">Alle</a></li>
-                        <sec:authorize access="hasAnyRole('ADMIN','OWNER')">
+                        <sec:authorize access="hasAnyRole('ADMIN','MASTER')">
                             <li class="divider"></li>
                             <li><a class="dropdown-item" href="/events/new">Nieuw aanmaken</a></li>
                         </sec:authorize>
@@ -50,8 +52,8 @@
                 <c:choose>
                     <c:when test="${pageContext.request.userPrincipal.authenticated}">
                         <sec:authentication var="user" property="principal"/>
-                        <li><a href="/users/${user.id}">Welkom ${user.firstName} ${user.id}</a>
-                        <form action="/logout"><button>Logout</button></form></li>
+                        <li>Welkom ${user.firstName}</li>
+                        <form action="/logout"><button>Logout</button></form>
                     </c:when>
                     <c:otherwise>
                         <li><p class="navbar-text">Already have an account?</p></li>

@@ -1,5 +1,6 @@
 package be.cafe_strange.controllers;
 
+import be.cafe_strange.enums.Gender;
 import be.cafe_strange.models.user.User;
 import be.cafe_strange.interfaces.services.user.UserService;
 import be.cafe_strange.models.user.User;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/users")
-@PreAuthorize("hasAnyRole('ADMIN', 'OWNER')")
+@PreAuthorize("hasAnyRole('ADMIN', 'MASTER')")
 public class UserController {
 
     private final String FOLDER = "WEB-INF/components/users";
@@ -52,6 +53,7 @@ public class UserController {
 
     @RequestMapping(value = "/edit/{userId}", method = RequestMethod.GET)
     public String editUser(@PathVariable int userId, Model model) {
+        model.addAttribute("genders", Gender.values());
         model.addAttribute("page", FOLDER + "/userForm1");
         model.addAttribute(userService.findById(userId));
         return VIEW;
@@ -69,7 +71,7 @@ public class UserController {
         user.setId(userId);
         userService.update(user);
         model.addAttribute("user", user);
-        return VIEW;
+        return "redirect:" + VIEW;
     }
 
     @RequestMapping(value = "/delete/{userId}", method = RequestMethod.DELETE)

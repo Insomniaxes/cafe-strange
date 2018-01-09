@@ -1,5 +1,7 @@
 package be.cafe_strange.models.user;
 
+import be.cafe_strange.enums.AuthorizationRole;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,7 +13,7 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column(name = "role")
-    private String role;
+    private AuthorizationRole role;
 
     public int getId() {
         return id;
@@ -21,11 +23,11 @@ public class Role {
         this.id = id;
     }
 
-    public String getRole() {
+    public AuthorizationRole getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(AuthorizationRole role) {
         this.role = role;
     }
 }

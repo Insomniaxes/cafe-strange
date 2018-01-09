@@ -3,7 +3,6 @@ package be.cafe_strange.implementations.services.user;
 import be.cafe_strange.models.user.User;
 import be.cafe_strange.interfaces.repositories.UserRepo;
 import be.cafe_strange.interfaces.services.user.UserService;
-import be.cafe_strange.models.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,6 +52,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean update(User user) {
+        user.setPassword(findById(user.getId()).getPassword());
+        user.setRoles(findById(user.getId()).getRoles());
+        user.setJoinDate(findById(user.getId()).getJoinDate());
         return userRepo.update(user);
     }
 

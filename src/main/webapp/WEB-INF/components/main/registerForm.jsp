@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <style>
     .container {
         width: 50%;
@@ -59,8 +60,10 @@
                             <!-- /input-group -->
                         </div>
                         <div class="col-sm-6">
-                            <h4 style="color:#00b1b1;"><input name="username" value=""></h4></span>
-                            <span><p><input disabled value="MEMBER"></p></span>
+                            <h3 style="color:#00b1b1;"><input name="username" value=""></h3></span>
+                            <span>
+                            <p>MEMBER</p>
+                            </span>
                         </div>
                         <div class="clearfix"></div>
                         <hr style="margin:5px 0 5px 0;">
@@ -90,8 +93,14 @@
                         <div class="clearfix"></div>
                         <div class="bot-border"></div>
 
-                        <div class="col-sm-5 col-xs-6 tital ">Lid sinds:</div>
+                        <div class="col-sm-5 col-xs-6 tital infoText">Lid sinds:</div>
                         <div class="col-sm-7">${user.joinDate}</div>
+
+                        <div class="clearfix"></div>
+                        <div class="bot-border"></div>
+
+                        <div class="col-sm-5 col-xs-6 tital infoText">Email:</div>
+                        <div class="col-sm-7"><input name="email" value="${user.email}"></div>
 
                         <div class="clearfix"></div>
                         <div class="bot-border"></div>
@@ -102,7 +111,9 @@
                         <div class="clearfix"></div>
                         <div class="bot-border"></div>
 
-                        <div align="centre"><button>Opslaan</button></div>
+                        <div align="centre">
+                            <button>Opslaan</button>
+                        </div>
                         <!-- /.box-body -->
                     </div>
                     <!-- /.box -->

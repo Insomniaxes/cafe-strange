@@ -14,7 +14,7 @@
                 <li><a href="#">welke weet ik nog niet</a></li>
             </ul>
         </div>
-        <sec:authorize access="hasAnyRole('ADMIN', 'OWNER')">
+        <sec:authorize access="hasAnyRole('ADMIN', 'MASTER')">
             <br>
             <form action="/events/edit/${event.id}">
                 <button>Aanpassen</button>

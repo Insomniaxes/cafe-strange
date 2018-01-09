@@ -146,7 +146,7 @@ public class User {
         return roles;
     }
 
-    public void setRole(List<Role> role) {
+    public void setRoles(List<Role> role) {
         this.roles = role;
     }
 

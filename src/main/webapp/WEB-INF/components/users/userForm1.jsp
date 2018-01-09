@@ -59,7 +59,7 @@
                             <!-- /input-group -->
                         </div>
                         <div class="col-sm-6">
-                            <h4 style="color:#00b1b1;">${user.username} </h4></span>
+                            <h4 style="color:#00b1b1;"><input name="username" value="${user.username}"> </h4></span>
                             <span><p><c:forEach items="${user.roles}" var="role">${role.role}</c:forEach></p></span>
                         </div>
                         <div class="clearfix"></div>
@@ -85,7 +85,13 @@
                         <div class="bot-border"></div>
 
                         <div class="col-sm-5 col-xs-6 tital ">Geslacht:</div>
-                        <div class="col-sm-7"><input name="gender" value="${user.gender}"></div>
+                        <div class="col-sm-7">
+                            <select name="gender">
+                                <c:forEach items="${genders}" var="gender">
+                                    <option value="${gender}">${gender}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
 
                         <div class="clearfix"></div>
                         <div class="bot-border"></div>
@@ -96,13 +102,21 @@
                         <div class="clearfix"></div>
                         <div class="bot-border"></div>
 
+                        <div class="col-sm-5 col-xs-6 tital infoText">Email:</div>
+                        <div class="col-sm-7"><input name="email" value="${user.email}"></div>
+
+                        <div class="clearfix"></div>
+                        <div class="bot-border"></div>
+
                         <div class="col-sm-5 col-xs-6 tital ">Nationaliteit:</div>
                         <div class="col-sm-7"><input name="nationality" value="${user.nationality}"></div>
 
                         <div class="clearfix"></div>
                         <div class="bot-border"></div>
 
-                        <div align="centre"><button>Opslaan</button></div>
+                        <div align="centre">
+                            <button>Opslaan</button>
+                        </div>
                         <!-- /.box-body -->
                     </div>
                     <!-- /.box -->
