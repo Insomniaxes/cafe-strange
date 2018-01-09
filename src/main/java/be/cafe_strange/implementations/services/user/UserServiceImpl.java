@@ -33,13 +33,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findAll(String sortingFactor) {
-        List<User> users = userRepo.findAll();
-        // todo nog sorteer switch toevoegen
-        return users;
-    }
-
-    @Override
     public List<User> findByLastName(String lastName) {
         return userRepo.findByLastName(lastName);
     }

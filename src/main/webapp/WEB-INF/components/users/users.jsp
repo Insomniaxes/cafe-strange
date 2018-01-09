@@ -11,10 +11,12 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th>id</th>
+                    <th><button data-sort="0">id</button></th>
                     <th>Gebruikersnaam</th>
                     <th>Voornaam</th>
-                    <th>Achternaam</th>
+                    <th>
+                        <button data-sort="0">Achternaam</button>
+                    </th>
                     <th>Geboortedatum</th>
                     <th>Geslacht</th>
                     <th>Email</th>
@@ -23,21 +25,43 @@
                 </thead>
                 <tbody>
                 <c:forEach items="${users}" var="user">
-                    <tr>
-                        <td>${user.id}</td>
-                        <td><a href="/users/${user.id}">${user.username}</a></td>
-                        <td>${user.firstName}</td>
-                        <td>${user.lastName}</td>
-                        <td>${user.birthday}</td>
-                        <td>${user.gender}</td>
-                        <td>${user.email}</td>
-                        <c:forEach items="${user.roles}" var="role">
-                            <td>${role.role}</td>
-                        </c:forEach>
-                    </tr>
+                    <div class="clist">
+                        <tr>
+                            <td>${user.id}</td>
+                            <td><a href="/users/${user.id}">${user.username}</a></td>
+                            <td>${user.firstName}</td>
+                            <td>${user.lastName}</td>
+                            <td>${user.birthday}</td>
+                            <td>${user.gender}</td>
+                            <td>${user.email}</td>
+                            <c:forEach items="${user.roles}" var="role">
+                                <td>${role.role}</td>
+                            </c:forEach>
+                        </tr>
+                    </div>
                 </c:forEach>
                 </tbody>
             </table>
         </div>
     </div>
 </article>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('button').on('click', function () {
+            var s = $(this).data('sort');
+            console.log(s);
+            if (s === 0) {
+                $(this).data('sort', 1);
+                $('.clist div').sort(function (a, b) {
+                    return a.dataset.sid < b.dataset.sid
+                }).appendTo('.clist')
+            } else {
+                $(this).data('sort', 0);
+                $('.clist div').sort(function (a, b) {
+                    return a.dataset.sid > b.dataset.sid
+                }).appendTo('.clist')
+            }
+        });
+    });
+</script>
