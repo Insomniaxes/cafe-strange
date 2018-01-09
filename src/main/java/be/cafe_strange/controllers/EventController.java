@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
@@ -30,9 +27,14 @@ public class EventController {
     @Autowired
     private CategoryService categoryService;
 
+    @ModelAttribute("pageTitle")
+    public String getPageTitle() {
+        pageTitle = "Evenementen";
+        return pageTitle;
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     public String getEvents(Model model) {
-        model.addAttribute("pageTitle", "Alle feestjes");
         model.addAttribute("page", FOLDER + "events");
         model.addAttribute("events", eventService.findAll());
         return VIEW;
@@ -43,15 +45,14 @@ public class EventController {
         model.addAttribute("page", FOLDER + "events");
         switch (page) {
             case "upcoming":
-                pageTitle = "Aankomend";
+                pageTitle = "Aankomende evenementen";
                 model.addAttribute("events", eventService.findUpcoming());
                 break;
             case "past":
-                pageTitle = "Afgelopen";
+                pageTitle = "Afgelopen evenementen";
                 model.addAttribute("events", eventService.findPast());
                 break;
             case "all":
-                pageTitle = "Alle";
                 model.addAttribute("events", eventService.findAll());
                 break;
             default:
@@ -80,7 +81,7 @@ public class EventController {
     public String editEvent(@PathVariable int eventId, Model model) {
         model.addAttribute("page", FOLDER + "eventForm");
         model.addAttribute("event", eventService.findById(eventId));
-        model.addAttribute("pageTitle", "Edit event");
+        model.addAttribute("pageTitle", "Evenement aanpassen");
         return VIEW;
     }
 

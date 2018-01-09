@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/news")
 public class NewsController {
 
-    private final String FOLDER = "WEB-INF/components/news/";
-    private final String VIEW = "/news/news";
+    private final String FOLDER = "WEB-INF/components/news";
+    private final String VIEW = "/news";
     private String pageTitle;
 
     @Autowired
@@ -25,23 +25,31 @@ public class NewsController {
     public String getNews(Model model) {
         pageTitle = "Nieuws";
         model.addAttribute("pageTitle", pageTitle);
-        model.addAttribute("page", FOLDER + "news");
-        model.addAttribute("newsList", newsService.findAll());
+        model.addAttribute("page", FOLDER + "/news");
+        model.addAttribute("news", newsService.findAll());
         return VIEW;
     }
 
     @RequestMapping(value = "/{newsId}", method = RequestMethod.GET)
     public String getNewsById(@PathVariable int newsId, Model model) {
-        model.addAttribute("page", FOLDER + "article");
-        model.addAttribute("news", newsService.findById(newsId));
+        model.addAttribute("page", FOLDER + "/article");
+        model.addAttribute("article", newsService.findById(newsId));
         return VIEW;
     }
 
     @RequestMapping(value = "/edit/{newsId}", method = RequestMethod.GET)
-    public String editNews(News news, Model model) {
-        model.addAttribute("page", FOLDER + "newsEdit");
-        model.addAttribute("news", news);
+    public String editArticle(@PathVariable int newsId, Model model) {
+        model.addAttribute("page", FOLDER + "/articleForm");
+        model.addAttribute("article", newsService.findById(newsId));
         return VIEW;
+    }
+
+    @RequestMapping(value = "/update/{newsId}", method = RequestMethod.POST)
+    public String updateArticle(@PathVariable int newsId, News news, Model model) {
+        news.setId(newsId);
+        newsService.update(news);
+        model.addAttribute("page", FOLDER + "/article");
+        return "redirect:/";
     }
 
 }

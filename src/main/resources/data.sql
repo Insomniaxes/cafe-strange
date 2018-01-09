@@ -18,3 +18,5 @@ INSERT INTO `cafe-strange`.general_info (extended_info, intro, title) VALUES ('E
 INSERT INTO `cafe-strange`.category (category) VALUES ('Flyer');
 INSERT INTO `cafe-strange`.event (date, description, summary, title, picture_media_id) VALUES ('2017-12-31', 'Het nieuwjaarsfeest gaat plaats vinden. Dit event is ondertussel al verleden.', 'Feesten geblazen', 'Nieuwjaar 2018!', null);
 INSERT INTO `cafe-strange`.event (date, description, summary, title, picture_media_id) VALUES ('2030-12-31', 'Er gaat weer een nieuwjaarsfeest plaats vinden. Ik moet uiteraard ook een aankomend event hebben he.', 'Opnieuw feesten geblazen', 'Nieuwjaar 2031!', null);
+INSERT INTO `cafe-strange`.news (article, date, intro, source, title) VALUES ('Het volledige artikel hier', '2018-01-02', 'Een kleine intro', 'De bron uiteraard', 'Armand in het Nieuws!');
+INSERT INTO `cafe-strange`.news (article, date, intro, source, title) VALUES ('Opnieuw een volledige artikel hier', '2018-01-09', 'Weer een kleine intro', 'De bron uiteraard', 'Armand alweer in het Nieuws!');
