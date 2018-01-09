@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Calendar;
 import java.util.List;
 
 @Service
@@ -44,6 +45,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User create(User user) {
+        Calendar calendar = Calendar.getInstance();
+        user.setJoinDate(new java.sql.Date(calendar.getTime().getTime()));
         userRepo.create(user);
         return userRepo.findByUsername(user.getUsername());
     }

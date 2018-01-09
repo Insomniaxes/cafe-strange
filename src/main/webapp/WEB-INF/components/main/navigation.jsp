@@ -50,7 +50,7 @@
                 <c:choose>
                     <c:when test="${pageContext.request.userPrincipal.authenticated}">
                         <sec:authentication var="user" property="principal"/>
-                        <li><a href="/users/${user.id}">Welkom ${user.firstName}</a>
+                        <li><a href="/users/${user.id}">Welkom ${user.firstName} ${user.id}</a>
                         <form action="/logout"><button>Logout</button></form></li>
                     </c:when>
                     <c:otherwise>
@@ -96,7 +96,7 @@
                                             </form>
                                         </div>
                                         <div class="bottom text-center">
-                                            New here ? <a href="#"><b>Join Us</b></a>
+                                            New here ? <a href="/register"><b>Registreer</b></a>
                                         </div>
                                     </div>
                                 </li>

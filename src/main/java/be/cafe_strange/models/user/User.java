@@ -1,11 +1,10 @@
 package be.cafe_strange.models.user;
 
-import be.cafe_strange.models.media.Picture;
 import be.cafe_strange.enums.Gender;
 import be.cafe_strange.models.media.Picture;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 @Entity
@@ -27,6 +26,12 @@ public class User {
     private Date birthday;
     @Enumerated(EnumType.ORDINAL)
     private Gender gender;
+    @Column(name = "nationality")
+    private String nationality;
+    @Column(name = "joinDate")
+    private Date joinDate;
+    @Column(name = "email")
+    private String email;
     @OneToOne
     private Picture picture;
     @Column(name = "password")
@@ -97,6 +102,30 @@ public class User {
         this.gender = gender;
     }
 
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    public Date getJoinDate() {
+        return joinDate;
+    }
+
+    public void setJoinDate(Date joinDate) {
+        this.joinDate = joinDate;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public Picture getPicture() {
         return picture;
     }
@@ -121,4 +150,19 @@ public class User {
         this.roles = role;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthday=" + birthday +
+                ", gender=" + gender +
+                ", email='" + email + '\'' +
+                ", picture=" + picture +
+                ", password='" + password + '\'' +
+                ", roles=" + roles +
+                '}';
+    }
 }

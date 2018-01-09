@@ -50,11 +50,16 @@ public class UserController {
         return VIEW;
     }
 
+    @RequestMapping(value = "/edit/{userId}", method = RequestMethod.GET)
+    public String editUser(@PathVariable int userId, Model model) {
+        model.addAttribute("page", FOLDER + "/userForm1");
+        model.addAttribute(userService.findById(userId));
+        return VIEW;
+    }
 
-
-    @RequestMapping(value = "/create/", method = RequestMethod.POST)
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String createUser(User user, Model model) {
-        model.addAttribute("page", FOLDER + "/userForm");
+        model.addAttribute("page", FOLDER + "/userRegisterForm");
         model.addAttribute("user", userService.create(user));
         return VIEW;
     }

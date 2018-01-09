@@ -25,6 +25,13 @@ public class LoginController {
         return VIEW;
     }
 
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String getRegisterview(Model model) {
+        model.addAttribute("pageTitle", "register");
+        model.addAttribute("page", FOLDER + "registerForm");
+        return VIEW;
+    }
+
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
