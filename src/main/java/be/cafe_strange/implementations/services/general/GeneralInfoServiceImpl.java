@@ -1,6 +1,5 @@
 package be.cafe_strange.implementations.services.general;
 
-import be.cafe_strange.models.main.GeneralInfo;
 import be.cafe_strange.interfaces.repositories.general.GeneralInfoRepo;
 import be.cafe_strange.interfaces.services.general.GeneralInfoService;
 import be.cafe_strange.models.main.GeneralInfo;
@@ -25,9 +24,9 @@ public class GeneralInfoServiceImpl implements GeneralInfoService {
     @Override
     public GeneralInfo findIntroInfo() {
         GeneralInfo info = findGeneralInfo();
-        if (info.getExtendedInfo().length() > 250) {
-            info.setExtendedInfo(info.getExtendedInfo().substring(0, 250) + "...<br><br><b><a href='/generalInfo'>Lees Meer</a></b>");
-        }
+            if (info != null && info.getExtendedInfo().length() > 250) {
+                info.setExtendedInfo(info.getExtendedInfo().substring(0, 250) + "...<br><br><b><a href='/generalInfo'>Lees Meer</a></b>");
+            }
         return info;
     }
 
