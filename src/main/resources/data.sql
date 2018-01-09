@@ -20,3 +20,5 @@ INSERT INTO `cafe-strange`.event (date, description, summary, title, picture_med
 INSERT INTO `cafe-strange`.event (date, description, summary, title, picture_media_id) VALUES ('2030-12-31', 'Er gaat weer een nieuwjaarsfeest plaats vinden. Ik moet uiteraard ook een aankomend event hebben he.', 'Opnieuw feesten geblazen', 'Nieuwjaar 2031!', null);
 INSERT INTO `cafe-strange`.news (article, date, intro, source, title) VALUES ('Het volledige artikel hier', '2018-01-02', 'Een kleine intro', 'De bron uiteraard', 'Armand in het Nieuws!');
 INSERT INTO `cafe-strange`.news (article, date, intro, source, title) VALUES ('Opnieuw een volledige artikel hier', '2018-01-09', 'Weer een kleine intro', 'De bron uiteraard', 'Armand alweer in het Nieuws!');
+INSERT INTO `cafe-strange`.media (media_type, aprove, caption, title, url, category_category_id) VALUES ('1', true, 'Aerosmith', 'I don''t wanna miss a thing', 'JkK8g6FMEXE', null);
+INSERT INTO `cafe-strange`.media (media_type, aprove, caption, title, url, category_category_id) VALUES ('1', false, 'Caption', 'Hotel california', 'S9MeTn1i72g', null);

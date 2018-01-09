@@ -34,7 +34,7 @@ public class VideoServiceImpl implements VideoService {
 
     @Override
     public Video findById(int id) {
-        return findById(id);
+        return videoRepo.findById(id);
     }
 
     @Override

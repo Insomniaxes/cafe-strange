@@ -38,6 +38,11 @@
                     <ul class="dropdown-menu" role="menu">
                         <li><a class="dropdown-item" href="/pictures">Foto's</a></li>
                         <li><a class="dropdown-item" href="/videos">Filmpjes</a></li>
+                        <sec:authorize access="hasAnyRole('ADMIN','MASTER')">
+                            <li class="divider"></li>
+                            <li><a class="dropdown-item" href="/videos/new">Nieuwe video</a></li>
+                            <li><a class="dropdown-item" href="/pictures/new">Nieuwe Foto's</a></li>
+                        </sec:authorize>
                     </ul>
                 </li>
                 <li><a href="/news">Nieuws</a></li>

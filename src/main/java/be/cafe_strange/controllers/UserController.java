@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/users")
@@ -20,9 +17,16 @@ public class UserController {
 
     private final String FOLDER = "WEB-INF/components/users";
     private final String VIEW = "/users";
+    private String pageTitle;
 
     @Autowired
     private UserService userService;
+
+    @ModelAttribute("pageTitle")
+    public String getPageTitle() {
+        pageTitle = "Gebruikers";
+        return pageTitle;
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     public String getAllUsers(Model model) {
@@ -56,7 +60,7 @@ public class UserController {
     public String editUser(@PathVariable int userId, Model model) {
         model.addAttribute("genders", Gender.values());
         model.addAttribute("page", FOLDER + "/userForm1");
-        model.addAttribute(userService.findById(userId));
+        model.addAttribute("user", userService.findById(userId));
         return VIEW;
     }
 
