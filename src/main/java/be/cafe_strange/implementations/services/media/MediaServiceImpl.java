@@ -4,13 +4,13 @@ import be.cafe_strange.enums.MediaType;
 import be.cafe_strange.interfaces.repositories.MediaRepo;
 import be.cafe_strange.interfaces.services.media.MediaService;
 import be.cafe_strange.models.Category;
+import be.cafe_strange.models.media.Media;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
-@Service
-@Transactional
 public class MediaServiceImpl<T, L> implements MediaService<T, L> {
 
     @Autowired
@@ -54,16 +54,6 @@ public class MediaServiceImpl<T, L> implements MediaService<T, L> {
     @Override
     public T findByUrl(String url) {
         return mediaRepo.findByUrl(url);
-    }
-
-    @Override
-    public L findByNewsId(int newsId) {
-        return findByNewsId(newsId);
-    }
-
-    @Override
-    public L findByNewsId(int newsId, MediaType mediaType) {
-        return findByNewsId(newsId, mediaType);
     }
 
 }

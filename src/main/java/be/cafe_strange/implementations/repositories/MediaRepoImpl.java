@@ -4,12 +4,15 @@ import be.cafe_strange.enums.MediaType;
 import be.cafe_strange.interfaces.repositories.MediaRepo;
 import be.cafe_strange.models.Category;
 import be.cafe_strange.models.media.Media;
+import be.cafe_strange.models.media.Picture;
+import be.cafe_strange.models.media.Video;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 @Transactional
@@ -33,22 +36,6 @@ public class MediaRepoImpl<T,L> implements MediaRepo<T,L> {
     public T findByUrl(String url) {
         return null;
     }
-
-    @Override
-    public L findByNewsId(int id) {
-        Query query = em.createQuery("SELECT m FROM Media AS m WHERE m.newsId =:newsId");
-        query.setParameter("newsId", id);
-        return (L) query.getResultList();
-    }
-
-    @Override
-    public L findByNewsId(int id, MediaType mediaType) {
-        Query query = em.createQuery("SELECT m FROM Media AS m WHERE m.news.id = :newsId AND m.mediaType = :mediaType");
-        query.setParameter("newsId", id);
-        query.setParameter("mediaType", mediaType);
-        return (L) query.getResultList();
-    }
-
 
     @Override
     public L findByCategory(Category category) {

@@ -12,8 +12,4 @@ public interface MediaService<T, L> extends MainInterface<T, L> {
 
     T findByUrl(String url);
 
-    L findByNewsId(int id);
-
-    L findByNewsId(int id, MediaType mediaType);
-
 }
