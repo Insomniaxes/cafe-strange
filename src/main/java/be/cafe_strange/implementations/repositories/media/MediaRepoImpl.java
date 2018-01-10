@@ -1,9 +1,6 @@
 package be.cafe_strange.implementations.repositories.media;
 
 import be.cafe_strange.enums.MediaType;
-import be.cafe_strange.models.extra.Category;
-import be.cafe_strange.models.media.Media;
-import be.cafe_strange.enums.MediaType;
 import be.cafe_strange.interfaces.repositories.media.MediaRepo;
 import be.cafe_strange.models.extra.Category;
 import be.cafe_strange.models.media.Media;
@@ -38,6 +35,22 @@ public class MediaRepoImpl<T,L> implements MediaRepo<T,L> {
     }
 
     @Override
+    public L findByNewsId(int id) {
+        Query query = em.createQuery("SELECT m FROM Media AS m WHERE m.newsId =:newsId");
+        query.setParameter("newsId", id);
+        return (L) query.getResultList();
+    }
+
+    @Override
+    public L findByNewsId(int id, MediaType mediaType) {
+        Query query = em.createQuery("SELECT m FROM Media AS m WHERE m.news.id = :newsId AND m.mediaType = :mediaType");
+        query.setParameter("newsId", id);
+        query.setParameter("mediaType", mediaType);
+        return (L) query.getResultList();
+    }
+
+
+    @Override
     public L findByCategory(MediaType mediaType, Category category) {
         Query query = em.createQuery("SELECT m FROM Media AS m WHERE m.mediaType = :mediaType AND m.category = :category");
         query.setParameter("mediaType", mediaType);
@@ -46,7 +59,7 @@ public class MediaRepoImpl<T,L> implements MediaRepo<T,L> {
     }
 
     @Override
-    public L findByMediaType(MediaType mediaType) {
+    public L findAllByMediaType(MediaType mediaType) {
         Query query = em.createQuery("SELECT m FROM Media AS m WHERE m.mediaType = :mediaType");
         query.setParameter("mediaType", mediaType);
         return (L) query.getResultList();

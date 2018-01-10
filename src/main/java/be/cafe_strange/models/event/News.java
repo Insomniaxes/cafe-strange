@@ -1,7 +1,6 @@
 package be.cafe_strange.models.event;
 
-import be.cafe_strange.models.media.Picture;
-import be.cafe_strange.models.media.Picture;
+import be.cafe_strange.models.media.Media;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -26,7 +25,7 @@ public class News {
     @Column(name = "source", nullable = false)
     private String source;
     @OneToMany
-    private List<Picture> pictures;
+    private List<Media> media;
 
     public int getId() {
         return id;
@@ -76,11 +75,11 @@ public class News {
         this.source = source;
     }
 
-    public List<Picture> getPictures() {
-        return pictures;
+    public List<Media> getMedia() {
+        return media;
     }
 
-    public void setPictures(List<Picture> pictures) {
-        this.pictures = pictures;
+    public void setMedia(List<Media> media) {
+        this.media = media;
     }
 }

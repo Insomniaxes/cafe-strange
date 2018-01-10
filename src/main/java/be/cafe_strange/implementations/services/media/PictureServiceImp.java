@@ -4,23 +4,12 @@ import be.cafe_strange.enums.MediaType;
 import be.cafe_strange.interfaces.repositories.media.PictureRepo;
 import be.cafe_strange.models.extra.Category;
 import be.cafe_strange.models.media.Picture;
-import be.cafe_strange.enums.MediaType;
-import be.cafe_strange.interfaces.repositories.media.PictureRepo;
 import be.cafe_strange.interfaces.services.media.PictureService;
-import be.cafe_strange.models.extra.Category;
-import be.cafe_strange.models.media.Picture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.imageio.IIOImage;
-import javax.imageio.ImageIO;
-import javax.imageio.ImageWriteParam;
-import javax.imageio.ImageWriter;
-import javax.imageio.stream.FileImageOutputStream;
 import javax.transaction.Transactional;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -29,7 +18,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class PictureServiceImp implements PictureService {
+public class PictureServiceImp extends MediaServiceImpl<Picture, List<Picture>> implements PictureService{
 
     @Autowired
     private PictureRepo pictureRepo;
@@ -46,13 +35,18 @@ public class PictureServiceImp implements PictureService {
 
     @Override
     public List<Picture> findAll() {
-        return pictureRepo.findByMediaType(MediaType.PICTURE);
+        return pictureRepo.findAllByMediaType(MediaType.PICTURE);
     }
 
 
     @Override
     public List<Picture> findByCategory(Category category) {
         return pictureRepo.findByCategory(MediaType.PICTURE, category);
+    }
+
+    @Override
+    public List<Picture> findByNewsId(int id) {
+        return pictureRepo.findByNewsId(id);
     }
 
     @Override

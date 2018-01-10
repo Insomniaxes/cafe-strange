@@ -1,6 +1,7 @@
 package be.cafe_strange.models.media;
 
 import be.cafe_strange.enums.MediaType;
+import be.cafe_strange.models.event.News;
 import be.cafe_strange.models.extra.Category;
 import be.cafe_strange.models.extra.Comment;
 
@@ -32,6 +33,8 @@ public class Media implements Serializable {
     private boolean aproved;
     @OneToMany
     private List<Comment> comments;
+    @ManyToOne
+    private News news;
 
     public Media() {
     }

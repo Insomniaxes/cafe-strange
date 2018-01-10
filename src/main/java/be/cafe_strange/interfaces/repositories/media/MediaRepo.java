@@ -6,8 +6,12 @@ import be.cafe_strange.models.extra.Category;
 
 public interface MediaRepo<T,L> extends MainInterface<T,L> {
 
-    L findByMediaType(MediaType mediaType);
+    L findAllByMediaType(MediaType mediaType);
     T findByUrl(String url);
+
+    L findByNewsId(int id, MediaType mediaType);
+
     L findByCategory(MediaType mediaType, Category category);
+    L findByNewsId(int id);
 
 }

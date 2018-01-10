@@ -23,7 +23,7 @@
             <div class="col-sm-6" id="slider-thumbs">
                 <!-- Bottom switcher of slider -->
                 <ul class="hide-bullets">
-                    <c:forEach items="${pictures}" var="picture" varStatus="status">
+                    <c:forEach items="${media}" var="picture" varStatus="status">
                         <li class="col-sm-3">
                             <a class="thumbnail" id="carousel-selector-${status}">
                                 <img src="${pageContext.request.contextPath}/img/${picture.url}">
@@ -40,7 +40,7 @@
                             <div class="carousel slide" id="myCarousel">
                                 <!-- Carousel items -->
                                 <div class="carousel-inner">
-                                    <c:forEach items="${pictures}" var="picture" varStatus="status">
+                                    <c:forEach items="${media}" var="picture" varStatus="status">
                                         <c:choose>
                                             <c:when test="${status.first}">
                                                 <div class="active item" data-slide-number="${status}">
