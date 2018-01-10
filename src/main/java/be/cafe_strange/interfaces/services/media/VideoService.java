@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface VideoService extends MediaService<Video, List<Video>> {
 
-
 }

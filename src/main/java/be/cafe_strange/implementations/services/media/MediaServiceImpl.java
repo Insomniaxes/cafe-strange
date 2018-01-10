@@ -27,6 +27,11 @@ public class MediaServiceImpl<T, L> implements MediaService<T, L> {
     }
 
     @Override
+    public L findAllByMediaType(MediaType mediaType) {
+        return mediaRepo.findAllByMediaType(mediaType);
+    }
+
+    @Override
     public T create(T t) {
         return mediaRepo.create(t);
     }
