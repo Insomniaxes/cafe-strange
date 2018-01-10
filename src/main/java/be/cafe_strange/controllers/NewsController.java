@@ -48,7 +48,19 @@ public class NewsController {
         news.setId(newsId);
         newsService.update(news);
         model.addAttribute("page", FOLDER + "/article");
-        return "redirect:/";
+        return "redirect:/home";
+    }
+
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
+    public String getCreateForm(Model model) {
+        model.addAttribute("page", FOLDER + "/newsCreateForm");
+        return VIEW;
+    }
+
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public String createNews(News news) {
+        newsService.create(news);
+        return "redirect:/home";
     }
 
 }

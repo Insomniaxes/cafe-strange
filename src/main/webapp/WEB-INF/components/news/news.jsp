@@ -1,5 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
+<sec:authorize access="hasAnyRole('ADMIN', 'MASTER')">
+    <form action="/news/new" method="get">
+        <button>Nieuw artikel aanmaken</button>
+    </form>
+    <br>
+</sec:authorize>
+
 <c:forEach items="${news}" var="article">
     <p>${article.date}</p>
     <h2 id="welcom">${article.title}</h2>
