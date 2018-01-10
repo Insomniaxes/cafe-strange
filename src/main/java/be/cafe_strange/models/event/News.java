@@ -19,9 +19,9 @@ public class News {
     private Date date;
     @Column(name = "title", nullable = false)
     private String title;
-    @Column(name = "intro", nullable = false)
+    @Column(name = "intro", nullable = false, columnDefinition = "LONGTEXT")
     private String intro;
-    @Column(name = "article", nullable = false)
+    @Column(name = "article", nullable = false, columnDefinition = "LONGTEXT")
     private String article;
     @Column(name = "source", nullable = false)
     private String source;

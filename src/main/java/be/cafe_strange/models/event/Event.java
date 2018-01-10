@@ -21,7 +21,7 @@ public class Event implements Comparable<Event> {
     private String title;
     @Column(name = "summary", nullable = false)
     private String summary;
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition = "LONGTEXT")
     private String description;
     @OneToOne
     private Media picture;

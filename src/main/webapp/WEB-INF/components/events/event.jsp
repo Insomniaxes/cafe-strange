@@ -8,10 +8,6 @@
         <h3>${event.title}</h3>
         <p class="pad_bot1">${event.summary}</p>
         <p>${event.description}</p>
-        <ul class="list1 pad_bot1">
-            <li><a href="#">Nog enkele interessante links</a></li>
-            <li><a href="#">welke weet ik nog niet</a></li>
-        </ul>
         <sec:authorize access="hasAnyRole('ADMIN', 'MASTER')">
             <form action="/events/edit/${event.id}">
                 <button>Aanpassen</button>
