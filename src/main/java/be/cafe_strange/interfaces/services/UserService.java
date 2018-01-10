@@ -1,0 +1,14 @@
+package be.cafe_strange.interfaces.services;
+
+import be.cafe_strange.models.user.User;
+import be.cafe_strange.interfaces.MainInterface;
+
+import java.util.List;
+
+public interface UserService extends MainInterface<User, List<User>> {
+
+    List<User> findByLastName(String lastName);
+    User findByUsername(String username);
+    List<User> findByRole(String role);
+
+}

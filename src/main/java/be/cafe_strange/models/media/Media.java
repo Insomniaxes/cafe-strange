@@ -1,9 +1,9 @@
 package be.cafe_strange.models.media;
 
 import be.cafe_strange.enums.MediaType;
-import be.cafe_strange.models.event.News;
-import be.cafe_strange.models.extra.Category;
-import be.cafe_strange.models.extra.Comment;
+import be.cafe_strange.models.News;
+import be.cafe_strange.models.Category;
+import be.cafe_strange.models.Comment;
 
 import javax.persistence.*;
 import java.io.Serializable;

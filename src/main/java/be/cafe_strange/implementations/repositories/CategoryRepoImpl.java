@@ -1,7 +1,7 @@
 package be.cafe_strange.implementations.repositories;
 
-import be.cafe_strange.models.News;
-import be.cafe_strange.interfaces.repositories.NewsRepo;
+import be.cafe_strange.models.Category;
+import be.cafe_strange.interfaces.repositories.CategoryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -12,32 +12,32 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class NewsRepoImpl implements NewsRepo {
+public class CategoryRepoImpl implements CategoryRepo {
 
     @Autowired
     private EntityManager em;
 
     @Override
-    public News findById(int id) {
-        return em.find(News.class, id);
+    public Category findById(int id) {
+        return em.find(Category.class, id);
     }
 
     @Override
-    public List<News> findAll() {
-        Query query = em.createQuery("SELECT n FROM News AS n");
-        return (List<News>) query.getResultList();
+    public List<Category> findAll() {
+        Query query = em.createQuery("SELECT c FROM Category as c");
+        return query.getResultList();
     }
 
     @Override
-    public News create(News news) {
-        em.persist(news);
-        return news;
+    public Category create(Category category) {
+        em.persist(category);
+        return category;
     }
 
     @Override
-    public boolean update(News news) {
+    public boolean update(Category category) {
         try {
-            em.merge(news);
+            em.merge(category);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -48,12 +48,11 @@ public class NewsRepoImpl implements NewsRepo {
     @Override
     public boolean delete(int id) {
         try {
-            em.remove(findById(id));
+            em.remove(id);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
     }
-
 }

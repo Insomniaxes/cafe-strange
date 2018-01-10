@@ -1,11 +1,8 @@
 package be.cafe_strange.implementations.services.media;
 
-import be.cafe_strange.enums.MediaType;
-import be.cafe_strange.interfaces.repositories.media.PictureRepo;
-import be.cafe_strange.models.extra.Category;
-import be.cafe_strange.models.media.Picture;
 import be.cafe_strange.interfaces.services.media.PictureService;
-import org.springframework.beans.factory.annotation.Autowired;
+import be.cafe_strange.models.Category;
+import be.cafe_strange.models.media.Picture;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,35 +16,6 @@ import java.util.List;
 @Service
 @Transactional
 public class PictureServiceImp extends MediaServiceImpl<Picture, List<Picture>> implements PictureService{
-
-    @Autowired
-    private PictureRepo pictureRepo;
-
-    @Override
-    public Picture findById(int id) {
-        return pictureRepo.findById(id);
-    }
-
-    @Override
-    public Picture findByUrl(String url) {
-        return pictureRepo.findByUrl(url);
-    }
-
-    @Override
-    public List<Picture> findAll() {
-        return pictureRepo.findAllByMediaType(MediaType.PICTURE);
-    }
-
-
-    @Override
-    public List<Picture> findByCategory(Category category) {
-        return pictureRepo.findByCategory(MediaType.PICTURE, category);
-    }
-
-    @Override
-    public List<Picture> findByNewsId(int id) {
-        return pictureRepo.findByNewsId(id);
-    }
 
     @Override
     public Picture uploadPicture(MultipartFile file, String folder, Category category) {
@@ -63,27 +31,6 @@ public class PictureServiceImp extends MediaServiceImpl<Picture, List<Picture>> 
             e.printStackTrace();
         }
         return picture;
-    }
-
-    @Override
-    public boolean update(Picture object) {
-        return false;
-    }
-
-    @Override
-    public boolean delete(int id) {
-        try {
-            pictureRepo.delete(id);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    @Override
-    public Picture create(Picture picture) {
-        pictureRepo.create(picture);
-        return null;
     }
 
 }

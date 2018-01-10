@@ -1,8 +1,7 @@
 package be.cafe_strange.implementations.repositories;
 
-import be.cafe_strange.models.event.Event;
+import be.cafe_strange.models.Event;
 import be.cafe_strange.interfaces.repositories.EventRepo;
-import be.cafe_strange.models.event.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

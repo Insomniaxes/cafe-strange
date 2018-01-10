@@ -1,8 +1,7 @@
 package be.cafe_strange.controllers;
 
-import be.cafe_strange.models.event.News;
+import be.cafe_strange.models.News;
 import be.cafe_strange.interfaces.services.NewsService;
-import be.cafe_strange.models.event.News;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

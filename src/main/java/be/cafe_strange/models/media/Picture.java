@@ -1,7 +1,7 @@
 package be.cafe_strange.models.media;
 
 import be.cafe_strange.enums.MediaType;
-import be.cafe_strange.models.extra.Category;
+import be.cafe_strange.models.Category;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;

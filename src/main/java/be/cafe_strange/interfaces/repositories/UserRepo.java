@@ -1,8 +1,7 @@
 package be.cafe_strange.interfaces.repositories;
 
 import be.cafe_strange.models.user.User;
-import be.cafe_strange.interfaces.main.MainInterface;
-import be.cafe_strange.models.user.User;
+import be.cafe_strange.interfaces.MainInterface;
 
 import java.util.List;
 

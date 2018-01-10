@@ -1,10 +1,9 @@
 package be.cafe_strange.controllers;
 
-import be.cafe_strange.models.event.Event;
+import be.cafe_strange.models.Event;
 import be.cafe_strange.interfaces.services.EventService;
-import be.cafe_strange.interfaces.services.extra.CategoryService;
+import be.cafe_strange.interfaces.services.CategoryService;
 import be.cafe_strange.interfaces.services.media.PictureService;
-import be.cafe_strange.models.event.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;

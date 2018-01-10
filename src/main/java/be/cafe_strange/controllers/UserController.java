@@ -2,8 +2,7 @@ package be.cafe_strange.controllers;
 
 import be.cafe_strange.enums.Gender;
 import be.cafe_strange.models.user.User;
-import be.cafe_strange.interfaces.services.user.UserService;
-import be.cafe_strange.models.user.User;
+import be.cafe_strange.interfaces.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;

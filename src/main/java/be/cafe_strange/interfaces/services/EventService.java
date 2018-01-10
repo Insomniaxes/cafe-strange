@@ -1,8 +1,7 @@
 package be.cafe_strange.interfaces.services;
 
-import be.cafe_strange.models.event.Event;
-import be.cafe_strange.interfaces.main.MainInterface;
-import be.cafe_strange.models.event.Event;
+import be.cafe_strange.models.Event;
+import be.cafe_strange.interfaces.MainInterface;
 
 import java.sql.Date;
 import java.util.List;

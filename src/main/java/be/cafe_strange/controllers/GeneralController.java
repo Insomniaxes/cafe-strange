@@ -1,7 +1,7 @@
 package be.cafe_strange.controllers;
 
-import be.cafe_strange.interfaces.services.general.GeneralInfoService;
-import be.cafe_strange.models.main.GeneralInfo;
+import be.cafe_strange.interfaces.services.GeneralInfoService;
+import be.cafe_strange.models.GeneralInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;

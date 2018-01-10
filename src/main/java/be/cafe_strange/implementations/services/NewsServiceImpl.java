@@ -2,7 +2,7 @@ package be.cafe_strange.implementations.services;
 
 import be.cafe_strange.interfaces.services.media.PictureService;
 import be.cafe_strange.interfaces.services.media.VideoService;
-import be.cafe_strange.models.event.News;
+import be.cafe_strange.models.News;
 import be.cafe_strange.interfaces.repositories.NewsRepo;
 import be.cafe_strange.interfaces.services.NewsService;
 import be.cafe_strange.models.media.Media;
