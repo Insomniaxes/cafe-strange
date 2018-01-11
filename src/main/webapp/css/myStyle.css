@@ -59,6 +59,9 @@ header {
 
 /* Global properties ======================================================== */
 
+body {
+    background: url("../img/site/bg/bg.png") no-repeat fixed;
+}
 
 .ic, .ic a {
     border:0;
