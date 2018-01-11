@@ -4,12 +4,7 @@ import be.cafe_strange.enums.MediaType;
 import be.cafe_strange.interfaces.repositories.MediaRepo;
 import be.cafe_strange.interfaces.services.media.MediaService;
 import be.cafe_strange.models.Category;
-import be.cafe_strange.models.media.Media;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-import java.util.List;
 
 public abstract class MediaServiceImpl<T, L> implements MediaService<T, L> {
 
@@ -22,7 +17,7 @@ public abstract class MediaServiceImpl<T, L> implements MediaService<T, L> {
     }
 
     @Override
-    public L findAllByMediaType(MediaType mediaType) {
+    public L findAll(MediaType mediaType) {
         return mediaRepo.findAllByMediaType(mediaType);
     }
 

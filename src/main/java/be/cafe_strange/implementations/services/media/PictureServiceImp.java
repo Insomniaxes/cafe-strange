@@ -1,6 +1,5 @@
 package be.cafe_strange.implementations.services.media;
 
-import be.cafe_strange.enums.MediaType;
 import be.cafe_strange.interfaces.services.media.PictureService;
 import be.cafe_strange.models.Category;
 import be.cafe_strange.models.media.Picture;
@@ -14,13 +13,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import static be.cafe_strange.enums.MediaType.PICTURE;
+
 @Service
 @Transactional
 public class PictureServiceImp extends MediaServiceImpl<Picture, List<Picture>> implements PictureService{
 
     @Override
     public List<Picture> findAll() {
-        return super.findAllByMediaType(MediaType.PICTURE);
+        return super.findAll(PICTURE);
     }
 
     @Override

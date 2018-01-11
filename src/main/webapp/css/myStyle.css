@@ -61,6 +61,10 @@ header {
 
 body {
     background: url("../img/site/bg/bg.png") no-repeat fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .ic, .ic a {

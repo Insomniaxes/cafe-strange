@@ -6,7 +6,7 @@ import be.cafe_strange.interfaces.MainInterface;
 
 public interface MediaService<T, L> extends MainInterface<T, L> {
 
-    L findAllByMediaType(MediaType mediaType);
+    L findAll(MediaType mediaType);
 
     L findByCategory(Category category);
 
