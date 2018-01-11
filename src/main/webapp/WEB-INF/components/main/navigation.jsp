@@ -61,7 +61,7 @@
                         <form action="/logout"><button>Logout</button></form>
                     </c:when>
                     <c:otherwise>
-                        <li><p class="navbar-text">Already have an account?</p></li>
+                        <li><p class="navbar-text">Reeds een account?</p></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span
                                     class="caret"></span></a>
@@ -88,8 +88,7 @@
                                                     <label class="sr-only" for="exampleInputPassword2">Password</label>
                                                     <input name="password" type="password" class="form-control"
                                                            id="exampleInputPassword2" placeholder="Password">
-                                                    <div class="help-block text-right"><a href="">Forget the password
-                                                        ?</a></div>
+                                                    <div class="help-block text-right"><a href="">password vergeten?                                                        ?</a></div>
                                                 </div>
                                                 <div class="form-group">
                                                     <button type="submit" class="btn btn-primary btn-block">Sign in
@@ -97,13 +96,13 @@
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox"> keep me logged-in
+                                                        <input type="checkbox"> hou me ingelogd
                                                     </label>
                                                 </div>
                                             </form>
                                         </div>
                                         <div class="bottom text-center">
-                                            New here ? <a href="/register"><b>Registreer</b></a>
+                                            Nieuw hier? <a href="/register"><b>Registreer</b></a>
                                         </div>
                                     </div>
                                 </li>
