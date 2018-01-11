@@ -1,8 +1,8 @@
 package be.cafe_strange.implementations.services;
 
-import be.cafe_strange.models.Event;
 import be.cafe_strange.interfaces.repositories.EventRepo;
 import be.cafe_strange.interfaces.services.EventService;
+import be.cafe_strange.models.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +27,17 @@ public class EventServiceImpl implements EventService {
     @Override
     public List<Event> findAll() {
         return eventRepo.findAll();
+    }
+
+    @Override
+    public List<Event> FindAllLastFirst() {
+        List<Event> events = findAll();
+        if (events.size() == 0) {
+            events = new  ArrayList<>();
+        } else {
+            Collections.sort(events, Collections.reverseOrder());
+        }
+        return events;
     }
 
     @Override

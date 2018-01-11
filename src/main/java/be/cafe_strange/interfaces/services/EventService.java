@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface EventService extends MainInterface<Event, List<Event>>{
 
+    List<Event> FindAllLastFirst();
+
     Event findByDate(Date date);
 
     Event findNext();
