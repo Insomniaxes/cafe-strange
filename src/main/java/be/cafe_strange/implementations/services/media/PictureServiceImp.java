@@ -20,6 +20,8 @@ import static be.cafe_strange.enums.MediaType.PICTURE;
 @Transactional
 public class PictureServiceImp extends MediaServiceImpl<Picture, List<Picture>> implements PictureService{
 
+    private final String IMGFOLDER =  "C:/gitmap/Eindwerk/Cafe-Strange/src/main/webapp/img/";
+
     @Override
     public List<Picture> findAll() {
         return super.findAll(PICTURE);
@@ -27,7 +29,17 @@ public class PictureServiceImp extends MediaServiceImpl<Picture, List<Picture>> 
 
     @Override
     public Picture uploadPicture(MultipartFile file, String folder, Category category) {
-        String uploadFolder = "C:/gitmap/Eindwerk/Cafe-Strange/src/main/webapp/img/" + folder + "/";
+        String uploadFolder = IMGFOLDER + folder + "/";
+        int counter = 0;
+        while (super.findByUrl(uploadFolder + file.getOriginalFilename().toString()) != null) {
+            counter++;
+            File newFile = new File(file.getOriginalFilename().toString() + String.valueOf(counter));
+            try {
+                file.transferTo(newFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         Picture picture = new Picture(file.getOriginalFilename().toString(),
                 "hier moet caption komen", folder + "/" + file.getOriginalFilename(), category, true);
         try {
@@ -42,9 +54,19 @@ public class PictureServiceImp extends MediaServiceImpl<Picture, List<Picture>> 
     }
 
     @Override
-    public boolean delete(File file, Picture picture) {
-
-        return super.delete(id);
+    public boolean delete(Picture picture) {
+        try {
+            picture = super.findByUrl(picture.getUrl());
+            File file = new File(IMGFOLDER + picture.getUrl());
+            System.out.println(IMGFOLDER + picture.getUrl());
+            System.out.println("file wordt gedelete");
+            file.delete();
+            super.delete(picture.getId());
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
 

@@ -34,7 +34,13 @@ public class MediaRepoImpl<T,L> implements MediaRepo<T,L> {
 
     @Override
     public T findByUrl(String url) {
-        return null;
+        Query query = em.createQuery("SELECT m FROM Media AS m WHERE m.url = :url");
+        query.setParameter("url", url);
+        if (query.getSingleResult() == null) {
+            return (T) new Media();
+        } else {
+            return (T) query.getSingleResult();
+        }
     }
 
     @Override

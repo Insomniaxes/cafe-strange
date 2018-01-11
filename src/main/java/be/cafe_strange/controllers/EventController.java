@@ -4,6 +4,7 @@ import be.cafe_strange.models.Event;
 import be.cafe_strange.interfaces.services.EventService;
 import be.cafe_strange.interfaces.services.CategoryService;
 import be.cafe_strange.interfaces.services.media.PictureService;
+import be.cafe_strange.models.media.Picture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -112,16 +113,19 @@ public class EventController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String saveNewEvent(@RequestParam(value = "file", required = false) MultipartFile file,
                                Event event, Model model) {
-
+        Picture picture = new Picture();
         if (file != null) {
-
-            event.setPicture(pictureService.uploadPicture(file, "event", categoryService.findById(1)));
+            picture = pictureService.uploadPicture(file, "event", categoryService.findById(1));
+            System.out.println("er is een picture aangemaakt en geupload en wordt nu geplaatst");
+            event.setPicture(picture);
         }
-
         if (eventService.create(event) == null) {
             model.addAttribute("message",
                     "<h1>Het evenement werd niet toegevoegd omdat er al een event gepland staat op die dag !!</h1>");
-
+            if (picture != null) {
+                System.out.println("er is reeds een evenement op deze datum, dus picture moet verwijderd worden");
+                pictureService.delete(picture);
+            }
             return "redirect/index";
         } else {
             model.addAttribute("message", "<h1>Het evenement werd toegevoegd</h1>");

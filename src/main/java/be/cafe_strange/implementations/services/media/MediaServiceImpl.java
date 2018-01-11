@@ -4,6 +4,7 @@ import be.cafe_strange.enums.MediaType;
 import be.cafe_strange.interfaces.repositories.MediaRepo;
 import be.cafe_strange.interfaces.services.media.MediaService;
 import be.cafe_strange.models.Category;
+import be.cafe_strange.models.media.Media;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public abstract class MediaServiceImpl<T, L> implements MediaService<T, L> {
@@ -43,7 +44,13 @@ public abstract class MediaServiceImpl<T, L> implements MediaService<T, L> {
 
     @Override
     public T findByUrl(String url) {
-        return mediaRepo.findByUrl(url);
+        T media = mediaRepo.findByUrl(url);
+        if (media == null) {
+            return (T) new Media();
+        } else {
+            return media;
+        }
+
     }
 
 }
