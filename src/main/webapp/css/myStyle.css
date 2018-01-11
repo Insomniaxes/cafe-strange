@@ -22,7 +22,7 @@ mark, rp, rt, ruby, summary, time {
 
 /* ============================= header ====================== */
 header {
-    height:100px;
+    height:60px;
 }
 #logo {
     display:block;

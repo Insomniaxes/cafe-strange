@@ -5,7 +5,7 @@
 <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/main/end.jsp" var="endUrl"/>
 <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/index/upcoming.jsp" var="upcomingUrl"/>
 <Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/index/welcome.jsp" var="welcomeUrl"/>
-<Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/events/event.jsp" var="nextEventUrl"/>
+<Spring:url value="${pageContext.request.contextPath}/WEB-INF/components/events/nextEvent.jsp" var="nextEventUrl"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>

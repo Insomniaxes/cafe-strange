@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.Collections;
+
 @Controller
 @RequestMapping("/events")
 public class EventController {
@@ -35,7 +37,7 @@ public class EventController {
     @RequestMapping(method = RequestMethod.GET)
     public String getEvents(Model model) {
         model.addAttribute("page", FOLDER + "events");
-        model.addAttribute("events", eventService.findAllLastFirst());
+        model.addAttribute("events", eventService.sortLastFirst(eventService.findAll()));
         return VIEW;
     }
 
@@ -49,10 +51,10 @@ public class EventController {
                 break;
             case "past":
                 pageTitle = "Afgelopen evenementen";
-                model.addAttribute("events", eventService.findPast());
+                model.addAttribute("events", eventService.sortLastFirst(eventService.findPast()));
                 break;
             case "all":
-                model.addAttribute("events", eventService.findAll());
+                model.addAttribute("events", eventService.sortLastFirst(eventService.findAll()));
                 break;
             default:
                 System.out.println("something went wrong");

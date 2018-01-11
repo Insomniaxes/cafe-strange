@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface EventService extends MainInterface<Event, List<Event>>{
 
-    List<Event> findAllLastFirst();
+    List<Event> sortLastFirst(List<Event> events);
 
     Event findByDate(Date date);
 

@@ -1,9 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div class="wrapper">
     <h2>${pageTitle}</h2>
     <c:forEach items="${events}" var="event">
         <div class="wrapper">
+            <h3><fmt:formatDate value="${event.date}" pattern="dd MMMM yyy"/></h3>
             <figure class="left marg_right1"><a href="/events/${event.id}"><img
                     src="${pageContext.request.contextPath}/img/${event.picture.url}" alt="" style="max-width: 200px"></a></figure>
             <h3>${event.title}</h3>
