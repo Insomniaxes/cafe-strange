@@ -35,7 +35,7 @@ public class EventController {
     @RequestMapping(method = RequestMethod.GET)
     public String getEvents(Model model) {
         model.addAttribute("page", FOLDER + "events");
-        model.addAttribute("events", eventService.findAll());
+        model.addAttribute("events", eventService.findAllLastFirst());
         return VIEW;
     }
 

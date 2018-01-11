@@ -30,7 +30,7 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public List<Event> FindAllLastFirst() {
+    public List<Event> findAllLastFirst() {
         List<Event> events = findAll();
         if (events.size() == 0) {
             events = new  ArrayList<>();
