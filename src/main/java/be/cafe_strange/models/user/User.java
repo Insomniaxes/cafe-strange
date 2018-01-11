@@ -5,6 +5,7 @@ import be.cafe_strange.models.media.Picture;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Entity

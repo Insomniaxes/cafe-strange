@@ -9,9 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
+
 @Controller
 @RequestMapping("/users")
-@PreAuthorize("hasAnyRole('ADMIN', 'MASTER')")
+@PreAuthorize("hasAnyRole('MEMBER', 'ADMIN', 'MASTER')")
 public class UserController {
 
     private final String FOLDER = "WEB-INF/components/users";
@@ -27,6 +30,7 @@ public class UserController {
         return pageTitle;
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'MASTER')")
     @RequestMapping(method = RequestMethod.GET)
     public String getAllUsers(Model model) {
         model.addAttribute("page", FOLDER + "/users");
@@ -34,10 +38,17 @@ public class UserController {
         return VIEW;
     }
 
+
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
-    public String getUserById(@PathVariable int userId, Model model) {
-        model.addAttribute("page", FOLDER + "/userDetails");
-        model.addAttribute(userService.findById(userId));
+    public String getUserById(@PathVariable int userId, Model model, HttpServletRequest request) {
+        User user = userService.findById(userId);
+        if (user.getUsername().equals(request.getUserPrincipal().getName()) | request.isUserInRole("MASTER") | request.isUserInRole("ADMIN")) {
+            model.addAttribute("page", FOLDER + "/userDetails");
+            model.addAttribute(user);
+        } else {
+            return "redirect:/home";
+        }
+
         return VIEW;
     }
 
@@ -56,10 +67,15 @@ public class UserController {
     }
 
     @RequestMapping(value = "/edit/{userId}", method = RequestMethod.GET)
-    public String editUser(@PathVariable int userId, Model model) {
-        model.addAttribute("genders", Gender.values());
-        model.addAttribute("page", FOLDER + "/userForm1");
-        model.addAttribute("user", userService.findById(userId));
+    public String editUser(@PathVariable int userId, Model model, HttpServletRequest request) {
+        User user = userService.findById(userId);
+        if (user.getUsername().equals(request.getUserPrincipal().getName()) | request.isUserInRole("MASTER") | request.isUserInRole("ADMIN")) {
+            model.addAttribute("genders", Gender.values());
+            model.addAttribute("page", FOLDER + "/userForm1");
+            model.addAttribute("user", userService.findById(userId));
+        } else {
+            return "redirect:/home";
+        }
         return VIEW;
     }
 

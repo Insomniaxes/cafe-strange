@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <style>
     .container {
         width: 50%;
@@ -79,7 +80,7 @@
                         <div class="bot-border"></div>
 
                         <div class="col-sm-5 col-xs-6 tital ">Geboortedatum:</div>
-                        <div class="col-sm-7"><input name="birthday" value="${user.birthday}"></div>
+                        <div class="col-sm-7"><input name="birthday" value="<fmt:formatDate value="${user.birthday}" pattern="dd-MM-YYY"/>"></div>
 
                         <div class="clearfix"></div>
                         <div class="bot-border"></div>
@@ -97,7 +98,7 @@
                         <div class="bot-border"></div>
 
                         <div class="col-sm-5 col-xs-6 tital ">Lid sinds:</div>
-                        <div class="col-sm-7">${user.joinDate}</div>
+                        <div class="col-sm-7"><fmt:formatDate value="${user.joinDate}" pattern="dd-MM-YYY"/></div>
 
                         <div class="clearfix"></div>
                         <div class="bot-border"></div>

@@ -27,6 +27,7 @@
                         <li class="col-sm-3">
                             <a class="thumbnail" id="carousel-selector-${status}">
                                 <img src="${pageContext.request.contextPath}/img${picture.url}">
+                                ${picture.title}
                             </a>
                         </li>
                     </c:forEach>
@@ -45,17 +46,11 @@
                                             <c:when test="${status.first}">
                                                 <div class="active item" data-slide-number="${status}">
                                                     <img src="${pageContext.request.contextPath}/img${picture.url}">
-                                                    <div class="carousel-caption">
-                                                        <h3>${picture.title}</h3>
-                                                    </div>
                                                 </div>
                                             </c:when>
                                             <c:otherwise>
                                                 <div class="item" data-slide-number="${status}">
                                                     <img src="${pageContext.request.contextPath}/img${picture.url}">
-                                                    <div class="carousel-caption">
-                                                        <h3>${picture.title}</h3>
-                                                    </div>
                                                 </div>
                                             </c:otherwise>
                                         </c:choose>
