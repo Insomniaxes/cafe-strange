@@ -59,6 +59,7 @@ public class EventController {
             default:
                 System.out.println("something went wrong");
         }
+
         model.addAttribute("pageTitle", pageTitle);
         return VIEW;
     }
@@ -77,55 +78,58 @@ public class EventController {
         return VIEW;
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN','OWNER')")
+    @PreAuthorize("hasAnyRole('ADMIN','MASTER')")
     @RequestMapping(value = "/edit/{eventId}", method = RequestMethod.GET)
     public String editEvent(@PathVariable int eventId, Model model) {
-        model.addAttribute("page", FOLDER + "eventForm");
+        model.addAttribute("page", FOLDER + "eventEditForm");
         model.addAttribute("event", eventService.findById(eventId));
         model.addAttribute("pageTitle", "Evenement aanpassen");
         return VIEW;
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'MASTER')")
     @RequestMapping(value = "/update/{eventId}", method = RequestMethod.POST)
     public String updateEvent(@PathVariable int eventId,
                               @RequestParam(value = "file", required = false) MultipartFile file,
                               Event event, Model model) {
         event.setId(eventId);
         if (file != null) {
-            // todo nog mogelijkheid maken voor category
             event.setPicture(pictureService.uploadPicture(file, "event", categoryService.findById(1)));
         }
         eventService.update(event);
         model.addAttribute("page", FOLDER + "event");
-        System.out.println("update van event");
         return VIEW;
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'MASTER')")
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public String createNewEvent(Model model) {
-        model.addAttribute("page", FOLDER + "eventForm");
+        model.addAttribute("page", FOLDER + "eventCreateForm");
         return VIEW;
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'MASTER')")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String saveNewEvent(@RequestParam(value = "file", required = false) MultipartFile file,
                                Event event, Model model) {
 
+        if (file != null) {
+
+            event.setPicture(pictureService.uploadPicture(file, "event", categoryService.findById(1)));
+        }
+
         if (eventService.create(event) == null) {
             model.addAttribute("message",
                     "<h1>Het evenement werd niet toegevoegd omdat er al een event gepland staat op die dag !!</h1>");
-            return "/index";
+
+            return "redirect/index";
         } else {
-            if (file != null) {
-                // todo nog mogelijkheid maken voor category
-                event.setPicture(pictureService.uploadPicture(file, "event", categoryService.findById(1)));
-            }
             model.addAttribute("message", "<h1>Het evenement werd toegevoegd</h1>");
         }
-        System.out.println("redirecting");
         return "redirect:/index";
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'MASTER')")
     @RequestMapping(value = "/delete/{eventId}", method = RequestMethod.POST)
     public String deleteEvent(@PathVariable int eventId) {
         // todo nog check maken of het echt verwijderd mag worden

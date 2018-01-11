@@ -1,6 +1,7 @@
 package be.cafe_strange.models;
 
 import be.cafe_strange.models.media.Media;
+import be.cafe_strange.models.media.Picture;
 import be.cafe_strange.models.user.User;
 
 import javax.persistence.*;
@@ -23,7 +24,7 @@ public class Event implements Comparable<Event> {
     @Column(name = "description", columnDefinition = "LONGTEXT")
     private String description;
     @OneToOne
-    private Media picture;
+    private Picture picture;
     @OneToMany
     @Column(name = "participants")
     private List<User> participants;
@@ -68,11 +69,11 @@ public class Event implements Comparable<Event> {
         this.description = description;
     }
 
-    public Media getPicture() {
+    public Picture getPicture() {
         return picture;
     }
 
-    public void setPicture(Media picture) {
+    public void setPicture(Picture picture) {
         this.picture = picture;
     }
 

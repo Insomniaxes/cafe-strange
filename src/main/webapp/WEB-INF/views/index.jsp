@@ -23,6 +23,7 @@
             <!--content -->
             <article id="content">
                 <div class="wrapper pad_bot1">
+                    ${message}
                     <jsp:include page="${welcomeUrl}"/>
                     <jsp:include page="${upcomingUrl}"/>
                 </div>

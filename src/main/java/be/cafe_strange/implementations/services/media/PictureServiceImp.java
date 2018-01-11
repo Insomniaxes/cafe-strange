@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -40,5 +41,10 @@ public class PictureServiceImp extends MediaServiceImpl<Picture, List<Picture>> 
         return picture;
     }
 
+    @Override
+    public boolean delete(File file, Picture picture) {
+
+        return super.delete(id);
+    }
 }
 
