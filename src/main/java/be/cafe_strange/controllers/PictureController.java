@@ -31,8 +31,6 @@ public class PictureController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String getGallery(Model model) {
-//        pageTitle = "Foto's";
-//        model.addAttribute("pageTitle", pageTitle);
         model.addAttribute("page", FOLDER + "pictures");
         List<Picture> pictures = pictureService.findAll();
         model.addAttribute("pictures", pictures);

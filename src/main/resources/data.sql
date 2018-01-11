@@ -10,10 +10,10 @@ INSERT INTO `cafe-strange`.media (media_type, aprove, caption, title, url, categ
 INSERT INTO `cafe-strange`.media (media_type, aprove, caption, title, url, category_category_id) VALUES ('0', true, 'Flyer Gaypride 2016', 'Gaypride 2016', '/event/flyerGaypride2016.jpg', 1);
 INSERT INTO `cafe-strange`.media (media_type, aprove, caption, title, url, category_category_id) VALUES ('0', true, 'Flyer Jhon-D Gaypride 2015', 'Gaypride 2015', '/event/john-d2015.jpg', 1);
 INSERT INTO `cafe-strange`.media (media_type, aprove, caption, title, url, category_category_id) VALUES ('1', true, 'Video Raar Twin Peaks feest.', 'Raar feest 25-11-2014', 'VJjeE9xKQxU', 2);
-INSERT INTO `cafe-strange`.media (media_type, aprove, caption, title, url, category_category_id) VALUES ('0', true, 'Promotie voor de mogelijkheid om feestjes te organiseren in Cafe Strange, met meer info.', 'Flyer Promotie Feestjes', '/site/general', 1);
+INSERT INTO `cafe-strange`.media (media_type, aprove, caption, title, url, category_category_id) VALUES ('0', true, 'Promotie voor de mogelijkheid om feestjes te organiseren in Cafe Strange, met meer info.', 'Flyer Promotie Feestjes', '/site/general/partystrange.jpg', 1);
 INSERT INTO `cafe-strange`.media (media_type, aprove, caption, title, url, category_category_id) VALUES ('0', true, 'Uitleg Cafe Strange (Engelstalig)', 'English promoflyer', '/site/general/flyerstrange.jpg', 1);
 INSERT INTO `cafe-strange`.media (media_type, aprove, caption, title, url, category_category_id) VALUES ('0', true, 'Armand aan de bar', 'Armand Everaert', '/user/armand.jpg', 3);
-INSERT INTO `cafe-strange`.media (media_type, aprove, caption, title, url, category_category_id) VALUES ('0', true, 'Algemene Flyer', 'Cafe Strange', '/site/general.jpg', 1);
+INSERT INTO `cafe-strange`.media (media_type, aprove, caption, title, url, category_category_id) VALUES ('0', true, 'Algemene Flyer', 'Cafe Strange', '/site/general/contactlogo.jpg', 1);
 INSERT INTO `cafe-strange`.media (media_type, aprove, caption, title, url, category_category_id) VALUES ('0', true, 'HLN foto Cafe Strange', 'Van café Strange tot Rue de Vaseline', '/news/HLN2017-08-07.jpg', 4);
 INSERT INTO `cafe-strange`.media (media_type, aprove, caption, title, url, category_category_id) VALUES ('0', true, 'Flyer verjaardag Armand 80 jaar', 'Armand wordt 80', '/event/armand80.jpg', 1);
 INSERT INTO `cafe-strange`.media (media_type, aprove, caption, title, url, category_category_id) VALUES ('0', true, 'Flyer verjaardag Armand 85 jaar', 'Armand wordt 85', '/event/armand85.jpg', 1);

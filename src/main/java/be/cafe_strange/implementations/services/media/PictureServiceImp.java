@@ -18,8 +18,6 @@ import java.util.List;
 @Transactional
 public class PictureServiceImp extends MediaServiceImpl<Picture, List<Picture>> implements PictureService{
 
-    private List<Picture> pictures;
-
     @Override
     public List<Picture> findAll() {
         return super.findAllByMediaType(MediaType.PICTURE);

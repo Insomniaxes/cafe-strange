@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 
-public class MediaServiceImpl<T, L> implements MediaService<T, L> {
+public abstract class MediaServiceImpl<T, L> implements MediaService<T, L> {
 
     @Autowired
     private MediaRepo<T,L> mediaRepo;
@@ -19,11 +19,6 @@ public class MediaServiceImpl<T, L> implements MediaService<T, L> {
     @Override
     public T findById(int id) {
         return mediaRepo.findById(id);
-    }
-
-    @Override
-    public L findAll() {
-        return mediaRepo.findAll();
     }
 
     @Override
