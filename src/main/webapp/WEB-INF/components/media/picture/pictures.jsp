@@ -27,7 +27,7 @@
 
                         <li class="col-sm-3">
                             <a class="thumbnail" id="carousel-selector-${status}"></a>
-                            <img src="${pageContext.request.contextPath}/img${picture.url}">
+                            <img src="${picture.url}">
                             <form action="/pictures/delete/${picture.id}" method="post">
                                 <button class="btn btn-info btn-lg">
                                     <span class="glyphicon glyphicon-trash"></span>
@@ -50,7 +50,7 @@
                                         <c:choose>
                                             <c:when test="${status.first}">
                                                 <div class="active item" data-slide-number="${status}">
-                                                    <img src="${pageContext.request.contextPath}/img${picture.url}">
+                                                    <img src="${picture.url}">
                                                 </div>
                                             </c:when>
                                             <c:otherwise>

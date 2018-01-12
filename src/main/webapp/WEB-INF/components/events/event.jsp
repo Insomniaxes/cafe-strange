@@ -4,8 +4,8 @@
 <div class="wrapper">
     <h2><fmt:formatDate value="${event.date}" pattern="dd MMMM yyy"/></h2>
     <div class="wrapper">
-        <figure class="left marg_right1"><a href="${pageContext.request.contextPath}/img${event.picture.url}" target="_blank"><img
-                src="${pageContext.request.contextPath}/img/${event.picture.url}" alt="" width="500px"></a></figure>
+        <figure class="left marg_right1"><a href="${event.picture.url}" target="_blank"><img
+                src="${event.picture.url}" alt="" width="500px"></a></figure>
         <h3>${event.title}</h3>
         <p class="pad_bot1">${event.summary}</p>
         <p>${event.description}</p>
