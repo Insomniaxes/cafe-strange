@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -31,6 +32,15 @@ public class PictureController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String getGallery(Model model) {
+        model.addAttribute("page", FOLDER + "pictures");
+        List<Picture> pictures = pictureService.findAll();
+        model.addAttribute("pictures", pictures);
+        return VIEW;
+    }
+
+    @RequestMapping(value = "delete/{pictureId}", method = RequestMethod.POST)
+    public String deltePicture(@PathVariable int pictureId, Model model) {
+        pictureService.delete(pictureService.findById(pictureId));
         model.addAttribute("page", FOLDER + "pictures");
         List<Picture> pictures = pictureService.findAll();
         model.addAttribute("pictures", pictures);

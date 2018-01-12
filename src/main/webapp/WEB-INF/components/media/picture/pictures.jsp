@@ -24,12 +24,17 @@
                 <!-- Bottom switcher of slider -->
                 <ul class="hide-bullets">
                     <c:forEach items="${pictures}" var="picture" varStatus="status">
+
                         <li class="col-sm-3">
-                            <a class="thumbnail" id="carousel-selector-${status}">
-                                <img src="${pageContext.request.contextPath}/img${picture.url}">
-                                ${picture.title}
-                            </a>
+                            <a class="thumbnail" id="carousel-selector-${status}"></a>
+                            <img src="${pageContext.request.contextPath}/img${picture.url}">
+                            <form action="/pictures/delete/${picture.id}" method="post">
+                                <button class="btn btn-info btn-lg">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                            </form>
                         </li>
+
                     </c:forEach>
                 </ul>
             </div>
