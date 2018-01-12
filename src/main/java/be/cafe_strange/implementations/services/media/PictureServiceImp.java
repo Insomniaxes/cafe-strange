@@ -60,10 +60,9 @@ public class PictureServiceImp extends MediaServiceImpl<Picture, List<Picture>> 
 
     @Override
     public boolean delete(Picture picture) {
-        // todo deze functie terug aanpassen voor uploadfolder die niet meer zal kloppen
         try {
             picture = super.findByUrl(picture.getUrl());
-            File file = new File(IMGFOLDER + picture.getUrl());
+            File file = new File(IMGFOLDER + picture.getUrl().replace("/img", ""));
             System.out.println(IMGFOLDER + picture.getUrl());
             file.delete();
             super.delete(picture.getId());
@@ -73,5 +72,6 @@ public class PictureServiceImp extends MediaServiceImpl<Picture, List<Picture>> 
             return false;
         }
     }
+
 }
 
