@@ -11,4 +11,7 @@ public interface PictureService extends MediaService<Picture, List<Picture>> {
     Picture uploadPicture(MultipartFile file, String folder, Category category);
 
     boolean delete(Picture picture);
+
+    List<Picture> uploadMultiplePictures(List<MultipartFile> multipartFiles, String folder, String categoryName);
+
 }

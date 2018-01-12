@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface CategoryService extends MainInterface<Category, List<Category>>{
 
+    Category findByCategoryName(String categoryName);
+
 }

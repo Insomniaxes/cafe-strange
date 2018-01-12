@@ -1,8 +1,10 @@
 package be.cafe_strange.implementations.services.media;
 
+import be.cafe_strange.interfaces.services.CategoryService;
 import be.cafe_strange.interfaces.services.media.PictureService;
 import be.cafe_strange.models.Category;
 import be.cafe_strange.models.media.Picture;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -11,6 +13,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static be.cafe_strange.enums.MediaType.PICTURE;
@@ -20,6 +23,9 @@ import static be.cafe_strange.enums.MediaType.PICTURE;
 public class PictureServiceImp extends MediaServiceImpl<Picture, List<Picture>> implements PictureService {
 
     private final String IMGFOLDER = "C:/gitmap/Eindwerk/Cafe-Strange/src/main/webapp/img/";
+    private ArrayList<Picture> newPictureList;
+    @Autowired
+    private CategoryService categoryService;
 
     @Override
     public List<Picture> findAll() {
@@ -34,12 +40,9 @@ public class PictureServiceImp extends MediaServiceImpl<Picture, List<Picture>> 
             try {
                 byte[] bytes = file.getBytes();
                 File dir = new File(uploadFolder);
-
-
                 if (!dir.exists()) {
                     dir.mkdirs();
                 }
-
                 String createdFileName = java.util.UUID.randomUUID().toString() + file.getContentType().replace("/", ".");
                 File serverFile = new File(dir.getAbsolutePath() + "/" + createdFileName);
                 BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
@@ -56,6 +59,17 @@ public class PictureServiceImp extends MediaServiceImpl<Picture, List<Picture>> 
             }
         }
         return picture;
+    }
+
+    @Override
+    public List<Picture> uploadMultiplePictures(List<MultipartFile> multipartFiles, String folder, String categoryName) {
+        newPictureList = new ArrayList<>();
+        Category category = categoryService.findByCategoryName(categoryName);
+        for (MultipartFile file : multipartFiles) {
+            Picture picture = uploadPicture(file, "uploaded", category);
+            newPictureList.add(picture);
+        }
+        return newPictureList;
     }
 
     @Override

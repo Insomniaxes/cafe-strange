@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface CategoryRepo extends MainInterface<Category, List<Category>> {
 
+    Category findByCategoryName(String categoryName);
 
 }

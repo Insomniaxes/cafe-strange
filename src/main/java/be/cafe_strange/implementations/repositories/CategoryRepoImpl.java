@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.util.List;
@@ -20,6 +21,21 @@ public class CategoryRepoImpl implements CategoryRepo {
     @Override
     public Category findById(int id) {
         return em.find(Category.class, id);
+    }
+
+    @Override
+    public Category findByCategoryName(String categoryName) {
+        Query query = em.createQuery("SELECT c FROM Category as c WHERE c.category = :categoryName");
+        query.setParameter("categoryName", categoryName);
+        Category category = new Category();
+        try {
+            category = (Category) query.getSingleResult();
+        } catch (NoResultException e) {
+            category = new Category(categoryName);
+            create(category);
+            return category;
+        }
+        return category;
     }
 
     @Override

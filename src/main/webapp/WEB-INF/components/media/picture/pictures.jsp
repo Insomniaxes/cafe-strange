@@ -67,6 +67,14 @@
     </div>
 </div>
 
+<form action="/pictures/newPictures" method="post" enctype="multipart/form-data">
+    Categorie:<br>
+    <input name="categoryName"><br>
+    <br>
+    <input type="file" name="multipartFiles" multiple>
+    <br><br><button>Opslaan</button>
+</form>
+
 <script>
     jQuery(document).ready(function ($) {
         $('#myCarousel').carousel({

@@ -3,13 +3,16 @@ package be.cafe_strange.controllers;
 import be.cafe_strange.interfaces.services.media.PictureService;
 import be.cafe_strange.models.media.Picture;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -38,8 +41,17 @@ public class PictureController {
         return VIEW;
     }
 
+    @RequestMapping(value = "/newPictures", method = RequestMethod.POST)
+    public String uploadPictures(List<MultipartFile> multipartFiles, String categoryName, Model model) {
+        model.addAttribute("page", FOLDER + "pictures");
+        List<Picture> pictures = new ArrayList<>();
+        pictureService.uploadMultiplePictures(multipartFiles, "uploaded", categoryName);
+        model.addAttribute("pictures", pictures);
+        return VIEW;
+    }
+
     @RequestMapping(value = "delete/{pictureId}", method = RequestMethod.POST)
-    public String deltePicture(@PathVariable int pictureId, Model model) {
+    public String deletePicture(@PathVariable int pictureId, Model model) {
         pictureService.delete(pictureService.findById(pictureId));
         model.addAttribute("page", FOLDER + "pictures");
         List<Picture> pictures = pictureService.findAll();
