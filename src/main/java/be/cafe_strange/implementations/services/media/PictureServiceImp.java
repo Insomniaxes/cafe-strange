@@ -41,7 +41,7 @@ public class PictureServiceImp extends MediaServiceImpl<Picture, List<Picture>> 
             }
         }
         Picture picture = new Picture(file.getOriginalFilename().toString(),
-                "hier moet caption komen", uploadFolder + file.getOriginalFilename(), category, true);
+                "hier moet caption komen", folder + "/" + file.getOriginalFilename(), category, true);
         try {
             byte[] bytes = file.getBytes();
             Path path = Paths.get(uploadFolder + file.getOriginalFilename());
