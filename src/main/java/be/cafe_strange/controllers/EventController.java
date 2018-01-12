@@ -94,12 +94,10 @@ public class EventController {
                               @RequestParam(value = "file", required = false) MultipartFile file,
                               Event event, Model model) {
         event.setId(eventId);
-        if (file != null) {
-            event.setPicture(pictureService.uploadPicture(file, "event", categoryService.findById(1)));
-        }
+        event.setPicture(pictureService.uploadPicture(file, "event", categoryService.findById(1)));
         eventService.update(event);
         model.addAttribute("page", FOLDER + "event");
-        return VIEW;
+        return "redirect:/events/" + eventId;
     }
 
     @PreAuthorize("hasAnyRole('ADMIN', 'MASTER')")
