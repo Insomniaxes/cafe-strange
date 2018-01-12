@@ -5,7 +5,6 @@ import be.cafe_strange.models.media.Picture;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Entity
@@ -40,6 +39,8 @@ public class User {
     @OneToMany(fetch = FetchType.EAGER)
     @Column(name = "roles", nullable = false)
     private List<Role> roles;
+    @Column(name = "isAccountNonLocked", columnDefinition = "tinyint default true")
+    private boolean isAccountNonLocked;
 
     public User() {
     }
@@ -149,6 +150,14 @@ public class User {
 
     public void setRoles(List<Role> role) {
         this.roles = role;
+    }
+
+    public boolean isAccountNonLocked() {
+        return isAccountNonLocked;
+    }
+
+    public void setAccountNonLocked(boolean accountNonLocked) {
+        isAccountNonLocked = accountNonLocked;
     }
 
     @Override

@@ -3,7 +3,7 @@
 <div class="wrapper">
     <h2>Eerstkomend feestje</h2>
     <div class="wrapper">
-        <figure class="left marg_right1"><a href="/events/${event.id}"><img src="${event.picture.url}" alt=""></a></figure>
+        <figure class="left marg_right1"><a href="/events/${event.id}"><img src="${pageContext.request.contextPath}/${event.picture.url}" alt=""></a></figure>
         <h3>${event.title}</h3>
         <p class="pad_bot1">${event.summary}</p>
         <p>Hier nog extra info over het feestje</p>

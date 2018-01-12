@@ -14,7 +14,6 @@ import java.security.Principal;
 
 @Controller
 @RequestMapping("/users")
-@PreAuthorize("hasAnyRole('MEMBER', 'ADMIN', 'MASTER')")
 public class UserController {
 
     private final String FOLDER = "WEB-INF/components/users";
@@ -39,6 +38,7 @@ public class UserController {
     }
 
 
+    @PreAuthorize("hasAnyRole('MEMBER', 'ADMIN', 'MASTER')")
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
     public String getUserById(@PathVariable int userId, Model model, HttpServletRequest request) {
         User user = userService.findById(userId);
@@ -52,6 +52,7 @@ public class UserController {
         return VIEW;
     }
 
+    @PreAuthorize("hasAnyRole('MEMBER', 'ADMIN', 'MASTER')")
     @RequestMapping(value = "/lastname/{lastName}", method = RequestMethod.GET)
     public String getUsersByLastName(@PathVariable String lastName, Model model) {
         model.addAttribute("page", FOLDER + "/users");
@@ -59,6 +60,7 @@ public class UserController {
         return VIEW;
     }
 
+    @PreAuthorize("hasAnyRole('MEMBER', 'ADMIN', 'MASTER')")
     @RequestMapping(value = "/role/{role}", method = RequestMethod.GET)
     public String getUsersByRole(@PathVariable String role, Model model) {
         model.addAttribute("page", FOLDER + "/users");
@@ -66,6 +68,7 @@ public class UserController {
         return VIEW;
     }
 
+    @PreAuthorize("hasAnyRole('MEMBER', 'ADMIN', 'MASTER')")
     @RequestMapping(value = "/edit/{userId}", method = RequestMethod.GET)
     public String editUser(@PathVariable int userId, Model model, HttpServletRequest request) {
         User user = userService.findById(userId);
@@ -94,6 +97,8 @@ public class UserController {
         return "redirect:" + VIEW;
     }
 
+
+    @PreAuthorize("hasAnyRole('ADMIN', 'MASTER')")
     @RequestMapping(value = "/delete/{userId}", method = RequestMethod.DELETE)
     public String deleteUser(@PathVariable int userId) {
         userService.delete(userId);

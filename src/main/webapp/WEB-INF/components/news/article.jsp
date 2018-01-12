@@ -5,10 +5,10 @@
 <c:forEach items="${article.media}" var="media">
     <c:choose>
         <c:when test="${media.mediaType == 'PICTURE'}">
-            <img src="${media.url}" alt="${media.url}" width="200px" align="left">
+            <img src="${pageContext.request.contextPath}/${media.url}" alt="${media.url}" width="200px" align="left">
         </c:when>
         <c:otherwise>
-            <iframe width="180" height="155" src="https://www.youtube.com/embed/${media.url}?rel=0" frameborder="0"
+            <iframe width="180" height="155" src="https://www.youtube.com/embed/${pageContext.request.contextPath}/${media.url}?rel=0" frameborder="0"
                     allow="autoplay; encrypted-media" allowfullscreen align="left"></iframe>
         </c:otherwise>
     </c:choose>

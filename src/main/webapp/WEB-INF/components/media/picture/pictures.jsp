@@ -55,7 +55,7 @@
                                             </c:when>
                                             <c:otherwise>
                                                 <div class="item" data-slide-number="${status}">
-                                                    <img src="${pageContext.request.contextPath}/img${picture.url}">
+                                                    <img src="${pageContext.request.contextPath}/${picture.url}">
                                                 </div>
                                             </c:otherwise>
                                         </c:choose>
