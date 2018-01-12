@@ -30,21 +30,13 @@ public class PictureServiceImp extends MediaServiceImpl<Picture, List<Picture>> 
     @Override
     public Picture uploadPicture(MultipartFile file, String folder, Category category) {
         String uploadFolder = IMGFOLDER + folder + "/";
-        int counter = 0;
-        while (super.findByUrl(uploadFolder + file.getOriginalFilename().toString()) != null) {
-            counter++;
-            File newFile = new File(file.getOriginalFilename().toString() + String.valueOf(counter));
-            try {
-                file.transferTo(newFile);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+
         Picture picture = new Picture(file.getOriginalFilename().toString(),
                 "hier moet caption komen", folder + "/" + file.getOriginalFilename(), category, true);
+
         try {
             byte[] bytes = file.getBytes();
-            Path path = Paths.get("img/" + folder + "/" + file.getOriginalFilename());
+            Path path = Paths.get(uploadFolder + file.getOriginalFilename());
             Files.write(path, bytes);
             create(picture);
         } catch (IOException e) {
