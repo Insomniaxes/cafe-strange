@@ -68,26 +68,26 @@
 
 
                         <div class="col-sm-5 col-xs-6 tital ">Voornaam:</div>
-                        <div class="col-sm-7 col-xs-6"><input name="firstName" value="${user.firstName}"></div>
+                        <div class="col-sm-7 col-xs-6"><input name="firstName" value="${user.firstName}" required></div>
 
                         <div class="clearfix"></div>
                         <div class="bot-border"></div>
 
                         <div class="col-sm-5 col-xs-6 tital ">Achternaam:</div>
-                        <div class="col-sm-7"><input name="lastName" value="${user.lastName}"></div>
+                        <div class="col-sm-7"><input name="lastName" value="${user.lastName}" required></div>
 
                         <div class="clearfix"></div>
                         <div class="bot-border"></div>
 
                         <div class="col-sm-5 col-xs-6 tital ">Geboortedatum:</div>
-                        <div class="col-sm-7"><input name="birthday" value="<fmt:formatDate value="${user.birthday}" pattern="dd-MM-YYY"/>"></div>
+                        <div class="col-sm-7"><input name="birthday" value="<fmt:formatDate value="${user.birthday}" pattern="dd-MM-YYY"/>" required></div>
 
                         <div class="clearfix"></div>
                         <div class="bot-border"></div>
 
                         <div class="col-sm-5 col-xs-6 tital ">Geslacht:</div>
                         <div class="col-sm-7">
-                            <select name="gender">
+                            <select name="gender" required>
                                 <c:forEach items="${genders}" var="gender">
                                     <option value="${gender}">${gender}</option>
                                 </c:forEach>
@@ -104,13 +104,13 @@
                         <div class="bot-border"></div>
 
                         <div class="col-sm-5 col-xs-6 tital infoText">Email:</div>
-                        <div class="col-sm-7"><input name="email" value="${user.email}"></div>
+                        <div class="col-sm-7"><input name="email" value="${user.email}" required></div>
 
                         <div class="clearfix"></div>
                         <div class="bot-border"></div>
 
                         <div class="col-sm-5 col-xs-6 tital ">Nationaliteit:</div>
-                        <div class="col-sm-7"><input name="nationality" value="${user.nationality}"></div>
+                        <div class="col-sm-7"><input name="nationality" value="${user.nationality}" required></div>
 
                         <div class="clearfix"></div>
                         <div class="bot-border"></div>
