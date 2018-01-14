@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
     public User create(User user) {
         Calendar calendar = Calendar.getInstance();
         user.setJoinDate(new java.sql.Date(calendar.getTime().getTime()));
-
+        userRepo.create(user);
         return userRepo.findByUsername(user.getUsername());
     }
 
