@@ -1,4 +1,4 @@
-package be.cafe_strange.implementations.repositories;
+package be.cafe_strange.implementations.repositories.user;
 
 import be.cafe_strange.models.user.User;
 import be.cafe_strange.interfaces.repositories.UserRepo;

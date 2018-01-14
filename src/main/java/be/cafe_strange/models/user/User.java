@@ -36,7 +36,7 @@ public class User {
     private Picture picture;
     @Column(name = "password")
     private String password;
-    @OneToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @Column(name = "roles", nullable = false)
     private List<Role> roles;
     @Column(name = "isAccountNonLocked", columnDefinition = "tinyint default true")

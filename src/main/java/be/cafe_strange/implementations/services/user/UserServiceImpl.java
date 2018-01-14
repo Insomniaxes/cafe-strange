@@ -1,8 +1,9 @@
 package be.cafe_strange.implementations.services.user;
 
-import be.cafe_strange.enums.AuthorizationRole;
 import be.cafe_strange.implementations.services.EmailValidator;
+import be.cafe_strange.interfaces.repositories.RoleRepo;
 import be.cafe_strange.interfaces.repositories.UserRepo;
+import be.cafe_strange.interfaces.services.RoleService;
 import be.cafe_strange.interfaces.services.UserService;
 import be.cafe_strange.models.user.Role;
 import be.cafe_strange.models.user.User;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
@@ -21,6 +22,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepo userRepo;
+    @Autowired
+    private RoleService roleService;
 
     @Override
     public User findById(int id) {
@@ -56,6 +59,7 @@ public class UserServiceImpl implements UserService {
     public User create(User user) {
         Calendar calendar = Calendar.getInstance();
         user.setJoinDate(new java.sql.Date(calendar.getTime().getTime()));
+        user.setRoles(Arrays.asList(roleService.findById(3)));
         userRepo.create(user);
         return userRepo.findByUsername(user.getUsername());
     }
