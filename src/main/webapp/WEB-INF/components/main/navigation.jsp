@@ -40,7 +40,7 @@
                         <li><a class="dropdown-item" href="/videos">Filmpjes</a></li>
                         <sec:authorize access="hasAnyRole('ADMIN','MASTER')">
                             <li class="divider"></li>
-                            <li><a class="dropdown-item" href="/media/new">Nieuwe Foto's</a></li>
+                            <li><a class="dropdown-item" href="/pictures/new">Nieuwe Foto's</a></li>
                             <li><a class="dropdown-item" href="/videos/new">Nieuw Filmpje</a></li>
                         </sec:authorize>
                     </ul>

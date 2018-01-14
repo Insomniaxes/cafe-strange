@@ -47,9 +47,10 @@ public class PictureController {
         return VIEW;
     }
 
-//    @RequestMapping(value = "/new", method = RequestMethod.GET)
-//    public String newPictures() {
-//
-//    }
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
+    public String newPictures(Model model) {
+        model.addAttribute("page", FOLDER + "pictures");
+        return VIEW;
+    }
 
 }
