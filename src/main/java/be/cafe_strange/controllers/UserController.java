@@ -52,6 +52,20 @@ public class UserController {
     }
 
     @PreAuthorize("hasAnyRole('MEMBER', 'ADMIN', 'MASTER')")
+    @RequestMapping(method = RequestMethod.GET, params = "username")
+    public String getUserByUsername(@RequestParam String username, Model model, HttpServletRequest request) {
+        User user = userService.findByUsername(username);
+        if (user.getUsername().equals(request.getUserPrincipal().getName()) | request.isUserInRole("MASTER") | request.isUserInRole("ADMIN")) {
+            model.addAttribute("page", FOLDER + "/userDetails");
+            model.addAttribute(user);
+        } else {
+            return "redirect:/home";
+        }
+
+        return VIEW;
+    }
+
+    @PreAuthorize("hasAnyRole('MEMBER', 'ADMIN', 'MASTER')")
     @RequestMapping(value = "/lastname/{lastName}", method = RequestMethod.GET)
     public String getUsersByLastName(@PathVariable String lastName, Model model) {
         model.addAttribute("page", FOLDER + "/users");
