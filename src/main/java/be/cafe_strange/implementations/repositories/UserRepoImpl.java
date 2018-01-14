@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.util.List;
@@ -31,8 +32,14 @@ public class UserRepoImpl implements UserRepo {
 
     @Override
     public User findByUsername(String username) {
-        Query query = em.createQuery("SELECT u from User AS u WHERE u.username = '" + username + "'");
-        return (User) query.getSingleResult();
+        Query query = em.createQuery("SELECT u from User AS u WHERE u.username = :username");
+        query.setParameter("username", username);
+        try {
+            User user = (User) query.getSingleResult();
+            return user;
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
     @Override
@@ -44,7 +51,12 @@ public class UserRepoImpl implements UserRepo {
     @Override
     public User findByEmail(String email) {
         Query query = em.createQuery("SELECT u from User AS u WHERE u.email = '" + email + "'");
-        return (User) query.getSingleResult();
+        try {
+            User user = (User) query.getSingleResult();
+            return user;
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
     @Override

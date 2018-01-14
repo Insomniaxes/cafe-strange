@@ -148,8 +148,8 @@ public class User {
         return roles;
     }
 
-    public void setRoles(List<Role> role) {
-        this.roles = role;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     public boolean isAccountNonLocked() {

@@ -36,6 +36,7 @@
 
 <form action="/users/create" method="post">
     <div class="container">
+        ${errorMessage}
         <div class="panel panel-default">
             <div class="panel-heading"><h4>User Profile</h4></div>
             <div class="panel-body">
@@ -60,7 +61,7 @@
                             <!-- /input-group -->
                         </div>
                         <div class="col-sm-6">
-                            <h3 style="color:#00b1b1;"><input name="username" value=""></h3></span>
+                            <h3 style="color:#00b1b1;"><input name="username" value="${user.username}"></h3></span>
                             <span>
                             <p>MEMBER</p>
                             </span>
@@ -70,7 +71,7 @@
 
 
                         <div class="col-sm-5 col-xs-6 tital ">Voornaam:</div>
-                        <div class="col-sm-7 col-xs-6"><input name="firstName" value=""></div>
+                        <div class="col-sm-7 col-xs-6"><input name="firstName" value="${user.firstName}"></div>
 
                         <div class="clearfix"></div>
                         <div class="bot-border"></div>
@@ -82,13 +83,18 @@
                         <div class="bot-border"></div>
 
                         <div class="col-sm-5 col-xs-6 tital ">Geboortedatum:</div>
-                        <div class="col-sm-7"><input name="birthday" value="${user.birthday}"></div>
+                        <div class="col-sm-7"><input type="date" name="birthday" value="${user.birthday}"></div>
 
                         <div class="clearfix"></div>
                         <div class="bot-border"></div>
 
                         <div class="col-sm-5 col-xs-6 tital ">Geslacht:</div>
-                        <div class="col-sm-7"><input name="gender" value="${user.gender}"></div>
+                        <div class="col-sm-7"><select name="gender">
+                            <c:forEach items="${genders}" var="gender">
+                                <option value="${gender}">${gender}</option>
+                            </c:forEach>
+                        </select>
+                        </div>
 
                         <div class="clearfix"></div>
                         <div class="bot-border"></div>
@@ -111,8 +117,20 @@
                         <div class="clearfix"></div>
                         <div class="bot-border"></div>
 
-                        <div align="centre">
-                            <button>Opslaan</button>
+                        <div class="col-sm-5 col-xs-6 tital ">Password:</div>
+                        <div class="col-sm-7"><input type="password" name="password"></div>
+
+                        <div class="clearfix"></div>
+                        <div class="bot-border"></div>
+
+                        <div class="col-sm-5 col-xs-6 tital ">Password:</div>
+                        <div class="col-sm-7"><input type="password" name="passwordRetype"></div>
+
+                        <div class="clearfix"></div>
+                        <div class="bot-border"></div>
+
+                        <div>
+                            <input type="submit" value="Opslaan">
                         </div>
                         <!-- /.box-body -->
                     </div>

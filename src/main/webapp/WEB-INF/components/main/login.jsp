@@ -4,7 +4,7 @@
     <form class="form-signin" action="/login" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input name="username" type="text" id="inputEmail" class="form-control" placeholder="Username" required
+        <input name="username" type="text" id="inputEmail" class="form-control" placeholder="${user.username}" required
                autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
         <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password">

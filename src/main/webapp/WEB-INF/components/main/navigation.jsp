@@ -101,7 +101,7 @@
                                             </form>
                                         </div>
                                         <div class="bottom text-center">
-                                            Nieuw hier? <a href="/register"><b>Registreer</b></a>
+                                            Nieuw hier? <a href="/users/register"><b>Registreer</b></a>
                                         </div>
                                     </div>
                                 </li>
