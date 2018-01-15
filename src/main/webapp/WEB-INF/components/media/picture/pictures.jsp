@@ -51,7 +51,6 @@
                                                 <c:otherwise>
                                                     <div class="item" data-slide-number="${status}"><img
                                                             src="${pageContext.request.contextPath}/${picture.url}">
-                                                        <div class="carousel-caption"><h3>${picture.title}</h3></div>
                                                     </div>
                                                 </c:otherwise>
                                             </c:choose>
@@ -78,15 +77,6 @@
     </form>
 </div>
 
-<form action="/pictures/newPictures" method="post" enctype="multipart/form-data">
-    Categorie:<br>
-    <input name="categoryName"><br>
-    <br>
-    <input type="file" name="multipartFiles" multiple>
-    <br><br>
-    <button>Opslaan</button>
-</form>
-
 <script>
     jQuery(document).ready(function ($) {
         $('#myCarousel').carousel({
@@ -110,10 +100,3 @@
         });
     });
 </script>
-
-
-<%--<form action="/pictures/delete/${picture.id}" method="post">--%>
-<%--<button class="btn btn-info btn-lg">--%>
-<%--<span class="glyphicon glyphicon-trash"></span>--%>
-<%--</button>--%>
-<%--</form>--%>
