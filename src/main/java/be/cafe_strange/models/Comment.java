@@ -1,5 +1,7 @@
 package be.cafe_strange.models;
 
+import be.cafe_strange.models.user.User;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -13,8 +15,10 @@ public class Comment {
     private int commentId;
     @Column(name = "comment", nullable = false)
     private String comment;
-    @Column(name = "commentCreateTimestamp")
-    private Timestamp commentCreateTimestamp;
+    @Column(name = "timestampCreation")
+    private Timestamp timestampCreation;
+    @ManyToOne
+    private User user;
 
     public int getCommentId() {
         return commentId;
@@ -32,11 +36,19 @@ public class Comment {
         this.comment = comment;
     }
 
-    public Timestamp getCommentCreateTimestamp() {
-        return commentCreateTimestamp;
+    public Timestamp getTimestampCreation() {
+        return timestampCreation;
     }
 
-    public void setCommentCreateTimestamp(Timestamp commentCreateTimestamp) {
-        this.commentCreateTimestamp = commentCreateTimestamp;
+    public void setTimestampCreation(Timestamp timestampCreation) {
+        this.timestampCreation = timestampCreation;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

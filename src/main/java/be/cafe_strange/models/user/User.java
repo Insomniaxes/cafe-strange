@@ -1,6 +1,7 @@
 package be.cafe_strange.models.user;
 
 import be.cafe_strange.enums.Gender;
+import be.cafe_strange.models.Comment;
 import be.cafe_strange.models.media.Picture;
 
 import javax.persistence.*;
@@ -39,6 +40,8 @@ public class User {
     @ManyToMany(fetch = FetchType.EAGER)
     @Column(name = "roles", nullable = false)
     private List<Role> roles;
+    @OneToMany
+    private List<Comment> comments;
     @Column(name = "isAccountNonLocked", columnDefinition = "tinyint default true")
     private boolean isAccountNonLocked;
 
@@ -150,6 +153,14 @@ public class User {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     public boolean isAccountNonLocked() {
