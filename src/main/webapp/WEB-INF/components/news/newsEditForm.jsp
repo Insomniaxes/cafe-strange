@@ -1,3 +1,13 @@
+<script src="${pageContext.request.contextPath}/js/tinymce/jquery.tinymce.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/tinymce/tinymce.min.js"></script>
+
+<script>
+    tinymce.init({
+        selector : "textarea",
+
+    });
+</script>
+
 <div class="wrapper">
     <div>
         <form method="POST" enctype="multipart/form-data" action="/news/update/${news.id}">
