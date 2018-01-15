@@ -24,6 +24,7 @@ public class PictureServiceImp extends MediaServiceImpl<Picture, List<Picture>> 
 
     private final String IMGFOLDER = "C:/gitmap/Eindwerk/Cafe-Strange/src/main/webapp/img/";
     private ArrayList<Picture> newPictureList;
+
     @Autowired
     private CategoryService categoryService;
 
@@ -62,22 +63,21 @@ public class PictureServiceImp extends MediaServiceImpl<Picture, List<Picture>> 
     }
 
     @Override
-    public List<Picture> uploadMultiplePictures(List<MultipartFile> multipartFiles, String folder, String categoryName) {
-        newPictureList = new ArrayList<>();
-        Category category = categoryService.findByCategoryName(categoryName);
-        for (MultipartFile file : multipartFiles) {
-            Picture picture = uploadPicture(file, "uploaded", category);
-            newPictureList.add(picture);
+    public List<Picture> uploadMultiple(List<MultipartFile> multipartFiles, String folder, Category category) {
+        List<Picture> pictures = new ArrayList<>();
+        if (categoryService.checkCategory(category)) {
+            for (MultipartFile multipartFile : multipartFiles) {
+                pictures.add(uploadPicture(multipartFile, folder, category));
+            }
         }
-        return newPictureList;
+        return pictures;
     }
 
     @Override
     public boolean delete(Picture picture) {
-        // todo deze functie terug aanpassen voor uploadfolder die niet meer zal kloppen
         try {
             picture = super.findByUrl(picture.getUrl());
-            File file = new File(IMGFOLDER + picture.getUrl());
+            File file = new File(IMGFOLDER + picture.getUrl().replace("/img", ""));
             System.out.println(IMGFOLDER + picture.getUrl());
             file.delete();
             super.delete(picture.getId());
@@ -87,5 +87,6 @@ public class PictureServiceImp extends MediaServiceImpl<Picture, List<Picture>> 
             return false;
         }
     }
+
 }
 

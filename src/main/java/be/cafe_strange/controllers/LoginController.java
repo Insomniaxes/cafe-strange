@@ -1,5 +1,7 @@
 package be.cafe_strange.controllers;
 
+import be.cafe_strange.enums.Gender;
+import be.cafe_strange.models.user.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -15,19 +17,12 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginController {
 
     private final String VIEW = "/login";
-    private final String FOLDER = "WEB-INF/components/main/";
+    private final String FOLDER = "WEB-INF/components/main";
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String getLoginInForm(Model model) {
         model.addAttribute("pageTitle", "login");
-        model.addAttribute("page", FOLDER + "login");
-        return VIEW;
-    }
-
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String getRegisterview(Model model) {
-        model.addAttribute("pageTitle", "register");
-        model.addAttribute("page", FOLDER + "registerForm");
+        model.addAttribute("page", FOLDER + "/login");
         return VIEW;
     }
 

@@ -1,8 +1,8 @@
 package be.cafe_strange.controllers;
 
 import be.cafe_strange.enums.Gender;
-import be.cafe_strange.models.user.User;
 import be.cafe_strange.interfaces.services.UserService;
+import be.cafe_strange.models.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.security.Principal;
 
 @Controller
 @RequestMapping("/users")
@@ -53,6 +52,20 @@ public class UserController {
     }
 
     @PreAuthorize("hasAnyRole('MEMBER', 'ADMIN', 'MASTER')")
+    @RequestMapping(method = RequestMethod.GET, params = "username")
+    public String getUserByUsername(@RequestParam String username, Model model, HttpServletRequest request) {
+        User user = userService.findByUsername(username);
+        if (user.getUsername().equals(request.getUserPrincipal().getName()) | request.isUserInRole("MASTER") | request.isUserInRole("ADMIN")) {
+            model.addAttribute("page", FOLDER + "/userDetails");
+            model.addAttribute(user);
+        } else {
+            return "redirect:/home";
+        }
+
+        return VIEW;
+    }
+
+    @PreAuthorize("hasAnyRole('MEMBER', 'ADMIN', 'MASTER')")
     @RequestMapping(value = "/lastname/{lastName}", method = RequestMethod.GET)
     public String getUsersByLastName(@PathVariable String lastName, Model model) {
         model.addAttribute("page", FOLDER + "/users");
@@ -82,11 +95,27 @@ public class UserController {
         return VIEW;
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String createUser(User user, Model model) {
-        model.addAttribute("page", FOLDER + "/userRegisterForm");
-        model.addAttribute("user", userService.create(user));
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String getRegisterView(User user, Model model) {
+        model.addAttribute("pageTitle", "register");
+        model.addAttribute("user", user);
+        model.addAttribute("genders", Gender.values());
+        model.addAttribute("page", FOLDER + "/registerForm");
         return VIEW;
+    }
+
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public String createUser(User user, Model model, @RequestParam("passwordRetype") String passwordRetype) {
+        String errorMessage = userService.checkUserCreateFormData(user, passwordRetype);
+        if (!errorMessage.isEmpty()) {
+            model.addAttribute("errorMessage", errorMessage);
+            model.addAttribute("user", user);
+            return getRegisterView(user, model);
+        } else {
+            userService.create(user);
+            model.addAttribute("user", user);
+            return "redirect:/login";
+        }
     }
 
     @RequestMapping(value = "/update/{userId}", method = RequestMethod.POST)

@@ -9,4 +9,5 @@ public interface CategoryRepo extends MainInterface<Category, List<Category>> {
 
     Category findByCategoryName(String categoryName);
 
+    boolean checkCategory(Category category);
 }

@@ -29,7 +29,7 @@
                         <li><a class="dropdown-item" href="/events?argName=all">Alle</a></li>
                         <sec:authorize access="hasAnyRole('ADMIN','MASTER')">
                             <li class="divider"></li>
-                            <li><a class="dropdown-item" href="/events/new">Nieuw aanmaken</a></li>
+                            <li><a class="dropdown-item" href="/events/new">Nieuw evenement</a></li>
                         </sec:authorize>
                     </ul>
                 </li>
@@ -40,8 +40,8 @@
                         <li><a class="dropdown-item" href="/videos">Filmpjes</a></li>
                         <sec:authorize access="hasAnyRole('ADMIN','MASTER')">
                             <li class="divider"></li>
-                            <li><a class="dropdown-item" href="/videos/new">Nieuwe video</a></li>
-                            <li><a class="dropdown-item" href="/media/new">Nieuwe Foto's</a></li>
+                            <li><a class="dropdown-item" href="/pictures/new">Nieuwe Foto's</a></li>
+                            <li><a class="dropdown-item" href="/videos/new">Nieuw Filmpje</a></li>
                         </sec:authorize>
                     </ul>
                 </li>
@@ -57,7 +57,10 @@
                 <c:choose>
                     <c:when test="${pageContext.request.userPrincipal.authenticated}">
                         <sec:authentication var="user" property="principal"/>
-                        <form action="/logout"><button class="navbar-text">Logout</button></form>
+                        <form action="/logout">
+                            <button>Logout</button>
+                             <button href="/users?username=${user.username}"> ${user.username}</button>
+                            </form>
                     </c:when>
                     <c:otherwise>
                         <li><p class="navbar-text">Reeds een account?</p></li>
@@ -101,7 +104,7 @@
                                             </form>
                                         </div>
                                         <div class="bottom text-center">
-                                            Nieuw hier? <a href="/register"><b>Registreer</b></a>
+                                            Nieuw hier? <a href="/users/register"><b>Registreer</b></a>
                                         </div>
                                     </div>
                                 </li>

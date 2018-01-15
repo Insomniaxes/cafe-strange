@@ -45,6 +45,18 @@ public class CategoryRepoImpl implements CategoryRepo {
     }
 
     @Override
+    public boolean checkCategory(Category category) {
+        Query query = em.createQuery("SELECT c FROM Category AS c WHERE c.category = :category");
+        query.setParameter("category", category.getCategory());
+        try {
+            query.getSingleResult();
+            return true;
+        } catch (NoResultException e) {
+            return false;
+        }
+    }
+
+    @Override
     public Category create(Category category) {
         em.persist(category);
         return category;

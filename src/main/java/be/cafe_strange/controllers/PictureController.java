@@ -1,15 +1,20 @@
 package be.cafe_strange.controllers;
 
 import be.cafe_strange.interfaces.services.media.PictureService;
+import be.cafe_strange.models.Category;
 import be.cafe_strange.models.media.Picture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+=======
+import org.springframework.web.bind.annotation.*;
+>>>>>>> 0cc2c48ee67939ccccd3083eff6ef899045a160f
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
@@ -59,9 +64,19 @@ public class PictureController {
         return VIEW;
     }
 
-//    @RequestMapping(value = "/new", method = RequestMethod.GET)
-//    public String newPictures() {
-//
-//    }
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
+    public String newPictures(Model model) {
+        model.addAttribute("page", FOLDER + "pictures");
+        return VIEW;
+    }
+
+    @RequestMapping(value = "/uploadMultiple", method = RequestMethod.POST)
+    public String uploadMultiplePictures(List<MultipartFile> multipartFiles, String category, Model model) {
+        // todo nog folder aanpasmogelijkheid
+        Category theCategory = new Category(category);
+        model.addAttribute("pictures", pictureService.uploadMultiple(multipartFiles, "temp", theCategory));
+        model.addAttribute("page", FOLDER + "pictures");
+        return "redirect:/pictures";
+    }
 
 }

@@ -36,7 +36,7 @@ public class User {
     private Picture picture;
     @Column(name = "password")
     private String password;
-    @OneToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @Column(name = "roles", nullable = false)
     private List<Role> roles;
     @Column(name = "isAccountNonLocked", columnDefinition = "tinyint default true")
@@ -148,8 +148,8 @@ public class User {
         return roles;
     }
 
-    public void setRoles(List<Role> role) {
-        this.roles = role;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     public boolean isAccountNonLocked() {
