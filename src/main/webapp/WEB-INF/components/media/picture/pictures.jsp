@@ -18,6 +18,7 @@
 
 <div class="container">
     <div id="main_area">
+        <c:if test="${not empty pictures}">
         <!-- Slider -->
         <div class="row">
             <div class="col-sm-6" id="slider-thumbs">
@@ -75,8 +76,13 @@
             </div>
             <!--/Slider-->
         </div>
-
+        </c:if>
     </div>
+    <form action="/pictures/uploadMultiple" method="post" enctype="multipart/form-data">
+        <input name="category">
+        <input type="file" name="multipartFiles" multiple>
+        <input type="submit" value="Opslaan">
+    </form>
 </div>
 
 <script>

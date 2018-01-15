@@ -8,4 +8,5 @@ import java.util.List;
 public interface CategoryRepo extends MainInterface<Category, List<Category>> {
 
 
+    boolean checkCategory(Category category);
 }

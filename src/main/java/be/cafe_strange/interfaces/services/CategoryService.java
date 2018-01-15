@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface CategoryService extends MainInterface<Category, List<Category>>{
 
+    boolean checkCategory(Category category);
+
 }

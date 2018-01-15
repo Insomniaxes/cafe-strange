@@ -27,6 +27,16 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    public boolean checkCategory(Category category) {
+        if (!categoryRepo.checkCategory(category)) {
+            create(category);
+            return true;
+        } else {
+            return true;
+        }
+    }
+
+    @Override
     public Category create(Category category) {
         return categoryRepo.create(category);
     }

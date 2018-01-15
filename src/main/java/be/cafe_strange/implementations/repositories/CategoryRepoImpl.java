@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.util.List;
@@ -26,6 +27,18 @@ public class CategoryRepoImpl implements CategoryRepo {
     public List<Category> findAll() {
         Query query = em.createQuery("SELECT c FROM Category as c");
         return query.getResultList();
+    }
+
+    @Override
+    public boolean checkCategory(Category category) {
+        Query query = em.createQuery("SELECT c FROM Category AS c WHERE c.category = :category");
+        query.setParameter("category", category.getCategory());
+        try {
+            query.getSingleResult();
+            return true;
+        } catch (NoResultException e) {
+            return false;
+        }
     }
 
     @Override
