@@ -1,14 +1,18 @@
 package be.cafe_strange.controllers;
 
+import be.cafe_strange.interfaces.services.UserService;
 import be.cafe_strange.interfaces.services.media.PictureService;
 import be.cafe_strange.models.Category;
+import be.cafe_strange.models.Comment;
 import be.cafe_strange.models.media.Picture;
+import be.cafe_strange.models.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +33,8 @@ public class PictureController {
 
     @Autowired
     private PictureService pictureService;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String getGallery(Model model) {
@@ -42,6 +48,26 @@ public class PictureController {
     public String getPicture(@PathVariable int pictureId, Model model) {
         model.addAttribute("page", FOLDER + "picture");
         Picture picture = pictureService.findById(pictureId);
+        model.addAttribute("picture", picture);
+        return VIEW;
+    }
+
+    @RequestMapping(value = "/addComment/{pictureId}", method = RequestMethod.POST)
+    public String addComment(@PathVariable int pictureId, Principal principal, Comment comment, Model model) {
+        Picture picture = pictureService.findById(pictureId);
+        if (principal.getName() == null) {
+
+            // todo nog afwerken
+
+            return VIEW;
+        }
+
+        comment.setUser(new User());
+        List<Comment> comments = picture.getComments();
+        comments.add(comment);
+        picture.setComments(comments);
+        pictureService.update(picture);
+        model.addAttribute("page", "picture");
         model.addAttribute("picture", picture);
         return VIEW;
     }
