@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="container">
-    <img src="${pageContext.request.contextPath}/picture.url">
+    <img src="${pageContext.request.contextPath}/${picture.url}">
 </div>
 
 <div class="container">
@@ -12,5 +12,6 @@
                 <hr>
             </li>
         </c:forEach>
+
     </ul>
 </div>

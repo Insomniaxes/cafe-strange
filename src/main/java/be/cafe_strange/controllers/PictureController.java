@@ -6,10 +6,7 @@ import be.cafe_strange.models.media.Picture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
@@ -38,6 +35,14 @@ public class PictureController {
         model.addAttribute("page", FOLDER + "pictures");
         List<Picture> pictures = pictureService.findAll();
         model.addAttribute("pictures", pictures);
+        return VIEW;
+    }
+
+    @RequestMapping(value = "/{pictureId}", method = RequestMethod.GET)
+    public String getPicture(@PathVariable int pictureId, Model model) {
+        model.addAttribute("page", FOLDER + "picture");
+        Picture picture = pictureService.findById(pictureId);
+        model.addAttribute("picture", picture);
         return VIEW;
     }
 
