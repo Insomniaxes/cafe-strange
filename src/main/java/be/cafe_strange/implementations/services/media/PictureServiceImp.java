@@ -23,7 +23,6 @@ import static be.cafe_strange.enums.MediaType.PICTURE;
 public class PictureServiceImp extends MediaServiceImpl<Picture, List<Picture>> implements PictureService {
 
     private final String IMGFOLDER = "C:/gitmap/Eindwerk/Cafe-Strange/src/main/webapp/img/";
-    private ArrayList<Picture> newPictureList;
 
     @Autowired
     private CategoryService categoryService;
@@ -53,12 +52,13 @@ public class PictureServiceImp extends MediaServiceImpl<Picture, List<Picture>> 
                 picture = new Picture(file.getName(),
                         "hier moet caption komen", "img/" + folder + "/" + createdFileName, category, true);
 
-                create(picture);
+
             } catch (IOException e) {
                 e.printStackTrace();
                 return new Picture();
             }
         }
+        create(picture);
         return picture;
     }
 

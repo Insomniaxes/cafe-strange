@@ -102,6 +102,7 @@ public class EventServiceImpl implements EventService {
         }
     }
 
+    @Override
     public boolean eventDateFree(Date date) {
         if (eventRepo.findByDate(date) == null) {
             return true;

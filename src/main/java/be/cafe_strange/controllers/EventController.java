@@ -19,7 +19,7 @@ import java.util.Collections;
 public class EventController {
 
     private final String FOLDER = "WEB-INF/components/events/";
-    private final String VIEW = "/event";
+    private final String VIEW = "/events";
     private String pageTitle;
 
     @Autowired
@@ -111,24 +111,17 @@ public class EventController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String saveNewEvent(@RequestParam(value = "file", required = false) MultipartFile file,
                                Event event, Model model) {
-        Picture picture = new Picture();
-        if (file != null) {
-            picture = pictureService.uploadPicture(file, "event", categoryService.findById(1));
-            System.out.println("er is een picture aangemaakt en geupload en wordt nu geplaatst");
-            event.setPicture(picture);
-        }
-        if (eventService.create(event) == null) {
-            model.addAttribute("message",
-                    "<h1>Het evenement werd niet toegevoegd omdat er al een event gepland staat op die dag !!</h1>");
-            if (picture != null) {
-                System.out.println("er is reeds een evenement op deze datum, dus picture moet verwijderd worden");
-                pictureService.delete(picture);
-            }
-            return "redirect/index";
+
+        if (eventService.eventDateFree(event.getDate())) {
+            event.setPicture(pictureService.uploadPicture(file, "event", categoryService.findById(1)));
+            eventService.create(event);
+            return "redirect:/index";
         } else {
-            model.addAttribute("message", "<h1>Het evenement werd toegevoegd</h1>");
+            model.addAttribute("error", "<h3>Op deze dag staat er reeds iets gepland</h3>");
+            model.addAttribute("event", event);
+            createNewEvent(model);
         }
-        return "redirect:/index";
+        return VIEW;
     }
 
     @PreAuthorize("hasAnyRole('ADMIN', 'MASTER')")

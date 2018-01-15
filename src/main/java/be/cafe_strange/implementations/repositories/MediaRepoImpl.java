@@ -59,7 +59,11 @@ public class MediaRepoImpl<T,L> implements MediaRepo<T,L> {
 
     @Override
     public T create(T media) {
-        em.persist(media);
+        if (media == null) {
+            em.detach(media);
+        } else {
+            em.persist(media);
+        }
         return media;
     }
 

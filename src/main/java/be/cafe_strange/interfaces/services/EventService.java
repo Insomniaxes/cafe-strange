@@ -18,4 +18,5 @@ public interface EventService extends MainInterface<Event, List<Event>>{
 
     List<Event> findPast();
 
+    boolean eventDateFree(Date date);
 }

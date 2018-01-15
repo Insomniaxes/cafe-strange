@@ -8,6 +8,8 @@
     });
 </script>
 
+${error}
+
 <div class="wrapper">
     <div>
         <form method="POST" enctype="multipart/form-data" action="/events/create">
