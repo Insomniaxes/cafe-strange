@@ -1,5 +1,7 @@
 package be.cafe_strange.models;
 
+import be.cafe_strange.interfaces.Commentable;
+import be.cafe_strange.interfaces.Likeable;
 import be.cafe_strange.models.media.Media;
 import be.cafe_strange.models.media.Picture;
 import be.cafe_strange.models.user.User;
@@ -9,7 +11,7 @@ import java.sql.Date;
 import java.util.List;
 
 @Entity
-public class Event implements Comparable<Event> {
+public class Event implements Comparable<Event>, Likeable, Commentable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,6 +27,8 @@ public class Event implements Comparable<Event> {
     private String description;
     @OneToOne
     private Picture picture;
+    @OneToMany
+    private List<Comment> comments;
     @OneToMany
     @Column(name = "participants")
     private List<User> participants;
@@ -88,5 +92,15 @@ public class Event implements Comparable<Event> {
     @Override
     public int compareTo(Event o) {
         return getDate().compareTo(o.getDate());
+    }
+
+    @Override
+    public void addComment(Comment comment) {
+        this.comments.add(comment);
+    }
+
+    @Override
+    public void removeComment(Comment comment) {
+        this.comments.remove(comment);
     }
 }

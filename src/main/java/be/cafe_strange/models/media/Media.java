@@ -1,6 +1,8 @@
 package be.cafe_strange.models.media;
 
 import be.cafe_strange.enums.MediaType;
+import be.cafe_strange.interfaces.Commentable;
+import be.cafe_strange.interfaces.Likeable;
 import be.cafe_strange.models.News;
 import be.cafe_strange.models.Category;
 import be.cafe_strange.models.Comment;
@@ -13,7 +15,7 @@ import java.util.List;
 @Inheritance
 @DiscriminatorColumn(name = "mediaType")
 @Table(name = "Media")
-public class Media implements Serializable {
+public class Media implements Serializable, Likeable, Commentable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -111,4 +113,15 @@ public class Media implements Serializable {
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
+
+    @Override
+    public void addComment(Comment comment) {
+        this.comments.add(comment);
+    }
+
+    @Override
+    public void removeComment(Comment comment) {
+        this.comments.remove(comment);
+    }
+
 }
