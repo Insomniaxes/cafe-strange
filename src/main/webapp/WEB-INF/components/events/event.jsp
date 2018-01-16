@@ -114,6 +114,7 @@
         <c:forEach items="${event.comments}" var="comment">
             ${comment.comment}<br>
             ${comment.timestampCreation}
+            <hr>
         </c:forEach>
     </div>
 </div>

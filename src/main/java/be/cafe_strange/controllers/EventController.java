@@ -140,6 +140,7 @@ public class EventController {
         return "redirect:/index";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/{eventId}/addComment", method = RequestMethod.POST)
     public String addComment(@PathVariable int eventId, Comment comment, final Principal principal) {
         if (principal != null & comment != null) {
