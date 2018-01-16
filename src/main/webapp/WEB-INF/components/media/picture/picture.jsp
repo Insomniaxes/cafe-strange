@@ -15,23 +15,14 @@
     ${message}
     <img src="${pageContext.request.contextPath}/${picture.url}">
     <br>
-
-
+    <br>
+    <form action="/pictures/${picture.id}/addComment" method="post">
+        <textarea name="comment"></textarea><br>
+        <button>Reageer</button>
+    </form>
     <c:forEach items="${picture.comments}" var="comment">
-        <li>
-                ${comment.comment}
-            <div align="right"><a
-                    href="/users/${comment.user.id}">${comment.user.username}</a><br>${comment.timestampCreation}</div>
-            <hr>
-        </li>
+        ${comment.comment}
+        ${comment.timestampCreation}
+        <hr>
     </c:forEach>
-
-<br>
-    <%--<c:if test="${pageContext.request.userPrincipal.authenticated}">--%>
-        <%--<sec:authentication var="user" property="principal"/>--%>
-        <form action="/pictures/${picture.id}/addComment" method="post">
-            <textarea name="comment"></textarea>
-            <button>Plaats reaktie</button>
-        </form>
-    <%--</c:if>--%>
 </div>

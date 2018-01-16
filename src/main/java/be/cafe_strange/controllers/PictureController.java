@@ -7,7 +7,9 @@ import be.cafe_strange.models.Category;
 import be.cafe_strange.models.Comment;
 import be.cafe_strange.models.media.Picture;
 import be.cafe_strange.models.user.User;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -55,24 +57,6 @@ public class PictureController {
         return VIEW;
     }
 
-    @RequestMapping(value = "/{pictureId}/addComment", method = RequestMethod.POST)
-    public String addComment(@PathVariable int pictureId, final Principal principal, Comment comment, Model model) {
-        Picture picture = pictureService.findById(pictureId);
-        model.addAttribute("page", "picture");
-        if (principal == null) {
-            return "redirect:/pictures/" + pictureId;
-        } else {
-            comment.setUser(userService.findByUsername(principal.getName()));
-            commentService.create(comment);
-            List<Comment> comments = picture.getComments();
-            comments.add(comment);
-            picture.setComments(comments);
-            pictureService.update(picture);
-            model.addAttribute("picture", picture);
-        }
-        return "redirect:/pictures/" + pictureId ;
-    }
-
     @RequestMapping(value = "/delete/{pictureId}", method = RequestMethod.POST)
     public String deletePicture(@PathVariable int pictureId, Model model) {
         pictureService.delete(pictureService.findById(pictureId));
@@ -95,6 +79,18 @@ public class PictureController {
         model.addAttribute("pictures", pictureService.uploadMultiple(multipartFiles, "temp", theCategory));
         model.addAttribute("page", FOLDER + "pictures");
         return "redirect:/pictures";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping(value = "/{pictureId}/addComment", method = RequestMethod.POST)
+    public String addComment(@PathVariable int pictureId, Comment comment, final Principal principal) {
+        if (principal != null & StringUtils.isNotBlank(comment.getComment())) {
+            Picture picture = pictureService.findById(pictureId);
+            comment.setUser(userService.findByUsername(principal.getName()));
+            commentService.create(picture.addComment(comment));
+            pictureService.update(picture);
+        }
+        return "redirect:/pictures/" + pictureId;
     }
 
 }
