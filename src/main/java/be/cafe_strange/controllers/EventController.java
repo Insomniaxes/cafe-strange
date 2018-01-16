@@ -8,6 +8,7 @@ import be.cafe_strange.interfaces.services.EventService;
 import be.cafe_strange.interfaces.services.CategoryService;
 import be.cafe_strange.interfaces.services.media.PictureService;
 import be.cafe_strange.models.media.Picture;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -143,7 +144,7 @@ public class EventController {
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/{eventId}/addComment", method = RequestMethod.POST)
     public String addComment(@PathVariable int eventId, Comment comment, final Principal principal) {
-        if (principal != null & comment != null) {
+        if (principal != null & StringUtils.isNotBlank(comment.getComment())) {
             Event event = eventService.findById(eventId);
             comment.setUser(userService.findByUsername(principal.getName()));
             commentService.create(event.addComment(comment));
