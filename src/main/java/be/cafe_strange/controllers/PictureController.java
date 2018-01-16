@@ -1,5 +1,6 @@
 package be.cafe_strange.controllers;
 
+import be.cafe_strange.interfaces.services.CommentService;
 import be.cafe_strange.interfaces.services.UserService;
 import be.cafe_strange.interfaces.services.media.PictureService;
 import be.cafe_strange.models.Category;
@@ -23,6 +24,8 @@ public class PictureController {
     private final String FOLDER = "WEB-INF/components/media/picture/";
     private final String VIEW = "/media";
     private String pageTitle;
+    @Autowired
+    private UserService userService;
 
     @ModelAttribute("pageTitle")
     public String getPageTitle() {
@@ -34,7 +37,7 @@ public class PictureController {
     @Autowired
     private PictureService pictureService;
     @Autowired
-    private UserService userService;
+    private CommentService commentService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String getGallery(Model model) {
@@ -52,24 +55,22 @@ public class PictureController {
         return VIEW;
     }
 
-    @RequestMapping(value = "/addComment/{pictureId}", method = RequestMethod.POST)
-    public String addComment(@PathVariable int pictureId, Principal principal, Comment comment, Model model) {
+    @RequestMapping(value = "/{pictureId}/addComment", method = RequestMethod.POST)
+    public String addComment(@PathVariable int pictureId, final Principal principal, Comment comment, Model model) {
         Picture picture = pictureService.findById(pictureId);
-        if (principal.getName() == null) {
-
-            // todo nog afwerken
-
-            return VIEW;
-        }
-
-        comment.setUser(new User());
-        List<Comment> comments = picture.getComments();
-        comments.add(comment);
-        picture.setComments(comments);
-        pictureService.update(picture);
         model.addAttribute("page", "picture");
-        model.addAttribute("picture", picture);
-        return VIEW;
+        if (principal == null) {
+            return "redirect:/pictures/" + pictureId;
+        } else {
+            comment.setUser(userService.findByUsername(principal.getName()));
+            commentService.create(comment);
+            List<Comment> comments = picture.getComments();
+            comments.add(comment);
+            picture.setComments(comments);
+            pictureService.update(picture);
+            model.addAttribute("picture", picture);
+        }
+        return "redirect:/pictures/" + pictureId ;
     }
 
     @RequestMapping(value = "/delete/{pictureId}", method = RequestMethod.POST)
