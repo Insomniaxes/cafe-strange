@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -28,6 +29,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public Comment create(Comment comment) {
+        comment.setTimestampCreation(java.sql.Timestamp.valueOf(LocalDateTime.now()));
         return commentRepo.create(comment);
     }
 

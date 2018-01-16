@@ -2,7 +2,6 @@ package be.cafe_strange.models;
 
 import be.cafe_strange.interfaces.Commentable;
 import be.cafe_strange.interfaces.Likeable;
-import be.cafe_strange.models.media.Media;
 import be.cafe_strange.models.media.Picture;
 import be.cafe_strange.models.user.User;
 
@@ -28,6 +27,7 @@ public class Event implements Comparable<Event>, Likeable, Commentable {
     @OneToOne
     private Picture picture;
     @OneToMany
+    @Column(name = "comments")
     private List<Comment> comments;
     @OneToMany
     @Column(name = "participants")
@@ -94,9 +94,18 @@ public class Event implements Comparable<Event>, Likeable, Commentable {
         return getDate().compareTo(o.getDate());
     }
 
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
     @Override
-    public void addComment(Comment comment) {
+    public Comment addComment(Comment comment) {
         this.comments.add(comment);
+        return comment;
     }
 
     @Override

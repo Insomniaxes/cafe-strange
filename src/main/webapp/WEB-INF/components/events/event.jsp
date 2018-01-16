@@ -106,6 +106,15 @@
                 <button>Aanpassen</button>
             </form>
         </sec:authorize>
+        <br>
+        <form action="/events/${event.id}/addComment" method="post">
+            <textarea name="comment"></textarea><br>
+            <button>Reageer</button>
+        </form>
+        <c:forEach items="${event.comments}" var="comment">
+            ${comment.comment}<br>
+            ${comment.timestampCreation}
+        </c:forEach>
     </div>
 </div>
 

@@ -1,5 +1,8 @@
 package be.cafe_strange.controllers;
 
+import be.cafe_strange.interfaces.services.CommentService;
+import be.cafe_strange.interfaces.services.UserService;
+import be.cafe_strange.models.Comment;
 import be.cafe_strange.models.Event;
 import be.cafe_strange.interfaces.services.EventService;
 import be.cafe_strange.interfaces.services.CategoryService;
@@ -12,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.security.Principal;
 import java.util.Collections;
 
 @Controller
@@ -28,6 +32,10 @@ public class EventController {
     private PictureService pictureService;
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private CommentService commentService;
 
     @ModelAttribute("pageTitle")
     public String getPageTitle() {
@@ -125,11 +133,22 @@ public class EventController {
     }
 
     @PreAuthorize("hasAnyRole('ADMIN', 'MASTER')")
-    @RequestMapping(value = "/delete/{eventId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/{eventId}/delete", method = RequestMethod.POST)
     public String deleteEvent(@PathVariable int eventId) {
         // todo nog check maken of het echt verwijderd mag worden
         eventService.delete(eventId);
         return "redirect:/index";
+    }
+
+    @RequestMapping(value = "/{eventId}/addComment", method = RequestMethod.POST)
+    public String addComment(@PathVariable int eventId, Comment comment, final Principal principal) {
+        if (principal != null & comment != null) {
+            Event event = eventService.findById(eventId);
+            comment.setUser(userService.findByUsername(principal.getName()));
+            commentService.create(event.addComment(comment));
+            eventService.update(event);
+        }
+        return "redirect:/events/" + eventId;
     }
 
 }

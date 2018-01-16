@@ -115,8 +115,9 @@ public class Media implements Serializable, Likeable, Commentable {
     }
 
     @Override
-    public void addComment(Comment comment) {
+    public Comment addComment(Comment comment) {
         this.comments.add(comment);
+        return comment;
     }
 
     @Override
